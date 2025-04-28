@@ -517,6 +517,7 @@ class NewDatabase:
         keep_imports_uncertainty=False,
         keep_source_db_uncertainty=False,
         gains_scenario="CLE",
+        metals_intensity_factor: float = 1.0,
         use_absolute_efficiency=False,
         biosphere_name: str = "biosphere3",
     ) -> None:
@@ -544,6 +545,11 @@ class NewDatabase:
         if gains_scenario not in ["CLE", "MFR"]:
             raise ValueError("gains_scenario must be either 'CLE' or 'MFR'")
         self.gains_scenario = gains_scenario
+
+        if not isinstance(metals_intensity_factor, float) and metals_intensity_factor > 0:
+            raise ValueError("Metals intensity factor must be float larger than one")
+        self.metals_intensity_factor = metals_intensity_factor
+
 
         if self.source_type == "ecospold":
             self.source_file_path = check_ei_filepath(source_file_path)
@@ -895,7 +901,7 @@ class NewDatabase:
             },
             "metals": {
                 "func": _update_metals,
-                "args": (self.version, self.system_model),
+                "args": (self.version, self.system_model, self.metals_intensity_factor),
             },
             "heat": {"func": _update_heat, "args": (self.version, self.system_model)},
             "battery": {

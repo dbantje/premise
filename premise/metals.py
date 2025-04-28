@@ -31,7 +31,8 @@ from .utils import DATA_DIR
 logger = create_logger("metal")
 
 
-def _update_metals(scenario, version, system_model):
+def _update_metals(scenario, version, system_model, intensity_factor):
+
     metals = Metals(
         database=scenario["database"],
         model=scenario["model"],
@@ -40,8 +41,9 @@ def _update_metals(scenario, version, system_model):
         year=scenario["year"],
         version=version,
         system_model=system_model,
+        intensity_factor=intensity_factor,
         cache=scenario.get("cache"),
-        index=scenario.get("index"),
+        index=scenario.get("index")
     )
 
     metals.create_metal_markets()
@@ -319,6 +321,7 @@ class Metals(BaseTransformation):
         year: int,
         version: str,
         system_model: str,
+        intensity_factor: float,
         cache: dict = None,
         index: dict = None,
     ):
@@ -345,6 +348,9 @@ class Metals(BaseTransformation):
             self.precomputed_medians = self.metals.interp(
                 year=self.year, method="nearest", kwargs={"fill_value": "extrapolate"}
             )
+
+        # save intensity factor to scale median metal intensities by
+        self.intensity_factor = intensity_factor
 
         self.activities_mapping = load_activities_mapping()  # 4
 
@@ -415,7 +421,7 @@ class Metals(BaseTransformation):
     def update_metal_use(
         self,
         dataset: dict,
-        technology: str,
+        technology: str
     ) -> None:
         """
         Update metal use based on metal intensity data.
@@ -495,6 +501,7 @@ class Metals(BaseTransformation):
                 use_factors.sel(variable="median").item()
                 * unit_converter
                 * conversion_factor
+                * self.intensity_factor
             )
 
             min_value = (
