@@ -505,6 +505,7 @@ class Metals(BaseTransformation):
                 * unit_converter
                 * conversion_factor
             )
+            min_value = min(median_value, min_value)
             max_value = (
                 use_factors.sel(variable="max").item()
                 * unit_converter
