@@ -29,6 +29,7 @@ class PathwaysDataPackage:
         system_model: str = "cutoff",
         system_args: dict = None,
         gains_scenario="CLE",
+        metals_intensity_factor: float = 1.0,
         use_absolute_efficiency=False,
         biosphere_name="biosphere3",
     ):
@@ -55,6 +56,7 @@ class PathwaysDataPackage:
             system_model=system_model,
             system_args=system_args,
             gains_scenario=gains_scenario,
+            metals_intensity_factor=metals_intensity_factor,
             use_absolute_efficiency=use_absolute_efficiency,
             biosphere_name=biosphere_name,
         )
