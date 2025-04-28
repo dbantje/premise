@@ -559,10 +559,12 @@ class NewDatabase:
             raise ValueError("gains_scenario must be either 'CLE' or 'MFR'")
         self.gains_scenario = gains_scenario
 
-        if not isinstance(metals_intensity_factor, float) and metals_intensity_factor > 0:
+        if (
+            not isinstance(metals_intensity_factor, float)
+            and metals_intensity_factor > 0
+        ):
             raise ValueError("Metals intensity factor must be float larger than one")
         self.metals_intensity_factor = metals_intensity_factor
-
 
         if self.source_type == "ecospold":
             self.source_file_path = check_ei_filepath(source_file_path)

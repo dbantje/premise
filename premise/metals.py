@@ -46,7 +46,7 @@ def _update_metals(scenario, version, system_model, intensity_factor):
         system_model=system_model,
         intensity_factor=intensity_factor,
         cache=scenario.get("cache"),
-        index=scenario.get("index")
+        index=scenario.get("index"),
     )
 
     metals.create_metal_markets()
@@ -421,11 +421,7 @@ class Metals(BaseTransformation):
         else:
             raise ValueError(f"Invalid metal activity name: {metal_activity_name}")
 
-    def update_metal_use(
-        self,
-        dataset: dict,
-        technology: str
-    ) -> None:
+    def update_metal_use(self, dataset: dict, technology: str) -> None:
         """
         Update metal use based on metal intensity data.
         :param dataset: dataset to adjust metal use for
