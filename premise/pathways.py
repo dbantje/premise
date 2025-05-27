@@ -79,17 +79,17 @@ class PathwaysDataPackage:
 
         for scenario in self.datapackage.scenarios:
             scenario = load_database(scenario)
-            energy = FinalEnergy(
-                database=scenario["database"],
-                iam_data=scenario["iam data"],
-                model=scenario["model"],
-                pathway=scenario["pathway"],
-                year=scenario["year"],
-                version=self.datapackage.version,
-                system_model=self.datapackage.system_model,
-            )
-            energy.import_heating_inventories()
-            scenario["database"] = energy.database
+            # energy = FinalEnergy(
+            #     database=scenario["database"],
+            #     iam_data=scenario["iam data"],
+            #     model=scenario["model"],
+            #     pathway=scenario["pathway"],
+            #     year=scenario["year"],
+            #     version=self.datapackage.version,
+            #     system_model=self.datapackage.system_model,
+            # )
+            # energy.import_heating_inventories()
+            # scenario["database"] = energy.database
 
             dump_database(scenario)
 
