@@ -138,15 +138,15 @@ def generate_migration_maps(origin: str, destination: str) -> Dict[str, list]:
                     data["location"] = row[7]
                 response["data"].append(((row[2], row[3], row[4]), data))
 
-            if row[0] == destination and row[1] == origin:
-                data = {}
-                if row[2] != "":
-                    data["name"] = row[2]
-                if row[3] != "":
-                    data["reference product"] = row[3]
-                if row[4] != "":
-                    data["location"] = row[4]
-                response["data"].append(((row[5], row[6], row[7]), data))
+            #if row[0] == destination and row[1] == origin:
+            #    data = {}
+            #    if row[2] != "":
+            #        data["name"] = row[2]
+            #    if row[3] != "":
+            #        data["reference product"] = row[3]
+            #    if row[4] != "":
+            #        data["location"] = row[4]
+            #    response["data"].append(((row[5], row[6], row[7]), data))
 
         return response
 
@@ -943,6 +943,7 @@ class DefaultInventory(BaseInventoryImport):
                 self.import_db.migrate(
                     f"migration_{self.version_in.replace('.', '')}_38"
                 )
+                print(f"Migrating from 3.8 to {self.version_out}")
                 self.import_db.migrate(
                     f"migration_38_{self.version_out.replace('.', '')}"
                 )
@@ -957,10 +958,12 @@ class DefaultInventory(BaseInventoryImport):
                 self.import_db.migrate(
                     f"migration_{self.version_in.replace('.', '')}_310"
                 )
+                print(f"Migrating from 3.10 to {self.version_out}")
                 self.import_db.migrate(
                     f"migration_310_{self.version_out.replace('.', '')}"
                 )
             else:
+                print(f"Migrating from {self.version_in} to {self.version_out}")
                 self.import_db.migrate(
                     f"migration_{self.version_in.replace('.', '')}_{self.version_out.replace('.', '')}"
                 )
@@ -1053,6 +1056,7 @@ class VariousVehicles(BaseInventoryImport):
                 self.import_db.migrate(
                     f"migration_{self.version_in.replace('.', '')}_38"
                 )
+                print(f"Migrating from 3.8 to {self.version_out}")
                 self.import_db.migrate(
                     f"migration_38_{self.version_out.replace('.', '')}"
                 )
@@ -1067,10 +1071,12 @@ class VariousVehicles(BaseInventoryImport):
                 self.import_db.migrate(
                     f"migration_{self.version_in.replace('.', '')}_310"
                 )
+                print(f"Migrating from 3.10 to {self.version_out}")
                 self.import_db.migrate(
                     f"migration_310_{self.version_out.replace('.', '')}"
                 )
             else:
+                print(f"Migrating from {self.version_in} to {self.version_out}")
                 self.import_db.migrate(
                     f"migration_{self.version_in.replace('.', '')}_{self.version_out.replace('.', '')}"
                 )
@@ -1169,6 +1175,7 @@ class AdditionalInventory(BaseInventoryImport):
                 self.import_db.migrate(
                     f"migration_{self.version_in.replace('.', '')}_38"
                 )
+                print(f"Migrating from 3.8 to {self.version_out}")
                 self.import_db.migrate(
                     f"migration_38_{self.version_out.replace('.', '')}"
                 )
@@ -1183,10 +1190,12 @@ class AdditionalInventory(BaseInventoryImport):
                 self.import_db.migrate(
                     f"migration_{self.version_in.replace('.', '')}_310"
                 )
+                print(f"Migrating from 3.10 to {self.version_out}")
                 self.import_db.migrate(
                     f"migration_310_{self.version_out.replace('.', '')}"
                 )
             else:
+                print(f"Migrating from {self.version_in} to {self.version_out}")
                 self.import_db.migrate(
                     f"migration_{self.version_in.replace('.', '')}_{self.version_out.replace('.', '')}"
                 )
