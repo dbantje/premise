@@ -939,7 +939,7 @@ class DefaultInventory(BaseInventoryImport):
                 "3.6",
                 "3.7",
             ]:
-                print("Migrating to 3.8 first")
+                print(f"Migrating from {self.version_in} to 3.8 first")
                 self.import_db.migrate(
                     f"migration_{self.version_in.replace('.', '')}_38"
                 )
@@ -953,7 +953,7 @@ class DefaultInventory(BaseInventoryImport):
                 "3.8",
                 "3.9",
             ]:
-                print("Migrating to 3.10 first")
+                print(f"Migrating from {self.version_in} to 3.10 first")
                 self.import_db.migrate(
                     f"migration_{self.version_in.replace('.', '')}_310"
                 )
@@ -1049,7 +1049,7 @@ class VariousVehicles(BaseInventoryImport):
                 "3.6",
                 "3.7",
             ]:
-                print("Migrating to 3.8 first")
+                print(f"Migrating from {self.version_in} to 3.8 first")
                 self.import_db.migrate(
                     f"migration_{self.version_in.replace('.', '')}_38"
                 )
@@ -1063,7 +1063,7 @@ class VariousVehicles(BaseInventoryImport):
                 "3.8",
                 "3.9",
             ]:
-                print("Migrating to 3.10 first")
+                print(f"Migrating from {self.version_in} to 3.10 first")
                 self.import_db.migrate(
                     f"migration_{self.version_in.replace('.', '')}_310"
                 )
@@ -1165,7 +1165,7 @@ class AdditionalInventory(BaseInventoryImport):
                 "3.6",
                 "3.7",
             ]:
-                print("Migrating to 3.8 first")
+                print(f"Migrating from {self.version_in} to 3.8 first")
                 self.import_db.migrate(
                     f"migration_{self.version_in.replace('.', '')}_38"
                 )
@@ -1179,7 +1179,7 @@ class AdditionalInventory(BaseInventoryImport):
                 "3.8",
                 "3.9",
             ]:
-                print("Migrating to 3.10 first")
+                print(f"Migrating from {self.version_in} to 3.10 first")
                 self.import_db.migrate(
                     f"migration_{self.version_in.replace('.', '')}_310"
                 )
