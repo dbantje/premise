@@ -138,7 +138,7 @@ def generate_migration_maps(origin: str, destination: str) -> Dict[str, list]:
                     data["location"] = row[7]
                 response["data"].append(((row[2], row[3], row[4]), data))
 
-            #if row[0] == destination and row[1] == origin:
+            # if row[0] == destination and row[1] == origin:
             #    data = {}
             #    if row[2] != "":
             #        data["name"] = row[2]
