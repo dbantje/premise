@@ -29,7 +29,7 @@ COPPER_CONFIG_FILE = DATA_DIR / "interventions" / "copper_recovery_activities.ya
 BRAKE_WEAR_CONFIG_FILE = DATA_DIR / "interventions" / "brake_wear_activities.yaml"
 
 
-def _update_interventions(scenario, version, system_model, which_interventions="all"):
+def _update_interventions(scenario, version, system_model, which_interventions):
     """
     Update the scenario database with interventions for tailings, slag, and copper treatment.
     """
@@ -45,18 +45,13 @@ def _update_interventions(scenario, version, system_model, which_interventions="
         index=scenario.get("index"),
     )
 
-    if which_interventions == "all":
+    if "tailings" in which_interventions:
         interventions.update_tailings_treatment()
+    if "slag" in which_interventions:
         interventions.update_slag_treatment()
+    if "copper" in which_interventions:
         interventions.update_copper_treatment()
-        interventions.update_brake_wear()
-    elif which_interventions == "tailings":
-        interventions.update_tailings_treatment()
-    elif which_interventions == "slag":
-        interventions.update_slag_treatment()
-    elif which_interventions == "copper":
-        interventions.update_copper_treatment()
-    elif which_interventions == "brake_wear":
+    if "brake_wear" in which_interventions:
         interventions.update_brake_wear()
     interventions.relink_datasets()
     scenario["database"] = interventions.database

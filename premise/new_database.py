@@ -898,9 +898,13 @@ class NewDatabase:
 
         return data
 
+<<<<<<< HEAD
     def update(
         self, sectors: [str, list, None] = None, which_interventions="all"
     ) -> None:
+=======
+    def update(self, sectors: [str, list, None] = None, which_interventions = ["tailings", "brake_wear", "slag", "copper"]) -> None:
+>>>>>>> 4289d4cb (Enable passing list of interventions.)
         """
         Update a specific sector by name.
         """
