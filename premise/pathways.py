@@ -71,7 +71,7 @@ class PathwaysDataPackage:
         name: str = f"pathways_{date.today()}",
         contributors: list = None,
         transformations: list = None,
-        which_interventions: list = ["tailings", "brake_wear", "slag", "copper"]
+        which_interventions: list = ["tailings", "brake_wear", "slag", "copper"],
     ):
         if transformations:
             self.datapackage.update(transformations, which_interventions)
