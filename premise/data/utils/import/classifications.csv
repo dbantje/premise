@@ -3263,3 +3263,5 @@ market for zircon,zircon,0729:Mining of other non-ferrous metal ores,14290: Othe
 "transport, freight train, electricity","transport, freight train",4912:Freight rail transport,6512: Railway transport services of freight
 "transport, freight train, diesel","transport, freight train",4912:Freight rail transport,6512: Railway transport services of freight
 "transport, freight train, diesel, with particle filter","transport, freight train",4912:Freight rail transport,6512: Railway transport services of freight
+"maize starch production","maize starch","1062:Manufacture of starches and starch products","23220: Starches; inulin; wheat gluten; dextrins and other modified starches"
+"carbon dioxide, captured and stored, from a biomass fermentation plant, energy-free for pathways","carbon dioxide, captured",2011:Manufacture of basic chemicals,"34210: Hydrogen, nitrogen, oxygen, carbon dioxide and rare gases; inorganic oxygen compounds of non-metals n.e.c."
