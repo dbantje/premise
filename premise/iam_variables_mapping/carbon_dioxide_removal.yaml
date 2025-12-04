@@ -69,25 +69,25 @@ direct air capture (sorbent) with storage:
       - carbon dioxide, captured and stored, with a sorbent-based direct air capture system, 100ktCO2
 
 enhanced rock weathering:
-    iam_aliases:
-        remind: Emi|CO2|CDR|+|EW
-        remind-eu: Emi|CO2|CDR|+|EW
-    energy_use_aliases:
-        remind:
-          - FE|CDR|EW|+|Diesel
-          - FE|CDR|EW|+|Electricity
-        remind-eu:
-          - FE|CDR|EW|+|Diesel
-          - FE|CDR|EW|+|Electricity
-    ecoinvent_aliases:
-        fltr: carbon dioxide, captured and stored, by olivine spreading on coastline
+  iam_aliases:
+    remind: Emi|CO2|CDR|+|EW
+    remind-eu: Emi|CO2|CDR|+|EW
+  energy_use_aliases:
+    remind:
+      - FE|CDR|EW|+|Diesel
+      - FE|CDR|EW|+|Electricity
+    remind-eu:
+      - FE|CDR|EW|+|Diesel
+      - FE|CDR|EW|+|Electricity
+  ecoinvent_aliases:
+    fltr: carbon dioxide, captured and stored, by olivine spreading on coastline
 
 ocean liming:
-    iam_aliases:
-        remind: Emi|CO2|CDR|+|OAE
-        remind-eu: Emi|CO2|CDR|+|OAE
-    ecoinvent_aliases:
-        fltr: carbon dioxide, captured and stored, by ocean liming
+  iam_aliases:
+    remind: Emi|CO2|CDR|+|OAE
+    remind-eu: Emi|CO2|CDR|+|OAE
+  ecoinvent_aliases:
+      fltr: carbon dioxide, captured and stored, by ocean liming
 
 biochar:
     ecoinvent_aliases:
@@ -95,25 +95,33 @@ biochar:
 
 biomass power generation, with CCS:
   iam_aliases:
-      remind: Emi|CO2|CDR|+|BECCS
-      remind-eu: Emi|CO2|CDR|+|BECCS
-      image: Carbon Capture|Energy|Supply|Electricity|Biomass
-      message: Carbon Capture|Energy|Supply|Electricity|Biomass
+    remind: Emi|CO2|CDR|+|BECCS
+    remind-eu: Emi|CO2|CDR|+|BECCS
+    image: Carbon Capture|Energy|Supply|Electricity|Biomass
+    message: Carbon Capture|Energy|Supply|Electricity|Biomass
   ecoinvent_aliases:
       fltr: carbon dioxide, captured and stored, at wood burning power plant, pipeline 200km, storage 1000m
 
 synthetic fuels, with CCS:
   iam_aliases:
-      remind: Emi|CO2|CDR|+|Synthetic Fuels CCS
-      remind-eu: Emi|CO2|CDR|+|Synthetic Fuels CCS
-      image: Carbon Capture|Energy|Supply|Hydrogen|Biomass
-      message: Carbon Capture|Energy|Supply|Hydrogen|Biomass
+    remind: Emi|CO2|CDR|+|Synthetic Fuels CCS
+    remind-eu: Emi|CO2|CDR|+|Synthetic Fuels CCS
+    image: Carbon Capture|Energy|Supply|Hydrogen|Biomass
+    message: Carbon Capture|Energy|Supply|Hydrogen|Biomass
   ecoinvent_aliases:
       fltr: carbon dioxide, captured and stored, from a hydrogen production plant using steam methane reforming of biomethane
 
 biofuels, with CCS:
   iam_aliases:
-      image: Carbon Capture|Energy|Supply|Liquids|Biomass
-      message: Carbon Capture|Energy|Supply|Liquids|Biomass
+    image: Carbon Capture|Energy|Supply|Liquids|Biomass
+    message: Carbon Capture|Energy|Supply|Liquids|Biomass
   ecoinvent_aliases:
       fltr: carbon dioxide, captured and stored, from a biomass fermentation plant
+
+afforestation:
+  iam_aliases:
+    remind: Emi|CO2|CDR|+|Land-Use Change
+    remind-eu: Emi|CO2|CDR|+|Land-Use Change
+    message: Carbon Sequestration|Land Use|Afforestation
+  ecoinvent_aliases:
+      fltr: carbon dioxide, captured and stored, by afforestation

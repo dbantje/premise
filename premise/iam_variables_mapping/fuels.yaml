@@ -932,6 +932,7 @@ hydrogen, from biogas:
     mask:
       name:
       - CCS
+
 hydrogen, from biogas, with CCS:
   lhv:
     unit: megajoule
@@ -941,6 +942,7 @@ hydrogen, from biogas, with CCS:
   ecoinvent_aliases:
     fltr:
     - hydrogen production, steam methane reforming, from biomethane, with CCS
+
 hydrogen, from oil:
   lhv:
     unit: megajoule
@@ -953,6 +955,7 @@ hydrogen, from oil:
     mask: CCS
   iam_aliases:
     image: Secondary Energy|Hydrogen|Oil w/o CCS
+
 hydrogen, from oil, with CCS:
   lhv:
     unit: megajoule
@@ -961,9 +964,10 @@ hydrogen, from oil, with CCS:
   biogenic_share: 1
   ecoinvent_aliases:
     fltr:
-    - hydrogen production, gaseous, petroleum refinery operation, with CCS
-    iam_aliases:
-      image: Secondary Energy|Hydrogen|Oil w/CCS
+      - hydrogen production, gaseous, petroleum refinery operation, with CCS
+  iam_aliases:
+    image: Secondary Energy|Hydrogen|Oil w/CCS
+
 hydrogen:
   lhv:
     unit: megajoule
