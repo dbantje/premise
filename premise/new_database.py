@@ -988,8 +988,7 @@ class NewDatabase:
     def update(
         self,
         sectors: [str, list, None] = None,
-        which_interventions=["tailings", "brake_wear", "slag", "copper"],
-        intervention_pathway="central",
+        intervention_scenarios: dict = {},
     ) -> None:
         """
         Update a specific sector by name.
@@ -1022,8 +1021,7 @@ class NewDatabase:
                 "args": (
                     self.version,
                     self.system_model,
-                    which_interventions,
-                    intervention_pathway,
+                    intervention_scenarios,
                 ),
             },
             "heat": {"func": _update_heat, "args": (self.version, self.system_model)},

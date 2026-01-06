@@ -38,7 +38,7 @@ BRAKE_WEAR_DATA_FILE = DATA_DIR / "interventions" / "brake_wear_efs.yaml"
 
 
 def _update_interventions(
-    scenario, version, system_model, which_interventions, intervention_pathway
+    scenario, version, system_model, intervention_scenarios
 ):
     """
     Update the scenario database with interventions for tailings, slag, and copper treatment.
@@ -53,17 +53,13 @@ def _update_interventions(
         system_model=system_model,
         cache=scenario.get("cache"),
         index=scenario.get("index"),
-        intervention_pathway=intervention_pathway,
+        intervention_scenarios=intervention_scenarios,
     )
 
-    if "tailings" in which_interventions:
-        interventions.update_tailings_treatment()
-    if "slag" in which_interventions:
-        interventions.update_slag_treatment()
-    if "copper" in which_interventions:
-        interventions.update_copper_treatment()
-    if "brake_wear" in which_interventions:
-        interventions.update_brake_wear()
+    interventions.update_tailings_treatment()
+    interventions.update_slag_treatment()
+    interventions.update_copper_treatment()
+    interventions.update_brake_wear()
     interventions.relink_datasets()
     scenario["database"] = interventions.database
     scenario["cache"] = interventions.cache
@@ -149,7 +145,7 @@ class Interventions(BaseTransformation):
         system_model: str,
         cache: dict = None,
         index: dict = None,
-        intervention_pathway: str = "central",
+        intervention_scenarios: dict = {},
     ):
         super().__init__(
             database,
@@ -164,21 +160,21 @@ class Interventions(BaseTransformation):
         )
         self.year = int(year)
         self.geomap = Geomap(model)
-        self.intervention_pathway = intervention_pathway
+        self.intervention_scenarios = intervention_scenarios
         self.tailings_shares = load_config(
-            TAILINGS_DATA_FILE, model, intervention_pathway=intervention_pathway
+            TAILINGS_DATA_FILE, model, intervention_pathway=intervention_scenarios.get("tailings", "frozen")
         )
         self.eaf_slag_shares = load_config(
-            EAF_SLAG_DATA_FILE, model, intervention_pathway=intervention_pathway
+            EAF_SLAG_DATA_FILE, model, intervention_pathway=intervention_scenarios.get("slags", "frozen")
         )
         self.bof_slag_shares = load_config(
-            BOF_SLAG_DATA_FILE, model, intervention_pathway=intervention_pathway
+            BOF_SLAG_DATA_FILE, model, intervention_pathway=intervention_scenarios.get("slags", "frozen")
         )
         self.copper_shares = load_config(
-            COPPER_DATA_FILE, model, intervention_pathway=intervention_pathway
+            COPPER_DATA_FILE, model, intervention_pathway=intervention_scenarios.get("copper", "frozen")
         )
         self.brake_wear_shares = load_config(
-            BRAKE_WEAR_DATA_FILE, model, intervention_pathway=intervention_pathway
+            BRAKE_WEAR_DATA_FILE, model, intervention_pathway=intervention_scenarios.get("brake_wear", "frozen")
         )
         inv = InventorySet(database=database, version=version, model=model)
         self.tailings_map = inv.generate_mining_waste_map()
