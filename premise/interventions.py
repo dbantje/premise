@@ -36,7 +36,10 @@ BOF_SLAG_DATA_FILE = DATA_DIR / "interventions" / "BOF_slag_shares.yaml"
 COPPER_DATA_FILE = DATA_DIR / "interventions" / "copper_recovery_volumes.yaml"
 BRAKE_WEAR_DATA_FILE = DATA_DIR / "interventions" / "brake_wear_efs.yaml"
 
-def _update_interventions(scenario, version, system_model, which_interventions, intervention_pathway):
+
+def _update_interventions(
+    scenario, version, system_model, which_interventions, intervention_pathway
+):
     """
     Update the scenario database with interventions for tailings, slag, and copper treatment.
     """
@@ -92,26 +95,24 @@ def load_config(file_path, model: str, intervention_pathway: str):
     def create_dataset(data, model_name, region_map_raw, intervention_pathway):
         region_remap = get_region_remap(region_map_raw, model_name)
 
-        sel = data[data["scenario"] == intervention_pathway].set_index("region").drop(
-            columns="scenario"
+        sel = (
+            data[data["scenario"] == intervention_pathway]
+            .set_index("region")
+            .drop(columns="scenario")
         )
 
         dflist = []
         for raw_region in sel.index.unique():
             mapped_regions = region_remap.get(raw_region, None)
             if mapped_regions is None:
-                continue 
+                continue
             for mapped_region in mapped_regions:
-                df = sel.loc[raw_region].copy().reset_index().drop(
-                     columns="region"
-                )
+                df = sel.loc[raw_region].copy().reset_index().drop(columns="region")
                 df["region"] = mapped_region
                 dflist.append(df)
 
         df_xr = pd.concat(dflist).melt(
-            id_vars=["region", "year"],
-            var_name="technology",
-            value_name="mean"
+            id_vars=["region", "year"], var_name="technology", value_name="mean"
         )
 
         # use same values for min and max
@@ -120,8 +121,12 @@ def load_config(file_path, model: str, intervention_pathway: str):
 
         return df_xr.set_index(["technology", "year", "region"]).to_xarray()
 
-    return create_dataset(tech_data, model_name=model, region_map_raw=region_map_raw,
-                          intervention_pathway=intervention_pathway)
+    return create_dataset(
+        tech_data,
+        model_name=model,
+        region_map_raw=region_map_raw,
+        intervention_pathway=intervention_pathway,
+    )
 
 
 def group_dicts_by_keys(dicts: list, keys: list):
@@ -160,11 +165,21 @@ class Interventions(BaseTransformation):
         self.year = int(year)
         self.geomap = Geomap(model)
         self.intervention_pathway = intervention_pathway
-        self.tailings_shares = load_config(TAILINGS_DATA_FILE, model, intervention_pathway=intervention_pathway)
-        self.eaf_slag_shares = load_config(EAF_SLAG_DATA_FILE, model, intervention_pathway=intervention_pathway)
-        self.bof_slag_shares = load_config(BOF_SLAG_DATA_FILE, model, intervention_pathway=intervention_pathway)
-        self.copper_shares = load_config(COPPER_DATA_FILE, model, intervention_pathway=intervention_pathway)
-        self.brake_wear_shares = load_config(BRAKE_WEAR_DATA_FILE, model, intervention_pathway=intervention_pathway)
+        self.tailings_shares = load_config(
+            TAILINGS_DATA_FILE, model, intervention_pathway=intervention_pathway
+        )
+        self.eaf_slag_shares = load_config(
+            EAF_SLAG_DATA_FILE, model, intervention_pathway=intervention_pathway
+        )
+        self.bof_slag_shares = load_config(
+            BOF_SLAG_DATA_FILE, model, intervention_pathway=intervention_pathway
+        )
+        self.copper_shares = load_config(
+            COPPER_DATA_FILE, model, intervention_pathway=intervention_pathway
+        )
+        self.brake_wear_shares = load_config(
+            BRAKE_WEAR_DATA_FILE, model, intervention_pathway=intervention_pathway
+        )
         inv = InventorySet(database=database, version=version, model=model)
         self.tailings_map = inv.generate_mining_waste_map()
         self.eaf_slag_map = inv.generate_eaf_slag_waste_map()

@@ -1019,7 +1019,12 @@ class NewDatabase:
             },
             "interventions": {
                 "func": _update_interventions,
-                "args": (self.version, self.system_model, which_interventions, intervention_pathway),
+                "args": (
+                    self.version,
+                    self.system_model,
+                    which_interventions,
+                    intervention_pathway,
+                ),
             },
             "heat": {"func": _update_heat, "args": (self.version, self.system_model)},
             "cdr": {"func": _update_cdr, "args": (self.version, self.system_model)},
