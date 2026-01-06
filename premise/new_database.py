@@ -989,6 +989,7 @@ class NewDatabase:
         self,
         sectors: [str, list, None] = None,
         which_interventions=["tailings", "brake_wear", "slag", "copper"],
+        intervention_pathway="central",
     ) -> None:
         """
         Update a specific sector by name.
@@ -1018,7 +1019,7 @@ class NewDatabase:
             },
             "interventions": {
                 "func": _update_interventions,
-                "args": (self.version, self.system_model, which_interventions),
+                "args": (self.version, self.system_model, which_interventions, intervention_pathway),
             },
             "heat": {"func": _update_heat, "args": (self.version, self.system_model)},
             "cdr": {"func": _update_cdr, "args": (self.version, self.system_model)},

@@ -1,0 +1,17 @@
+scenario;region;year;treatment of BOF slag - landfill;treatment of BOF slag - recovery
+central;EUR;2020;0.79;0.21
+central;EUR;2050;0.18;0.82
+central;GLO;2020;0.79;0.21
+central;GLO;2050;0.18;0.82
+frozen;EUR;2020;0.79;0.21
+frozen;EUR;2050;0.79;0.21
+frozen;GLO;2020;0.79;0.21
+frozen;GLO;2050;0.79;0.21
+high;EUR;2020;0.79;0.21
+high;EUR;2050;0.13;0.87
+high;GLO;2020;0.79;0.21
+high;GLO;2050;0.13;0.87
+low;EUR;2020;0.79;0.21
+low;EUR;2050;0.23;0.77
+low;GLO;2020;0.79;0.21
+low;GLO;2050;0.23;0.77
