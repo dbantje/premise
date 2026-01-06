@@ -30,11 +30,11 @@ EAF_SLAG_CONFIG_FILE = DATA_DIR / "interventions" / "EAF_slag_activities.yaml"
 BOF_SLAG_CONFIG_FILE = DATA_DIR / "interventions" / "BOF_slag_activities.yaml"
 COPPER_CONFIG_FILE = DATA_DIR / "interventions" / "copper_recovery_activities.yaml"
 BRAKE_WEAR_CONFIG_FILE = DATA_DIR / "interventions" / "brake_wear_activities.yaml"
-TAILINGS_DATA_FILE = DATA_DIR / "interventions" / "tailings_shares.yaml"
-EAF_SLAG_DATA_FILE = DATA_DIR / "interventions" / "EAF_slag_shares.yaml"
-BOF_SLAG_DATA_FILE = DATA_DIR / "interventions" / "BOF_slag_shares.yaml"
-COPPER_DATA_FILE = DATA_DIR / "interventions" / "copper_recovery_volumes.yaml"
-BRAKE_WEAR_DATA_FILE = DATA_DIR / "interventions" / "brake_wear_efs.yaml"
+TAILINGS_DATA_FILE = DATA_DIR / "interventions" / "tailings_shares.csv"
+EAF_SLAG_DATA_FILE = DATA_DIR / "interventions" / "EAF_slag_shares.csv"
+BOF_SLAG_DATA_FILE = DATA_DIR / "interventions" / "BOF_slag_shares.csv"
+COPPER_DATA_FILE = DATA_DIR / "interventions" / "copper_recovery_volumes.csv"
+BRAKE_WEAR_DATA_FILE = DATA_DIR / "interventions" / "brake_wear_efs.csv"
 
 
 def _update_interventions(scenario, version, system_model, intervention_scenarios):
@@ -71,8 +71,7 @@ def load_config(file_path, model: str, intervention_pathway: str):
     Load and parse a YAML configuration file for interventions.
     """
 
-    with open(file_path) as f:
-        tech_data = yaml.safe_load(f)
+    tech_data = pd.read_csv(file_path, sep=";")
 
     with open(TAILINGS_REGIONS_FILE) as f:
         region_map_raw = yaml.safe_load(f)
