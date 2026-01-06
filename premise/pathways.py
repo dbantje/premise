@@ -85,7 +85,9 @@ class PathwaysDataPackage:
         intervention_pathway: str = "central",
     ):
         if transformations:
-            self.datapackage.update(transformations, which_interventions, intervention_pathway)
+            self.datapackage.update(
+                transformations, which_interventions, intervention_pathway
+            )
         else:
             self.datapackage.update()
 
