@@ -84,9 +84,7 @@ class PathwaysDataPackage:
         intervention_scenarios: dict = {},
     ):
         if transformations:
-            self.datapackage.update(
-                transformations, intervention_scenarios
-            )
+            self.datapackage.update(transformations, intervention_scenarios)
         else:
             self.datapackage.update()
 

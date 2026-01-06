@@ -37,9 +37,7 @@ COPPER_DATA_FILE = DATA_DIR / "interventions" / "copper_recovery_volumes.yaml"
 BRAKE_WEAR_DATA_FILE = DATA_DIR / "interventions" / "brake_wear_efs.yaml"
 
 
-def _update_interventions(
-    scenario, version, system_model, intervention_scenarios
-):
+def _update_interventions(scenario, version, system_model, intervention_scenarios):
     """
     Update the scenario database with interventions for tailings, slag, and copper treatment.
     """
@@ -162,19 +160,29 @@ class Interventions(BaseTransformation):
         self.geomap = Geomap(model)
         self.intervention_scenarios = intervention_scenarios
         self.tailings_shares = load_config(
-            TAILINGS_DATA_FILE, model, intervention_pathway=intervention_scenarios.get("tailings", "frozen")
+            TAILINGS_DATA_FILE,
+            model,
+            intervention_pathway=intervention_scenarios.get("tailings", "frozen"),
         )
         self.eaf_slag_shares = load_config(
-            EAF_SLAG_DATA_FILE, model, intervention_pathway=intervention_scenarios.get("slags", "frozen")
+            EAF_SLAG_DATA_FILE,
+            model,
+            intervention_pathway=intervention_scenarios.get("slags", "frozen"),
         )
         self.bof_slag_shares = load_config(
-            BOF_SLAG_DATA_FILE, model, intervention_pathway=intervention_scenarios.get("slags", "frozen")
+            BOF_SLAG_DATA_FILE,
+            model,
+            intervention_pathway=intervention_scenarios.get("slags", "frozen"),
         )
         self.copper_shares = load_config(
-            COPPER_DATA_FILE, model, intervention_pathway=intervention_scenarios.get("copper", "frozen")
+            COPPER_DATA_FILE,
+            model,
+            intervention_pathway=intervention_scenarios.get("copper", "frozen"),
         )
         self.brake_wear_shares = load_config(
-            BRAKE_WEAR_DATA_FILE, model, intervention_pathway=intervention_scenarios.get("brake_wear", "frozen")
+            BRAKE_WEAR_DATA_FILE,
+            model,
+            intervention_pathway=intervention_scenarios.get("brake_wear", "frozen"),
         )
         inv = InventorySet(database=database, version=version, model=model)
         self.tailings_map = inv.generate_mining_waste_map()
