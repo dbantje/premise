@@ -614,8 +614,9 @@ class NewDatabase:
             raise ValueError("gains_scenario must be either 'CLE' or 'MFR'")
         self.gains_scenario = gains_scenario
 
-        if metals_scenario not in ["default", "optimistic"]:
-            raise ValueError("metals_scenario must be either 'default' or 'optimistic'")
+        metals_scenario_options = ["default", "low", "central", "high"]
+        if metals_scenario not in metals_scenario_options:
+            raise ValueError(f"metals_scenario must be in {metals_scenario_options}")
         self.metals_scenario = metals_scenario
 
         if self.source_type == "ecospold":
