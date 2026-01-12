@@ -35,6 +35,7 @@ EAF_SLAG_DATA_FILE = DATA_DIR / "interventions" / "EAF_slag_shares.csv"
 BOF_SLAG_DATA_FILE = DATA_DIR / "interventions" / "BOF_slag_shares.csv"
 COPPER_DATA_FILE = DATA_DIR / "interventions" / "copper_recovery_volumes.csv"
 BRAKE_WEAR_DATA_FILE = DATA_DIR / "interventions" / "brake_wear_efs.csv"
+SMELTING_DATA_FILE = DATA_DIR / "interventions" / "smelting_efs.csv"
 
 
 def _update_interventions(scenario, version, system_model, intervention_scenarios):
@@ -58,6 +59,7 @@ def _update_interventions(scenario, version, system_model, intervention_scenario
     interventions.update_slag_treatment()
     interventions.update_copper_treatment()
     interventions.update_brake_wear()
+    interventions.update_smelting()
     interventions.relink_datasets()
     scenario["database"] = interventions.database
     scenario["cache"] = interventions.cache
@@ -182,6 +184,11 @@ class Interventions(BaseTransformation):
             BRAKE_WEAR_DATA_FILE,
             model,
             intervention_pathway=intervention_scenarios.get("brake_wear", "frozen"),
+        )
+        self.smelting_shares = load_config(
+            SMELTING_DATA_FILE,
+            model,
+            intervention_pathway=intervention_scenarios.get("smelting", "frozen"),
         )
         inv = InventorySet(database=database, version=version, model=model)
         self.tailings_map = inv.generate_mining_waste_map()
@@ -666,6 +673,80 @@ class Interventions(BaseTransformation):
                             continue
 
             self.write_log(act, "[Interventions] Updated brake wear emissions")
+
+    def update_smelting(self):
+        """
+        Update biosphere flows for copper and antimony ions in brake wear emissions
+        activities based on year-specific values for the appropriate region.
+        """
+
+        min_year = self.smelting_shares.year.values.min()
+        max_year = self.smelting_shares.year.values.max()
+        year = int(np.clip(self.year, min_year, max_year))
+
+        fallback_region = None
+        for r in self.smelting_shares.region.values:
+            if "GLO" in self.geomap.iam_to_ecoinvent_location(r):
+                fallback_region = r
+                break
+
+        activities = ws.get_many(
+            self.database,
+            ws.startswith("name", "smelting of copper concentrate"),
+            ws.startswith("reference product", "copper, anode")
+        )
+
+        flownames = list(self.smelting_shares.coords["technology"].values())
+
+        for act in activities:
+            iam_region = self.geomap.ecoinvent_to_iam_location(act["location"])
+
+            matching_regions = [
+                r
+                for r in self.smelting_shares.region.values
+                if iam_region in self.geomap.ecoinvent_to_iam_location(r)
+            ]
+
+            target_region = matching_regions[0] if matching_regions else fallback_region
+
+            for exc in act["exchanges"]:
+                if exc["type"] == "biosphere":
+                    if exc["categories"] == ('air', 'non-urban air or from high stacks'):
+                        if exc["name"] in flownames:
+                            try:
+                                data = self.smelting_shares.sel(
+                                    region=target_region, technology=exc["name"]
+                                )
+                                data = data.dropna("year", how="all")
+                                share = data.interp(year=year)
+
+                                mean = share["mean"].item() * -1
+                                minimum = share["max"].item() * -1
+                                maximum = share["min"].item() * -1
+
+                                if minimum > mean or maximum < mean:
+                                    print(
+                                        f"[Interventions] Amounts for {act['name']} in {act['location']} are inconsistent: "
+                                        f"mean={mean}, min={minimum}, max={maximum}"
+                                    )
+                                    continue
+
+                                exc.update(
+                                    {
+                                        "amount": share["mean"].item(),
+                                        "uncertainty type": 5,
+                                        "loc": share["mean"].item(),
+                                        "minimum": share["min"].item(),
+                                        "maximum": share["max"].item(),
+                                    }
+                                )
+                            except KeyError:
+                                print(
+                                    f"[Interventions] No data for {exc["name"]} in {target_region} at year {year}"
+                                )
+                                continue
+
+            self.write_log(act, "[Interventions] Updated smelting emissions")
 
     def write_log(self, dataset, status="updated"):
         txt = f"{status}|{self.model}|{self.scenario}|{self.year}|{dataset['name']}|{dataset.get('reference product', '')}|{dataset['location']}"

@@ -188,3 +188,28 @@ INDIA:
     - IND
   witch:
     - india
+JAPAN:
+  remind:
+    - JPN
+  remind-eu:
+    - JPN
+  witch:
+    - jpnkor
+  tiam-ucl:
+    - JP
+  gcam:
+    - Japan
+  image:
+    - JAP
+  message:
+    - PAO
+CAZ:
+  remind:
+    - CAZ
+  remind-eu:
+    - CAZ
+CHA:
+  remind:
+    - CHA
+  remind-eu:
+    - CHA
