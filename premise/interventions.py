@@ -716,9 +716,10 @@ class Interventions(BaseTransformation):
                         "non-urban air or from high stacks",
                     ):
                         if exc["name"] in flownames:
+                            tech = exc["name"]
                             try:
                                 data = self.smelting_shares.sel(
-                                    region=target_region, technology=exc["name"]
+                                    region=target_region, technology=tech
                                 )
                                 data = data.dropna("year", how="all")
                                 share = data.interp(year=year)
@@ -745,7 +746,7 @@ class Interventions(BaseTransformation):
                                 )
                             except KeyError:
                                 print(
-                                    f"[Interventions] No data for {exc["name"]} in {target_region} at year {year}"
+                                    f"[Interventions] No data for {tech} in {target_region} at year {year}"
                                 )
                                 continue
 
