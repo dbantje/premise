@@ -676,7 +676,7 @@ class Interventions(BaseTransformation):
 
     def update_smelting(self):
         """
-        Update biosphere flows for copper and antimony ions in brake wear emissions
+        Update certain air emission factors in copper smelting
         activities based on year-specific values for the appropriate region.
         """
 
