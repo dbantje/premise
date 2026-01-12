@@ -693,7 +693,7 @@ class Interventions(BaseTransformation):
         activities = ws.get_many(
             self.database,
             ws.startswith("name", "smelting of copper concentrate"),
-            ws.startswith("reference product", "copper, anode")
+            ws.startswith("reference product", "copper, anode"),
         )
 
         flownames = list(self.smelting_shares.coords["technology"].values())
@@ -711,7 +711,10 @@ class Interventions(BaseTransformation):
 
             for exc in act["exchanges"]:
                 if exc["type"] == "biosphere":
-                    if exc["categories"] == ('air', 'non-urban air or from high stacks'):
+                    if exc["categories"] == (
+                        "air",
+                        "non-urban air or from high stacks",
+                    ):
                         if exc["name"] in flownames:
                             try:
                                 data = self.smelting_shares.sel(
