@@ -696,7 +696,7 @@ class Interventions(BaseTransformation):
             ws.startswith("reference product", "copper, anode"),
         )
 
-        flownames = list(self.smelting_shares.coords["technology"].values())
+        flownames = list(self.smelting_shares.coords["technology"].values)
 
         for act in activities:
             iam_region = self.geomap.ecoinvent_to_iam_location(act["location"])
