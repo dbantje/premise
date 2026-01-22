@@ -387,6 +387,7 @@ class IAMDataCollection:
         system_model: str = "cutoff",
         system_model_args: dict = None,
         gains_scenario: str = "CLE",
+        metals_scenario: str = "default",
         use_absolute_efficiency: bool = False,
     ) -> None:
         self.model = model
@@ -1032,7 +1033,9 @@ class IAMDataCollection:
             data=data, input_vars=land_use_change_vars, fill=True
         )
 
-        self.metals_intensity_factors = get_metals_intensity_factors_data()
+        self.metals_intensity_factors = get_metals_intensity_factors_data(
+            metals_scenario
+        )
 
         self.production_volumes = self.__get_iam_production_volumes(
             data=data,
