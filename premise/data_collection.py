@@ -111,7 +111,7 @@ def get_oil_product_volumes(model) -> pd.DataFrame:
     return df
 
 
-def get_metals_intensity_factors_data() -> xr.DataArray:
+def get_metals_intensity_factors_data(metals_scenario) -> xr.DataArray:
     """
     Read the materials intensity factors csv file and return an `xarray` with dimensions:
 
@@ -123,7 +123,7 @@ def get_metals_intensity_factors_data() -> xr.DataArray:
     This data is further used in metals.py.
     """
 
-    filepath = Path(DATA_DIR / "metals" / "metals_db.csv")
+    filepath = Path(DATA_DIR / "metals" / f"metals_db_{metals_scenario}.csv")
     df = pd.read_csv(filepath)
     df = df.melt(
         id_vars=["metal", "year", "origin_var"],
