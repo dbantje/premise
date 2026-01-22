@@ -41,6 +41,7 @@ from .heat import _update_heat
 from .inventory_imports import AdditionalInventory, DefaultInventory
 from .metals import _update_metals
 from .mining import _update_mining
+from .interventions import _update_interventions
 from .report import generate_change_report, generate_summary_report
 from .steel import _update_steel
 from .transport import _update_vehicles
@@ -954,7 +955,11 @@ class NewDatabase:
 
         return data
 
-    def update(self, sectors: [str, list, None] = None) -> None:
+    def update(
+        self,
+        sectors: [str, list, None] = None,
+        intervention_scenarios: dict = {},
+    ) -> None:
         """
         Update a specific sector by name.
         """
@@ -984,6 +989,14 @@ class NewDatabase:
             "mining": {
                 "func": _update_mining,
                 "args": (self.version, self.system_model),
+            },
+            "interventions": {
+                "func": _update_interventions,
+                "args": (
+                    self.version,
+                    self.system_model,
+                    intervention_scenarios,
+                ),
             },
             "heat": {"func": _update_heat, "args": (self.version, self.system_model)},
             "cdr": {"func": _update_cdr, "args": (self.version, self.system_model)},
