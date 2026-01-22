@@ -411,7 +411,7 @@ class InventorySet:
         """
         filters = get_mapping(filepath=MINING_WASTE, var="ecoinvent_aliases")
         return self.generate_sets_from_filters(filters)
-    
+
     def generate_copper_waste_map(self) -> dict:
         """
         Filter ecoinvent processes related to copper waste.
