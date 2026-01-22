@@ -1,0 +1,17 @@
+scenario;region;year;brake wear - antimony;brake wear - copper
+central;EUR;2020;0.0158;0.081
+central;EUR;2050;0.00048;0.0026
+central;GLO;2020;0.0158;0.081
+central;GLO;2050;0.00048;0.0026
+frozen;EUR;2020;0.0158;0.081
+frozen;EUR;2050;0.0158;0.081
+frozen;GLO;2020;0.0158;0.081
+frozen;GLO;2050;0.0158;0.081
+high;EUR;2020;0.0158;0.081
+high;EUR;2050;0.0004;0.002
+high;GLO;2020;0.0158;0.081
+high;GLO;2050;0.0004;0.002
+low;EUR;2020;0.0158;0.081
+low;EUR;2050;0.0006;0.003
+low;GLO;2020;0.0158;0.081
+low;GLO;2050;0.0006;0.003

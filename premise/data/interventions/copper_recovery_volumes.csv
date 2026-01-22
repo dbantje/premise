@@ -1,0 +1,9 @@
+scenario;region;year;bottom ash;scrap copper
+central;GLO;2020;0.89;0.31
+central;GLO;2050;0.705;0.45
+frozen;GLO;2020;0.89;0.31
+frozen;GLO;2050;0.89;0.31
+high;GLO;2020;0.89;0.31
+high;GLO;2050;0.63;0.5
+low;GLO;2020;0.89;0.31
+low;GLO;2050;0.78;0.4

@@ -1,0 +1,25 @@
+scenario;region;year;treatment of EAF slag - landfill;treatment of EAF slag - recovery
+central;EUR;2020;0.96;0.04
+central;EUR;2050;0.35;0.65
+central;GLO;2020;0.96;0.04
+central;GLO;2050;0.5;0.5
+central;INDIA;2020;1.0;0.0
+central;INDIA;2050;0.5;0.5
+frozen;EUR;2020;0.96;0.04
+frozen;EUR;2050;0.96;0.04
+frozen;GLO;2020;0.96;0.04
+frozen;GLO;2050;0.96;0.04
+frozen;INDIA;2020;1.0;0.0
+frozen;INDIA;2050;1.0;0.0
+high;EUR;2020;0.96;0.04
+high;EUR;2050;0.2;0.8
+high;GLO;2020;0.96;0.04
+high;GLO;2050;0.2;0.8
+high;INDIA;2020;1.0;0.0
+high;INDIA;2050;0.2;0.8
+low;EUR;2020;0.96;0.04
+low;EUR;2050;0.5;0.5
+low;GLO;2020;0.96;0.04
+low;GLO;2050;0.7;0.3
+low;INDIA;2020;1.0;0.0
+low;INDIA;2050;0.7;0.3
