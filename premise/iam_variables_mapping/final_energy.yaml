@@ -2548,8 +2548,8 @@ Transport - Freight - Int. Shipping - Biofuel - Energy crops:
       name: biodiesel, from non-residual cellulosic biomass, burned in container ship
       reference product: heat
   iam_aliases:
-    remind: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|Transport|Bunkers|Freight|International Shipping|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind-eu: FE|Transport|Bunkers|Freight|International Shipping|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
 
 Transport - Freight - Int. Shipping - Biofuel - Residues:
   ecoinvent_aliases:
@@ -2557,8 +2557,8 @@ Transport - Freight - Int. Shipping - Biofuel - Residues:
       name: biodiesel, from non-residual cellulosic biomass, burned in container ship
       reference product: heat
   iam_aliases:
-    remind: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Transport|Bunkers|Freight|International Shipping|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind-eu: FE|Transport|Bunkers|Freight|International Shipping|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
 
 Transport - Freight - Int. Shipping - Biofuel - Oil crops:
   ecoinvent_aliases:
@@ -2566,8 +2566,8 @@ Transport - Freight - Int. Shipping - Biofuel - Oil crops:
       name: biodiesel, from non-residual oily biomass, burned in container ship
       reference product: heat
   iam_aliases:
-    remind: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
-    remind-eu: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind: FE|Transport|Bunkers|Freight|International Shipping|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind-eu: FE|Transport|Bunkers|Freight|International Shipping|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
 
 Transport - Freight - Int. Shipping - Liquid fossil:
   ecoinvent_aliases:
