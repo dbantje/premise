@@ -684,8 +684,8 @@ Industry - Chemicals - Chemicals - Bio CH4:
       name: biomethane, burned in residential natural gas boiler <100kW
       reference product: heat
   iam_aliases:
-    remind: FE|Industry|Chemicals|Gases|+|Biomass
-    remind-eu: FE|Industry|Chemicals|Gases|+|Biomass
+    remind: FE|w/o Non-energy Use|Industry|Chemicals|Gases|+|Biomass
+    remind-eu: FE|w/o Non-energy Use|Industry|Chemicals|Gases|+|Biomass
 Industry - Chemicals - Chemicals - Nat Gas:
   ecoinvent_aliases:
     fltr:
@@ -693,16 +693,16 @@ Industry - Chemicals - Chemicals - Nat Gas:
       reference product: natural gas, burned in gas turbine
     mask: market
   iam_aliases:
-    remind: FE|Industry|Chemicals|Gases|+|Fossil
-    remind-eu: FE|Industry|Chemicals|Gases|+|Fossil
+    remind: FE|w/o Non-energy Use|Industry|Chemicals|Gases|+|Fossil
+    remind-eu: FE|w/o Non-energy Use|Industry|Chemicals|Gases|+|Fossil
 Industry - Chemicals - Chemicals - SNG:
   ecoinvent_aliases:
     fltr:
       name: natural gas, synthetic, burned in gas turbine
       reference product: heat
   iam_aliases:
-    remind: FE|Industry|Chemicals|Gases|+|Hydrogen
-    remind-eu: FE|Industry|Chemicals|Gases|+|Hydrogen
+    remind: FE|w/o Non-energy Use|Industry|Chemicals|Gases|+|Hydrogen
+    remind-eu: FE|w/o Non-energy Use|Industry|Chemicals|Gases|+|Hydrogen
 
 
 Industry - Chemicals - Chemicals - Biofuel - Cellulosic - Energy crops:
@@ -711,8 +711,8 @@ Industry - Chemicals - Chemicals - Biofuel - Cellulosic - Energy crops:
       name: light fuel oil, from non-residual cellulosic biomass, burned in residential boiler
       reference product: heat
   iam_aliases:
-    remind: FE|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind-eu: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
 
 Industry - Chemicals - Chemicals - Biofuel - Cellulosic - Residues:
   ecoinvent_aliases:
@@ -720,8 +720,8 @@ Industry - Chemicals - Chemicals - Biofuel - Cellulosic - Residues:
       name: light fuel oil, from residual cellulosic biomass, burned in residential boiler
       reference product: heat
   iam_aliases:
-    remind: FE|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind-eu: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
 
 Industry - Chemicals - Chemicals - Biofuel - Non-cellulosic - Oil crops:
   ecoinvent_aliases:
@@ -729,8 +729,8 @@ Industry - Chemicals - Chemicals - Biofuel - Non-cellulosic - Oil crops:
       name: light fuel oil, from oily biomass, burned in residential boiler
       reference product: heat
   iam_aliases:
-    remind: FE|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
-    remind-eu: FE|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind-eu: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
 
 Industry - Chemicals - Chemicals - Liquid fossil:
   ecoinvent_aliases:
@@ -738,32 +738,32 @@ Industry - Chemicals - Chemicals - Liquid fossil:
       name: light fuel oil, burned in industrial furnace 1MW
       reference product: heat
   iam_aliases:
-    remind: FE|Industry|Chemicals|Liquids|+|Fossil
-    remind-eu: FE|Industry|Chemicals|Liquids|+|Fossil
+    remind: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Fossil
+    remind-eu: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Fossil
 Industry - Chemicals - Chemicals - Syn Fuel:
   ecoinvent_aliases:
     fltr:
       name: diesel, synthetic, burned in diesel-electric generating set, 10MW
       reference product: heat
   iam_aliases:
-    remind: FE|Industry|Chemicals|Liquids|+|Hydrogen
-    remind-eu: FE|Industry|Chemicals|Liquids|+|Hydrogen
+    remind: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Hydrogen
+    remind-eu: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Hydrogen
 Industry - Chemicals - Chemicals - Solid Biomass:
   ecoinvent_aliases:
     fltr:
       name: heat production, softwood chips from forest, at furnace 1000kW
       reference product: heat
   iam_aliases:
-    remind: FE|Industry|Chemicals|Solids|+|Biomass
-    remind-eu: FE|Industry|Chemicals|Solids|+|Biomass
+    remind: FE|w/o Non-energy Use|Industry|Chemicals|Solids|+|Biomass
+    remind-eu: FE|w/o Non-energy Use|Industry|Chemicals|Solids|+|Biomass
 Industry - Chemicals - Chemicals - Solid coal:
   ecoinvent_aliases:
     fltr:
       name: hard coal, burned in hard coal industrial furnace 1-10MW
       reference product: heat
   iam_aliases:
-    remind: FE|Industry|Chemicals|Solids|+|Fossil
-    remind-eu: FE|Industry|Chemicals|Solids|+|Fossil
+    remind: FE|w/o Non-energy Use|Industry|Chemicals|Solids|+|Fossil
+    remind-eu: FE|w/o Non-energy Use|Industry|Chemicals|Solids|+|Fossil
 
 Industry - Chemicals - Ammonia - Elec:
   ecoinvent_aliases:
