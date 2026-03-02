@@ -48,6 +48,7 @@ GAINS_GEO_MAP = VARIABLES_DIR / "gains_regions.yaml"
 COAL_POWER_PLANTS_DATA = DATA_DIR / "electricity" / "coal_power_emissions_2012_v1.csv"
 BATTERY_MOBILE_SCENARIO_DATA = DATA_DIR / "battery" / "mobile_scenarios.csv"
 BATTERY_STATIONARY_SCENARIO_DATA = DATA_DIR / "battery" / "stationary_scenarios.csv"
+GAINS_SMIP_DATA = DATA_DIR / "GAINS_emission_factors" / "smip_data.csv"
 
 
 def print_missing_variables(missing_vars, file_name: str = None):
@@ -144,7 +145,7 @@ def get_metals_intensity_factors_data(metals_scenario) -> xr.DataArray:
     return array
 
 
-def get_gains_IAM_data(model, gains_scenario):
+def get_gains_IAM_data(gains_scenario):
     filepath = Path(
         DATA_DIR / "GAINS_emission_factors" / "iam_data" / gains_scenario
     ).glob("*")
@@ -180,7 +181,43 @@ def get_gains_IAM_data(model, gains_scenario):
 
         list_arrays.append(array)
 
-    arr = xr.concat(list_arrays, dim="pollutant")
+    return xr.concat(list_arrays, dim="pollutant")
+
+
+def get_gains_smip_data(gains_scenario):
+    df = pd.read_csv(
+        GAINS_SMIP_DATA,
+    )
+    df = df.loc[df["scenario"] == gains_scenario]
+    df = df.rename(columns={"Region": "region", "EMF30 Sector": "sector"})
+    df = df.rename(columns={str(v): int(v) for v in range(1990, 2055, 5)})
+
+    array = (
+        df.melt(
+            id_vars=["region", "sector", "pollutant"],
+            value_vars=range(1990, 2055, 5),
+            var_name="year",
+            value_name="value",
+        )
+        .groupby(["region", "sector", "year", "pollutant"])["value"]
+        .mean()
+        .to_xarray()
+    )
+
+    array = array.interpolate_na(
+        dim="year", method="nearest", fill_value="extrapolate"
+    )
+    array = array.bfill(dim="year")
+    array = array.ffill(dim="year")
+
+    return array
+    
+
+def get_gains_data(model, gains_scenario):
+    if gains_scenario in ["CLE", "MFR"]:
+        arr = get_gains_IAM_data(gains_scenario)
+    else:
+        arr = get_gains_smip_data(gains_scenario)
 
     with open(GAINS_GEO_MAP, "r", encoding="utf-8") as stream:
         geo_map = yaml.safe_load(stream)
@@ -189,7 +226,6 @@ def get_gains_IAM_data(model, gains_scenario):
     arr = arr.drop_duplicates(dim="region")
 
     return arr
-
 
 def fix_efficiencies(data: xr.DataArray, min_year: int) -> xr.DataArray:
     """
@@ -625,7 +661,7 @@ class IAMDataCollection:
         self.regions = data.region.values.tolist()
         self.system_model = system_model
 
-        self.gains_data_IAM = get_gains_IAM_data(
+        self.gains_data_IAM = get_gains_data(
             self.model, gains_scenario=gains_scenario
         )
 

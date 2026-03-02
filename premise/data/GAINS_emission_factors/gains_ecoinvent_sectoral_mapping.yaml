@@ -999,9 +999,6 @@ Power_Gen_HLF:
     - heavy fuel oil, burned in refinery furnace
     - electricity production, oil
     - water pump operation, diesel
-    - heavy fuel oil, burned in container ship
-    - diesel, synthetic, burned in container ship
-    - methanol from biomass, burned in container ship
     mask:
     - market
   gains_aliases_IAM: Power_Gen_HLF
@@ -1161,6 +1158,9 @@ End_Use_Transport_OFF_HLF:
     - transport, liquefied natural gas
     - transport, freight, inland waterways
     - transport, freight train, diesel
+    - heavy fuel oil, burned in container ship
+    - diesel, synthetic, burned in container ship
+    - methanol from biomass, burned in container ship
     mask:
     - market
   gains_aliases_IAM: End_Use_Transport_OFF_HLF

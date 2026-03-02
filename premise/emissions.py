@@ -24,6 +24,7 @@ from .transformation import (
 logger = create_logger("emissions")
 
 EI_POLLUTANTS = DATA_DIR / "GAINS_emission_factors" / "GAINS_ei_pollutants.yaml"
+EI_POLLUTANTS_SMIP = DATA_DIR / "GAINS_emission_factors" / "GAINS_ei_pollutants_smip.yaml"
 
 
 def fetch_mapping(filepath: str) -> dict:
@@ -34,7 +35,7 @@ def fetch_mapping(filepath: str) -> dict:
     return mapping
 
 
-def _update_emissions(scenario, version, system_model, gains_scenario):
+def _update_emissions(scenario, version, system_model, gains_scenario, gains_baseyear):
 
     if scenario["iam data"].gains_data_IAM is None:
         print("No pollutant emissions scenario data available -- skipping")
@@ -49,6 +50,7 @@ def _update_emissions(scenario, version, system_model, gains_scenario):
         version=version,
         system_model=system_model,
         gains_scenario=gains_scenario,
+        gains_baseyear=gains_baseyear,
     )
 
     emissions.update_emissions_in_database()
@@ -73,6 +75,7 @@ class Emissions(BaseTransformation):
         version: str,
         system_model: str,
         gains_scenario: str,
+        gains_baseyear: int,
     ):
         super().__init__(
             database,
@@ -85,8 +88,13 @@ class Emissions(BaseTransformation):
         )
 
         self.version = version
+        self.base_year = gains_baseyear
         self.gains_IAM = self.prepare_data(iam_data.gains_data_IAM)
-        self.ei_pollutants = fetch_mapping(EI_POLLUTANTS)
+        self.data_sectors = list(self.gains_IAM.coords["sector"].values)
+        if gains_scenario in ["CLE", "MFR"]:
+            self.ei_pollutants = fetch_mapping(EI_POLLUTANTS)
+        else:
+            self.ei_pollutants = fetch_mapping(EI_POLLUTANTS_SMIP)
         self.gains_pollutant = {v: k for k, v in self.ei_pollutants.items()}
         self.gains_scenario = gains_scenario
 
@@ -103,7 +111,7 @@ class Emissions(BaseTransformation):
         def _safe_divide(x):
             return xr.where((np.isnan(x)) | (x == 0), 1, x)
 
-        base = data.sel(year=2020)
+        base = data.sel(year=self.base_year)
 
         if self.year in data.coords["year"]:
             year_slice = data.sel(year=self.year)
@@ -126,12 +134,13 @@ class Emissions(BaseTransformation):
                 iam_loc = self.ecoinvent_to_iam_loc.get(loc)
                 if iam_loc and iam_loc in self.gains_IAM.coords["region"]:
                     sector = self.rev_gains_map[name]
-                    self.update_pollutant_emissions(
-                        ds,
-                        sector,
-                        regions=self.gains_IAM.region.values,
-                    )
-                    self.write_log(ds, status="updated")
+                    if sector in self.data_sectors:
+                        self.update_pollutant_emissions(
+                            ds,
+                            sector,
+                            regions=self.gains_IAM.region.values,
+                        )
+                        self.write_log(ds, status="updated")
 
     def update_pollutant_emissions(
         self, dataset: dict, sector: str, regions: list
@@ -212,13 +221,8 @@ class Emissions(BaseTransformation):
                 f"{status}|{self.model}|{self.scenario}|{self.year}|"
                 f"{dataset['name']}|{dataset['location']}|"
                 f"{dataset.get('log parameters', {}).get('GAINS sector', '')}|"
-                f"{dataset.get('log parameters', {}).get('CH4', '')}|"
-                f"{dataset.get('log parameters', {}).get('N2O', '')}|"
-                f"{dataset.get('log parameters', {}).get('NH3', '')}|"
-                f"{dataset.get('log parameters', {}).get('NOx', '')}|"
-                f"{dataset.get('log parameters', {}).get('PM1', '')}|"
-                f"{dataset.get('log parameters', {}).get('PM10', '')}|"
-                f"{dataset.get('log parameters', {}).get('PM25', '')}|"
-                f"{dataset.get('log parameters', {}).get('SO2', '')}|"
-                f"{dataset.get('log parameters', {}).get('VOC', '')}"
             )
+            for pollutant in self.ei_pollutants.keys():
+                logger.info(
+                    f"{dataset.get('log parameters', {}).get(pollutant, '')}|"
+                )

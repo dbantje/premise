@@ -546,6 +546,7 @@ class NewDatabase:
         keep_imports_uncertainty=True,
         keep_source_db_uncertainty=False,
         gains_scenario="CLE",
+        gains_baseyear: int = 2020,
         metals_scenario="default",
         use_absolute_efficiency=False,
         biosphere_name: str = "biosphere3",
@@ -597,9 +598,11 @@ class NewDatabase:
                 "Consequential system model is only available for ecoinvent 3.8, 3.9, 3.10, 3.11, 3.12."
             )
 
-        if gains_scenario not in ["CLE", "MFR"]:
-            raise ValueError("gains_scenario must be either 'CLE' or 'MFR'")
+        supported_gains_scenarios = ["CLE", "MFR", "SSP1", "SSP2", "SSP3", "SSP5", "SSP1 VLLO", "SSP2 VLLO"]
+        if gains_scenario not in supported_gains_scenarios:
+            raise ValueError(f"gains_scenario must be in {supported_gains_scenarios}")
         self.gains_scenario = gains_scenario
+        self.gains_baseyear = gains_baseyear
 
         metals_scenario_options = ["default", "low", "central", "high"]
         if metals_scenario not in metals_scenario_options:
@@ -1013,7 +1016,7 @@ class NewDatabase:
             },
             "emissions": {
                 "func": _update_emissions,
-                "args": (self.version, self.system_model, self.gains_scenario),
+                "args": (self.version, self.system_model, self.gains_scenario, self.gains_baseyear),
             },
             "cars": {
                 "func": _update_vehicles,
