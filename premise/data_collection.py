@@ -204,14 +204,12 @@ def get_gains_smip_data(gains_scenario):
         .to_xarray()
     )
 
-    array = array.interpolate_na(
-        dim="year", method="nearest", fill_value="extrapolate"
-    )
+    array = array.interpolate_na(dim="year", method="nearest", fill_value="extrapolate")
     array = array.bfill(dim="year")
     array = array.ffill(dim="year")
 
     return array
-    
+
 
 def get_gains_data(model, gains_scenario):
     if gains_scenario in ["CLE", "MFR"]:
@@ -226,6 +224,7 @@ def get_gains_data(model, gains_scenario):
     arr = arr.drop_duplicates(dim="region")
 
     return arr
+
 
 def fix_efficiencies(data: xr.DataArray, min_year: int) -> xr.DataArray:
     """
@@ -661,9 +660,7 @@ class IAMDataCollection:
         self.regions = data.region.values.tolist()
         self.system_model = system_model
 
-        self.gains_data_IAM = get_gains_data(
-            self.model, gains_scenario=gains_scenario
-        )
+        self.gains_data_IAM = get_gains_data(self.model, gains_scenario=gains_scenario)
 
         self.electricity_mix = self.__fetch_market_data(
             data=data,

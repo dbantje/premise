@@ -24,7 +24,9 @@ from .transformation import (
 logger = create_logger("emissions")
 
 EI_POLLUTANTS = DATA_DIR / "GAINS_emission_factors" / "GAINS_ei_pollutants.yaml"
-EI_POLLUTANTS_SMIP = DATA_DIR / "GAINS_emission_factors" / "GAINS_ei_pollutants_smip.yaml"
+EI_POLLUTANTS_SMIP = (
+    DATA_DIR / "GAINS_emission_factors" / "GAINS_ei_pollutants_smip.yaml"
+)
 
 
 def fetch_mapping(filepath: str) -> dict:
@@ -223,6 +225,4 @@ class Emissions(BaseTransformation):
                 f"{dataset.get('log parameters', {}).get('GAINS sector', '')}|"
             )
             for pollutant in self.ei_pollutants.keys():
-                logger.info(
-                    f"{dataset.get('log parameters', {}).get(pollutant, '')}|"
-                )
+                logger.info(f"{dataset.get('log parameters', {}).get(pollutant, '')}|")

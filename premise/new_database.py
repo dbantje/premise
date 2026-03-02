@@ -598,7 +598,16 @@ class NewDatabase:
                 "Consequential system model is only available for ecoinvent 3.8, 3.9, 3.10, 3.11, 3.12."
             )
 
-        supported_gains_scenarios = ["CLE", "MFR", "SSP1", "SSP2", "SSP3", "SSP5", "SSP1 VLLO", "SSP2 VLLO"]
+        supported_gains_scenarios = [
+            "CLE",
+            "MFR",
+            "SSP1",
+            "SSP2",
+            "SSP3",
+            "SSP5",
+            "SSP1 VLLO",
+            "SSP2 VLLO",
+        ]
         if gains_scenario not in supported_gains_scenarios:
             raise ValueError(f"gains_scenario must be in {supported_gains_scenarios}")
         self.gains_scenario = gains_scenario
@@ -1016,7 +1025,12 @@ class NewDatabase:
             },
             "emissions": {
                 "func": _update_emissions,
-                "args": (self.version, self.system_model, self.gains_scenario, self.gains_baseyear),
+                "args": (
+                    self.version,
+                    self.system_model,
+                    self.gains_scenario,
+                    self.gains_baseyear,
+                ),
             },
             "cars": {
                 "func": _update_vehicles,
