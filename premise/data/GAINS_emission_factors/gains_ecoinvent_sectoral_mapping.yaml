@@ -584,14 +584,14 @@ End_Use_Residential_LLF:
     - market
   gains_aliases_IAM: End_Use_Residential_LLF
 End_Use_Services_Bio_Trad_Heat:
-  ecoinvent_aliases:
-    fltr:
-    # - wood pellets, burned in
-    # - wood logs, burned in
-    # - wood pellet, burned in
-    # - heat production, mixed logs
-    mask:
-    - market
+  # ecoinvent_aliases:
+  #   fltr:
+  #   # - wood pellets, burned in
+  #   # - wood logs, burned in
+  #   # - wood pellet, burned in
+  #   # - heat production, mixed logs
+  #   mask:
+  #   - market
   gains_aliases_IAM: End_Use_Services_Bio_Trad_Heat
 End_Use_Residential_Bio_Trad_Heat:
   ecoinvent_aliases:
