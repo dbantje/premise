@@ -462,8 +462,8 @@ CDR - OAE, traditional calciner - Hydrogen:
 Industry - Cement - Elec:
   ecoinvent_aliases:
     fltr:
-      name: market group for electricity, low voltage
-      reference product: electricity, low voltage
+      name: market group for electricity, high voltage
+      reference product: electricity, high voltage
     mask: period
   iam_aliases:
     message: Final Energy|Industry|Non-Metallic Minerals|Cement|Electricity
@@ -644,8 +644,8 @@ Industry - Cement - Secondary heat:
 Industry - Chemicals - Elec:
   ecoinvent_aliases:
     fltr:
-      name: market group for electricity, low voltage
-      reference product: electricity, low voltage
+      name: market group for electricity, high voltage
+      reference product: electricity, high voltage
     mask: period
   iam_aliases:
     remind: FE|Industry|Chemicals|+|Electricity
@@ -661,8 +661,8 @@ Industry - Chemicals - Chemicals - H2:
 Industry - Chemicals - Chemicals - Elec, high temp:
   ecoinvent_aliases:
     fltr:
-      name: market group for electricity, low voltage
-      reference product: electricity, low voltage
+      name: market group for electricity, high voltage
+      reference product: electricity, high voltage
     mask: period
   iam_aliases:
     remind: FE|Industry|Chemicals|Electricity|+|High-temperature heat
@@ -670,8 +670,8 @@ Industry - Chemicals - Chemicals - Elec, high temp:
 Industry - Chemicals - Chemicals - Elec, low temp:
   ecoinvent_aliases:
     fltr:
-      name: market group for electricity, low voltage
-      reference product: electricity, low voltage
+      name: market group for electricity, high voltage
+      reference product: electricity, high voltage
     mask: period
   iam_aliases:
     remind: FE|Industry|Chemicals|Electricity|+|Mechanical work and low-temperature
@@ -1266,8 +1266,8 @@ Industry - Food Processing - Solid Biomass - Modern biomass - Residues:
 Industry - Other - Elec:
   ecoinvent_aliases:
     fltr:
-      name: market group for electricity, low voltage
-      reference product: electricity, low voltage
+      name: market group for electricity, high voltage
+      reference product: electricity, high voltage
     mask: period
   iam_aliases:
     message: Final Energy|Industry|Other Sector|Electricity
@@ -1297,8 +1297,8 @@ Industry - Other - H2:
 Industry - Other - Elec, high temp:
   ecoinvent_aliases:
     fltr:
-      name: market group for electricity, low voltage
-      reference product: electricity, low voltage
+      name: market group for electricity, high voltage
+      reference product: electricity, high voltage
     mask: period
   iam_aliases:
     remind: FE|Industry|Other Industry|Electricity|+|High-temperature heat
@@ -1306,8 +1306,8 @@ Industry - Other - Elec, high temp:
 Industry - Other - Elec, low temp:
   ecoinvent_aliases:
     fltr:
-      name: market group for electricity, low voltage
-      reference product: electricity, low voltage
+      name: market group for electricity, high voltage
+      reference product: electricity, high voltage
     mask: period
   iam_aliases:
     remind: FE|Industry|Other Industry|Electricity|+|Mechanical work and low-temperature
@@ -2162,8 +2162,8 @@ Industry - Steel - TGR BF/BOF + CCS - Secondary Heat:
 Industry - Steel - All steel - Elec:
   ecoinvent_aliases:
     fltr:
-      name: market group for electricity, low voltage
-      reference product: electricity, low voltage
+      name: market group for electricity, high voltage
+      reference product: electricity, high voltage
     mask: period
   iam_aliases:
     remind: FE|Industry|Steel|+|Electricity
