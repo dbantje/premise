@@ -33,7 +33,7 @@ from .validation import MetalsValidation
 logger = create_logger("metal")
 
 
-def _update_metals(scenario, version, system_model):
+def _update_metals(scenario, version, system_model, shares_adjustments):
 
     metals = Metals(
         database=scenario["database"],
@@ -45,6 +45,7 @@ def _update_metals(scenario, version, system_model):
         system_model=system_model,
         cache=scenario.get("cache"),
         index=scenario.get("index"),
+        shares_adjustments=shares_adjustments,
     )
 
     metals.create_metal_markets()
@@ -149,13 +150,22 @@ def load_mining_shares_mapping(ei_version="312"):
     return df
 
 
-def load_primary_secondary_split():
+def load_primary_secondary_split(new_secondary_shares):
     """
     Load mapping for primary and secondary split of metal markets.
     """
     path = DATA_DIR / "metals" / "primary_secondary_split.yaml"
     with open(path, "r", encoding="utf-8") as stream:
-        return yaml.safe_load(stream)
+        data = yaml.safe_load(stream)
+    
+    for metal, s in new_secondary_shares.items():
+        if s > 1:
+            raise ValueError(f"Secondary share for {metal} cannot be greater than 1.")
+        if metal in data.keys():
+            data[metal]["shares"]["secondary"] = s
+            data[metal]["shares"]["primary"] = 1 - s
+
+    return data
 
 
 def load_secondary_activity_routes():
@@ -431,6 +441,7 @@ class Metals(BaseTransformation):
         system_model: str,
         cache: dict = None,
         index: dict = None,
+        shares_adjustments: dict = {},
     ):
         super().__init__(
             database,
@@ -543,7 +554,7 @@ class Metals(BaseTransformation):
             for _, row in self.metals_transport.iterrows()
         }
 
-        self.prim_sec_split = load_primary_secondary_split()
+        self.prim_sec_split = load_primary_secondary_split(shares_adjustments)
         self.secondary_activity_routes = load_secondary_activity_routes()
 
     def update_metals_use_in_database(self):

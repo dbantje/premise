@@ -548,6 +548,8 @@ class NewDatabase:
         gains_scenario="CLE",
         gains_baseyear: int = 2020,
         metals_scenario="default",
+        shares_adjustments: dict = {},
+        intervention_scenarios: dict = {},
         use_absolute_efficiency=False,
         biosphere_name: str = "biosphere3",
         generate_reports: bool = True,
@@ -617,6 +619,9 @@ class NewDatabase:
         if metals_scenario not in metals_scenario_options:
             raise ValueError(f"metals_scenario must be in {metals_scenario_options}")
         self.metals_scenario = metals_scenario
+
+        self.shares_adjustments = shares_adjustments
+        self.intervention_scenarios = intervention_scenarios
 
         if self.source_type == "ecospold":
             self.source_file_path = check_ei_filepath(source_file_path)
@@ -977,7 +982,6 @@ class NewDatabase:
     def update(
         self,
         sectors: [str, list, None] = None,
-        intervention_scenarios: dict = {},
     ) -> None:
         """
         Update a specific sector by name.
@@ -1003,7 +1007,10 @@ class NewDatabase:
             },
             "metals": {
                 "func": _update_metals,
-                "args": (self.version, self.system_model),
+                "args": (
+                    self.version,
+                    self.system_model,
+                    self.shares_adjustments),
             },
             "mining": {
                 "func": _update_mining,
@@ -1014,7 +1021,7 @@ class NewDatabase:
                 "args": (
                     self.version,
                     self.system_model,
-                    intervention_scenarios,
+                    self.intervention_scenarios,
                 ),
             },
             "heat": {"func": _update_heat, "args": (self.version, self.system_model)},
