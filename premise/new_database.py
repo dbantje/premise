@@ -1007,10 +1007,7 @@ class NewDatabase:
             },
             "metals": {
                 "func": _update_metals,
-                "args": (
-                    self.version,
-                    self.system_model,
-                    self.shares_adjustments),
+                "args": (self.version, self.system_model, self.shares_adjustments),
             },
             "mining": {
                 "func": _update_mining,
