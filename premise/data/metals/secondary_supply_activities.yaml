@@ -300,6 +300,15 @@ zinc concentrate:
       equals: GLO
     shares:
       2020: 1
+zinc:
+  - name:
+      equals: zinc scrap, post-consumer to generic market for zinc
+    reference product:
+      equals: zinc
+    location:
+      equals: GLO
+    shares:
+      2020: 1
 
 
 

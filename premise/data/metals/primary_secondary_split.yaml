@@ -1013,11 +1013,11 @@ zinc:
   reference product: zinc
   shares:
     primary:
-      2020: 1.0
-      2050: 1.0
+      2020: 0.7
+      2050: 0.7
     secondary:
-      2020: 0.0
-      2050: 0.0
+      2020: 0.3
+      2050: 0.3
 zircon:
   name: market for zircon
   reference product: zircon
