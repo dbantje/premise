@@ -157,7 +157,7 @@ def load_primary_secondary_split(new_secondary_shares):
     path = DATA_DIR / "metals" / "primary_secondary_split.yaml"
     with open(path, "r", encoding="utf-8") as stream:
         data = yaml.safe_load(stream)
-    
+
     for metal, s in new_secondary_shares.items():
         if s > 1:
             raise ValueError(f"Secondary share for {metal} cannot be greater than 1.")
