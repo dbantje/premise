@@ -162,8 +162,8 @@ def load_primary_secondary_split(new_secondary_shares):
         if s > 1:
             raise ValueError(f"Secondary share for {metal} cannot be greater than 1.")
         if metal in data.keys():
-            data[metal]["shares"]["secondary"] = s
-            data[metal]["shares"]["primary"] = 1 - s
+            data[metal]["shares"]["secondary"][2050] = s
+            data[metal]["shares"]["primary"][2050] = 1 - s
 
     return data
 
