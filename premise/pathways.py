@@ -37,6 +37,8 @@ class PathwaysDataPackage:
         gains_scenario="CLE",
         gains_baseyear=2020,
         metals_scenario="default",
+        shares_adjustments: dict = {},
+        intervention_scenarios: dict = {},
         use_absolute_efficiency=False,
         biosphere_name="biosphere3",
         generate_reports: bool = True,
@@ -73,6 +75,8 @@ class PathwaysDataPackage:
             gains_scenario=gains_scenario,
             gains_baseyear=gains_baseyear,
             metals_scenario=metals_scenario,
+            shares_adjustments=shares_adjustments,
+            intervention_scenarios=intervention_scenarios,
             use_absolute_efficiency=use_absolute_efficiency,
             biosphere_name=biosphere_name,
             generate_reports=generate_reports,
@@ -86,10 +90,9 @@ class PathwaysDataPackage:
         name: str = f"pathways_{date.today()}",
         contributors: list = None,
         transformations: list = None,
-        intervention_scenarios: dict = {},
     ):
         if transformations:
-            self.datapackage.update(transformations, intervention_scenarios)
+            self.datapackage.update(transformations)
         else:
             self.datapackage.update()
 
