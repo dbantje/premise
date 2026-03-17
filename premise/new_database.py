@@ -547,6 +547,7 @@ class NewDatabase:
         keep_source_db_uncertainty=False,
         gains_scenario="CLE",
         gains_baseyear: int = 2020,
+        gains_masks: list = [],
         metals_scenario="default",
         shares_adjustments: dict = {},
         intervention_scenarios: dict = {},
@@ -614,6 +615,7 @@ class NewDatabase:
             raise ValueError(f"gains_scenario must be in {supported_gains_scenarios}")
         self.gains_scenario = gains_scenario
         self.gains_baseyear = gains_baseyear
+        self.gains_masks = gains_masks
 
         metals_scenario_options = ["default", "low", "central", "high"]
         if metals_scenario not in metals_scenario_options:
@@ -1034,6 +1036,7 @@ class NewDatabase:
                     self.system_model,
                     self.gains_scenario,
                     self.gains_baseyear,
+                    self.gains_masks,
                 ),
             },
             "cars": {

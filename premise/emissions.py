@@ -37,7 +37,7 @@ def fetch_mapping(filepath: str) -> dict:
     return mapping
 
 
-def _update_emissions(scenario, version, system_model, gains_scenario, gains_baseyear):
+def _update_emissions(scenario, version, system_model, gains_scenario, gains_baseyear, gains_masks):
 
     if scenario["iam data"].gains_data_IAM is None:
         print("No pollutant emissions scenario data available -- skipping")
@@ -53,6 +53,7 @@ def _update_emissions(scenario, version, system_model, gains_scenario, gains_bas
         system_model=system_model,
         gains_scenario=gains_scenario,
         gains_baseyear=gains_baseyear,
+        gains_masks=gains_masks,
     )
 
     emissions.update_emissions_in_database()
@@ -78,6 +79,7 @@ class Emissions(BaseTransformation):
         system_model: str,
         gains_scenario: str,
         gains_baseyear: int,
+        gains_masks: List[str],
     ):
         super().__init__(
             database,
@@ -106,6 +108,8 @@ class Emissions(BaseTransformation):
 
         for s in self.gains_map:
             for t in self.gains_map[s]:
+                if any([f in t["name"] for f in gains_masks]):
+                    continue
                 self.rev_gains_map[t["name"]] = s
 
     def prepare_data(self, data):
