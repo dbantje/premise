@@ -36,7 +36,8 @@ BOF_SLAG_DATA_FILE = DATA_DIR / "interventions" / "BOF_slag_shares.csv"
 COPPER_DATA_FILE = DATA_DIR / "interventions" / "copper_recovery_volumes.csv"
 BRAKE_WEAR_DATA_FILE = DATA_DIR / "interventions" / "brake_wear_efs.csv"
 SMELTING_DATA_FILE = DATA_DIR / "interventions" / "smelting_efs.csv"
-
+WOODSTOVES_DATA_FILE = DATA_DIR / "interventions" / "woodstoves_efs.csv"
+SHIPPING_DATA_FILE = DATA_DIR / "interventions" / "shipping_efs.csv"
 
 def _update_interventions(scenario, version, system_model, intervention_scenarios):
     """
@@ -60,6 +61,8 @@ def _update_interventions(scenario, version, system_model, intervention_scenario
     interventions.update_copper_treatment()
     interventions.update_brake_wear()
     interventions.update_smelting()
+    interventions.update_woodstoves()
+    interventions.update_shipping()
     interventions.relink_datasets()
     scenario["database"] = interventions.database
     scenario["cache"] = interventions.cache
@@ -189,6 +192,16 @@ class Interventions(BaseTransformation):
             SMELTING_DATA_FILE,
             model,
             intervention_pathway=intervention_scenarios.get("smelting", "frozen"),
+        )
+        self.woodstoves_shares = load_config(
+            WOODSTOVES_DATA_FILE,
+            model,
+            intervention_pathway=intervention_scenarios.get("woodstoves", "frozen"),
+        )
+        self.shipping_shares = load_config(
+            SHIPPING_DATA_FILE,
+            model,
+            intervention_pathway=intervention_scenarios.get("shipping", "frozen"),
         )
         inv = InventorySet(database=database, version=version, model=model)
         self.tailings_map = inv.generate_mining_waste_map()
@@ -751,6 +764,162 @@ class Interventions(BaseTransformation):
                                 continue
 
             self.write_log(act, "[Interventions] Updated smelting emissions")
+
+    def update_woodstoves(self):
+        """
+        Update certain air emission factors in wood stoves
+        based on year-specific values for the appropriate region.
+        """
+
+        min_year = self.woodstoves_shares.year.values.min()
+        max_year = self.woodstoves_shares.year.values.max()
+        year = int(np.clip(self.year, min_year, max_year))
+
+        fallback_region = None
+        for r in self.woodstoves_shares.region.values:
+            if "GLO" in self.geomap.iam_to_ecoinvent_location(r):
+                fallback_region = r
+                break
+
+        activities = ws.get_many(
+            self.database,
+            ws.startswith("name", "heat production, hardwood chips from forest, at furnace 50kW"),
+            ws.startswith("reference product", "heat, central or small-scale, other than natural gas"),
+        )
+
+        flownames = list(self.woodstoves_shares.coords["technology"].values)
+
+        for act in activities:
+            iam_region = self.geomap.ecoinvent_to_iam_location(act["location"])
+
+            matching_regions = [
+                r
+                for r in self.woodstoves_shares.region.values
+                if iam_region in self.geomap.ecoinvent_to_iam_location(r)
+            ]
+
+            target_region = matching_regions[0] if matching_regions else fallback_region
+
+            for exc in act["exchanges"]:
+                if exc["type"] == "biosphere":
+                    if exc["categories"] == (
+                        "air",
+                        "urban air close to ground",
+                    ):
+                        if exc["name"] in flownames:
+                            tech = exc["name"]
+                            try:
+                                data = self.woodstoves_shares.sel(
+                                    region=target_region, technology=tech
+                                )
+                                data = data.dropna("year", how="all")
+                                share = data.interp(year=year)
+
+                                mean = share["mean"].item() * -1
+                                minimum = share["max"].item() * -1
+                                maximum = share["min"].item() * -1
+
+                                if minimum > mean or maximum < mean:
+                                    print(
+                                        f"[Interventions] Amounts for {act['name']} in {act['location']} are inconsistent: "
+                                        f"mean={mean}, min={minimum}, max={maximum}"
+                                    )
+                                    continue
+
+                                exc.update(
+                                    {
+                                        "amount": share["mean"].item(),
+                                        "uncertainty type": 5,
+                                        "loc": share["mean"].item(),
+                                        "minimum": share["min"].item(),
+                                        "maximum": share["max"].item(),
+                                    }
+                                )
+                            except KeyError:
+                                print(
+                                    f"[Interventions] No data for {tech} in {target_region} at year {year}"
+                                )
+                                continue
+
+            self.write_log(act, "[Interventions] Updated wood stove emissions")
+
+    def update_shipping(self):
+        """
+        Update certain air emission factors in shipping
+        based on year-specific values for the appropriate region.
+        """
+
+        min_year = self.shipping_shares.year.values.min()
+        max_year = self.shipping_shares.year.values.max()
+        year = int(np.clip(self.year, min_year, max_year))
+
+        fallback_region = None
+        for r in self.shipping_shares.region.values:
+            if "GLO" in self.geomap.iam_to_ecoinvent_location(r):
+                fallback_region = r
+                break
+
+        activities = ws.get_many(
+            self.database,
+            ws.contains("name", "burned in container ship"),
+            ws.startswith("reference product", "heat"),
+        )
+
+        flownames = list(self.shipping_shares.coords["technology"].values)
+
+        for act in activities:
+            iam_region = self.geomap.ecoinvent_to_iam_location(act["location"])
+
+            matching_regions = [
+                r
+                for r in self.shipping_shares.region.values
+                if iam_region in self.geomap.ecoinvent_to_iam_location(r)
+            ]
+
+            target_region = matching_regions[0] if matching_regions else fallback_region
+
+            for exc in act["exchanges"]:
+                if exc["type"] == "biosphere":
+                    if exc["categories"] == (
+                        "air",
+                        "urban air close to ground",
+                    ):
+                        if exc["name"] in flownames:
+                            tech = exc["name"]
+                            try:
+                                data = self.shipping_shares.sel(
+                                    region=target_region, technology=tech
+                                )
+                                data = data.dropna("year", how="all")
+                                share = data.interp(year=year)
+
+                                mean = share["mean"].item() * -1
+                                minimum = share["max"].item() * -1
+                                maximum = share["min"].item() * -1
+
+                                if minimum > mean or maximum < mean:
+                                    print(
+                                        f"[Interventions] Amounts for {act['name']} in {act['location']} are inconsistent: "
+                                        f"mean={mean}, min={minimum}, max={maximum}"
+                                    )
+                                    continue
+
+                                exc.update(
+                                    {
+                                        "amount": share["mean"].item(),
+                                        "uncertainty type": 5,
+                                        "loc": share["mean"].item(),
+                                        "minimum": share["min"].item(),
+                                        "maximum": share["max"].item(),
+                                    }
+                                )
+                            except KeyError:
+                                print(
+                                    f"[Interventions] No data for {tech} in {target_region} at year {year}"
+                                )
+                                continue
+
+            self.write_log(act, "[Interventions] Updated shipping emissions")
 
     def write_log(self, dataset, status="updated"):
         txt = f"{status}|{self.model}|{self.scenario}|{self.year}|{dataset['name']}|{dataset.get('reference product', '')}|{dataset['location']}"

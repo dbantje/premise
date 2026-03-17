@@ -1,0 +1,17 @@
+scenario;region;year;Particulate Matter, < 2.5 um
+central;EUR;2020;1.286e-04
+central;EUR;2050;6.0e-05
+central;GLO;2020;1.286e-04
+central;GLO;2050;1.0e-04
+frozen;EUR;2020;1.286e-04
+frozen;EUR;2050;1.286e-04
+frozen;GLO;2020;1.286e-04
+frozen;GLO;2050;1.286e-04
+high;EUR;2020;1.286e-04
+high;EUR;2050;4.0e-05
+high;GLO;2020;1.286e-04
+high;GLO;2050;1.2e-04
+low;EUR;2020;1.286e-04
+low;EUR;2050;8.0e-05
+low;GLO;2020;1.286e-04
+low;GLO;2050;8.0e-05

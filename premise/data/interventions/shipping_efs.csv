@@ -1,0 +1,17 @@
+scenario;region;year;Nitrogen oxides
+central;EUR;2020;1.913e-03
+central;EUR;2050;8e-04
+central;GLO;2020;1.913e-03
+central;GLO;2050;1e-03
+frozen;EUR;2020;1.913e-03
+frozen;EUR;2050;1.913e-03
+frozen;GLO;2020;1.913e-03
+frozen;GLO;2050;1.913e-03
+high;EUR;2020;1.913e-03
+high;EUR;2050;6e-04
+high;GLO;2020;1.913e-03
+high;GLO;2050;8e-04
+low;EUR;2020;1.913e-03
+low;EUR;2050;1e-03
+low;GLO;2020;1.913e-03
+low;GLO;2050;1.2e-03
