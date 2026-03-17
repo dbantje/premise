@@ -39,6 +39,7 @@ SMELTING_DATA_FILE = DATA_DIR / "interventions" / "smelting_efs.csv"
 WOODSTOVES_DATA_FILE = DATA_DIR / "interventions" / "woodstoves_efs.csv"
 SHIPPING_DATA_FILE = DATA_DIR / "interventions" / "shipping_efs.csv"
 
+
 def _update_interventions(scenario, version, system_model, intervention_scenarios):
     """
     Update the scenario database with interventions for tailings, slag, and copper treatment.
@@ -783,8 +784,13 @@ class Interventions(BaseTransformation):
 
         activities = ws.get_many(
             self.database,
-            ws.startswith("name", "heat production, hardwood chips from forest, at furnace 50kW"),
-            ws.startswith("reference product", "heat, central or small-scale, other than natural gas"),
+            ws.startswith(
+                "name", "heat production, hardwood chips from forest, at furnace 50kW"
+            ),
+            ws.startswith(
+                "reference product",
+                "heat, central or small-scale, other than natural gas",
+            ),
         )
 
         flownames = list(self.woodstoves_shares.coords["technology"].values)

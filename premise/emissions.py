@@ -37,7 +37,9 @@ def fetch_mapping(filepath: str) -> dict:
     return mapping
 
 
-def _update_emissions(scenario, version, system_model, gains_scenario, gains_baseyear, gains_masks):
+def _update_emissions(
+    scenario, version, system_model, gains_scenario, gains_baseyear, gains_masks
+):
 
     if scenario["iam data"].gains_data_IAM is None:
         print("No pollutant emissions scenario data available -- skipping")
