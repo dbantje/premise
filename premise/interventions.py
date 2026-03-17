@@ -888,7 +888,7 @@ class Interventions(BaseTransformation):
                 if exc["type"] == "biosphere":
                     if exc["categories"] == (
                         "air",
-                        "urban air close to ground",
+                        "non-urban air or from high stacks",
                     ):
                         if exc["name"] in flownames:
                             tech = exc["name"]
