@@ -78,6 +78,16 @@ aluminium, cast alloy:
     secondary:
       2020: 0.688245
       2050: 0.688245
+aluminium, wrought alloy:
+  name: market for aluminium, wrought alloy
+  reference product: aluminium, wrought alloy
+  shares:
+    primary:
+      2020: 0.696
+      2050: 0.696
+    secondary:
+      2020: 0.304
+      2050: 0.304
 bentonite:
   name: market for bentonite
   reference product: bentonite
@@ -1003,11 +1013,11 @@ zinc concentrate:
   reference product: zinc concentrate
   shares:
     primary:
-      2020: 0.99993378
-      2050: 0.99993378
+      2020: 1.0
+      2050: 1.0
     secondary:
-      2020: 0.00006622
-      2050: 0.00006622
+      2020: 0.0
+      2050: 0.0
 zinc:
   name: market for zinc
   reference product: zinc

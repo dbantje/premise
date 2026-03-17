@@ -29,6 +29,47 @@ aluminium, cast alloy:
       equals: RER
     shares:
       2020: 0.112774677
+aluminium, wrought alloy:
+  - name:
+      all:
+        - startswith: treatment of aluminium scrap
+        - contains: post-consumer, prepared for recycling, at remelter
+    reference product:
+      equals: aluminium, wrought alloy
+    location:
+      equals: RER
+    shares:
+      2020: 0.006350892
+  - name:
+      all:
+        - startswith: treatment of aluminium scrap
+        - contains: post-consumer, prepared for recycling, at remelter
+    reference product:
+      equals: aluminium, wrought alloy
+    location:
+      equals: RoW
+    shares:
+      2020: 0.18115059
+  - name:
+      all:
+        - startswith: treatment of aluminium scrap
+        - contains: new, at remelter
+    reference product:
+      equals: aluminium, wrought alloy
+    location:
+      equals: RoW
+    shares:
+      2020: 0.729359567
+  - name:
+      all:
+        - startswith: treatment of aluminium scrap
+        - contains: new, at remelter
+    reference product:
+      equals: aluminium, wrought alloy
+    location:
+      equals: RER
+    shares:
+      2020: 0.083138951
 cobalt:
   - name:
       equals: treatment of used Li-ion battery, hydrometallurgical treatment
