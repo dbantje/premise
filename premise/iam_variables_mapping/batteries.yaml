@@ -1,0 +1,20 @@
+# mapping between premise and the terminology
+# used in the IAMs regarding the stationary battery storage
+# needed for balancing the variability of wind and solar power
+---
+For Wind:
+  iam_aliases:
+    remind: SE|Battery Power Capacity|For Wind
+    remind-eu: SE|Battery Power Capacity|For Wind
+  ecoinvent_aliases:
+    fltr:
+      name: market for battery capacity, stationary (CONT scenario)
+      reference product: electricity storage capacity
+For PV:
+  iam_aliases:
+    remind: SE|Battery Power Capacity|For PV
+    remind-eu: SE|Battery Power Capacity|For PV
+  ecoinvent_aliases:
+    fltr:
+      name: market for battery capacity, stationary (CONT scenario)
+      reference product: electricity storage capacity

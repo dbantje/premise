@@ -6,6 +6,7 @@ terms of cell energy density.
 
 import yaml
 
+from .activity_maps import InventorySet
 from .filesystem_constants import DATA_DIR
 from .logger import create_logger
 from .transformation import BaseTransformation, IAMDataCollection, List, np, ws
@@ -63,6 +64,10 @@ def _update_battery(scenario, version, system_model):
     scenario["index"] = battery.index
     scenario["cache"] = battery.cache
 
+    if "mapping" not in scenario:
+        scenario["mapping"] = {}
+    scenario["mapping"]["VRE battery storage"] = battery.stationary_battery_mapping
+
     validation = BatteryValidation(
         model=scenario["model"],
         scenario=scenario["pathway"],
@@ -107,6 +112,9 @@ class Battery(BaseTransformation):
             index,
         )
         self.system_model = system_model
+        mapping = InventorySet(database=database, version=version, model=model)
+        self.stationary_battery_mapping = mapping.generate_stationary_battery_map()
+
 
     def adjust_battery_market_shares(self) -> None:
         """

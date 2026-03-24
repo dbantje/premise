@@ -42,7 +42,7 @@ EAF_SLAG_WASTE = DATA_DIR / "interventions" / "EAF_slag_activities.yaml"
 BOF_SLAG_WASTE = DATA_DIR / "interventions" / "BOF_slag_activities.yaml"
 CARBON_STORAGE_TECHS = VARIABLES_DIR / "carbon_dioxide_removal.yaml"
 BRAKE_WEAR = DATA_DIR / "interventions" / "brake_wear_activities.yaml"
-
+STATIONARY_BATTERIES = VARIABLES_DIR / "batteries.yaml"
 
 def get_mapping(
     filepath: Path, var: str, model: Optional[str] = None
@@ -481,6 +481,19 @@ class InventorySet:
                     act["lhv"] = lhv[key]
 
         return sets
+    
+    def generate_stationary_battery_map(self) -> ActivityMapping:
+        """Return mapping of stationary battery technologies to activities.
+
+        :return: Mapping keyed by battery technology name.
+        :rtype: ActivityMapping
+        """
+        filters = get_mapping(
+            filepath=STATIONARY_BATTERIES,
+            var="ecoinvent_aliases",
+            model=self.model,
+        )
+        return self.generate_sets_from_filters(filters)
 
     def generate_transport_map(self, transport_type: str) -> ActivityMapping:
         """Return mapping of transport technologies to activities.
