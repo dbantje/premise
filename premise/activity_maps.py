@@ -44,6 +44,7 @@ CARBON_STORAGE_TECHS = VARIABLES_DIR / "carbon_dioxide_removal.yaml"
 BRAKE_WEAR = DATA_DIR / "interventions" / "brake_wear_activities.yaml"
 STATIONARY_BATTERIES = VARIABLES_DIR / "batteries.yaml"
 
+
 def get_mapping(
     filepath: Path, var: str, model: Optional[str] = None
 ) -> Dict[str, dict]:
@@ -481,7 +482,7 @@ class InventorySet:
                     act["lhv"] = lhv[key]
 
         return sets
-    
+
     def generate_stationary_battery_map(self) -> ActivityMapping:
         """Return mapping of stationary battery technologies to activities.
 

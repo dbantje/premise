@@ -115,7 +115,6 @@ class Battery(BaseTransformation):
         mapping = InventorySet(database=database, version=version, model=model)
         self.stationary_battery_mapping = mapping.generate_stationary_battery_map()
 
-
     def adjust_battery_market_shares(self) -> None:
         """
         Based on scenario data, adjust the shares within the datasets:
