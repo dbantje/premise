@@ -1195,9 +1195,19 @@ End_Use_Transport_HDT_HLF:
     - transport, regular bus
     - transport, freight, lorry 7.5-16 metric ton
     - transport, freight, lorry 16-32 metric ton
-    - diesel, burned in heavy-duty vehicle
     - diesel, burned in single deck coach or urban bus
     - diesel, burned in passenger train
+    - diesel, synthetic, burned in passenger train
+    - diesel, burned in heavy
+    - diesel, synthetic, burned in heavy
+    - biodiesel, from non-residual cellulosic biomass, burned in heavy-duty vehicle
+    - biodiesel, from residual cellulosic biomass, burned in heavy-duty vehicle
+    - biodiesel, from non-residual oily biomass, burned in heavy-duty vehicle
+    - biodiesel, from residual oily biomass, burned in heavy-duty vehicle
+    - biodiesel, from non-residual cellulosic biomass, burned in passenger train
+    - biodiesel, from residual cellulosic biomass, burned in passenger train
+    - biodiesel, from non-residual oily biomass, burned in passenger train
+    - biodiesel, from residual oily biomass, burned in passenger train
     mask:
     - market
   gains_aliases_IAM: End_Use_Transport_HDT_HLF
@@ -1216,6 +1226,10 @@ End_Use_Transport_MC_LLF:
   ecoinvent_aliases:
     fltr:
     - transport, passenger, motor scooter
+    - petrol, burned in motorcycle
+    - petrol, synthetic, burned in motorcycle
+    - bioethanol, from residues, burned in motorcycle
+    - bioethanol, from sugar crops, burned in motorcycle
     mask:
     - market
   gains_aliases_IAM: End_Use_Transport_MC_LLF
@@ -1226,10 +1240,10 @@ End_Use_Transport_LDT_LLF:
     - transport, passenger, car, liquefied petroleum ga
     - transport, passenger car, medium size, liquefied petroleum gas
     - petrol, burned in passenger car
+    - bioethanol, from forest residues, burned in passenger car
+    - bioethanol, from sugar crops, burned in passenger car
+    - bioethanol, from non-residual cellulosic biomass, burned in passenger car
     - petrol, synthetic, burned in passenger car
-    - petrol, burned in motorcycle
-    - petrol, synthetic, burned in motorcycle
-    - bioethanol, burned in motorcycle
     mask:
     - diesel
     - compressed gas
@@ -1244,8 +1258,7 @@ End_Use_Transport_LDT_HLF:
     - 3.5-7.5 metric ton
     - diesel, burned in passenger car
     - diesel, synthetic, burned in passenger car
-    - diesel, burned in heavy
-    - diesel, synthetic, burned in heavy
+
     mask:
     - compressed gas
     - gasoline
