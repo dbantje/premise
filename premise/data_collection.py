@@ -34,6 +34,7 @@ IAM_STEEL_VARS = VARIABLES_DIR / "steel.yaml"
 IAM_CDR_VARS = VARIABLES_DIR / "carbon_dioxide_removal.yaml"
 IAM_HEATING_VARS = VARIABLES_DIR / "heat.yaml"
 IAM_FINAL_ENERGY_VARS = VARIABLES_DIR / "final_energy.yaml"
+IAM_BATTERY_VARS = VARIABLES_DIR / "batteries.yaml"
 IAM_OTHER_VARS = VARIABLES_DIR / "other.yaml"
 IAM_TRANS_ROADFREIGHT_VARS = VARIABLES_DIR / "transport_road_freight.yaml"
 IAM_TRANS_RAILFREIGHT_VARS = VARIABLES_DIR / "transport_rail_freight.yaml"
@@ -536,6 +537,10 @@ class IAMDataCollection:
             IAM_FINAL_ENERGY_VARS, variable="iam_aliases"
         )
 
+        stationary_battery_vars = self.__get_iam_variable_labels(
+            IAM_BATTERY_VARS, variable="iam_aliases"
+        )
+
         other_vars = self.__get_iam_variable_labels(
             IAM_OTHER_VARS, variable="iam_aliases"
         )
@@ -875,6 +880,11 @@ class IAMDataCollection:
             input_vars=final_energy_vars,
         )
 
+        self.stationary_battery_deployment = self.__fetch_market_data(
+            data=data,
+            input_vars=stationary_battery_vars,
+        )
+
         self.electricity_technology_efficiencies = self.get_iam_efficiencies(
             data=data,
             efficiency_labels=electricity_eff_vars,
@@ -1090,6 +1100,7 @@ class IAMDataCollection:
                 **bus_prod_vars,
                 **two_wheelers_prod_vars,
                 **final_energy_vars,
+                **stationary_battery_vars,
             },
         )
 
@@ -1101,6 +1112,8 @@ class IAMDataCollection:
         self.battery_stationary_scenarios = (
             self.fetch_external_data_battery_stationary_scenarios()
         )
+
+
 
     def fetch_external_data_battery_mobile_scenarios(self):
         """
