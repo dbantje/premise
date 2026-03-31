@@ -1113,8 +1113,6 @@ class IAMDataCollection:
             self.fetch_external_data_battery_stationary_scenarios()
         )
 
-
-
     def fetch_external_data_battery_mobile_scenarios(self):
         """
         Fetch external data on mobile battery scenarios.
