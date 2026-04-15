@@ -785,11 +785,10 @@ class Interventions(BaseTransformation):
         activities = ws.get_many(
             self.database,
             ws.either(
+                ws.startswith("name", "heat production, mixed logs, at wood heater"),
                 ws.startswith(
-                    "name", "heat production, mixed logs, at wood heater"
-                ),
-                ws.startswith(
-                    "name", "heat production, hardwood chips from forest, at furnace 50kW"
+                    "name",
+                    "heat production, hardwood chips from forest, at furnace 50kW",
                 ),
             ),
             ws.startswith(
