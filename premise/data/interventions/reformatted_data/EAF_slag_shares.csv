@@ -1,0 +1,25 @@
+scenario;region;year;technology;min;mean;max
+frozen;EUR;2020;treatment of EAF slag - landfill;9.600e-01;9.600e-01;9.600e-01
+frozen;EUR;2050;treatment of EAF slag - landfill;9.600e-01;9.600e-01;9.600e-01
+frozen;GLO;2020;treatment of EAF slag - landfill;9.600e-01;9.600e-01;9.600e-01
+frozen;GLO;2050;treatment of EAF slag - landfill;9.600e-01;9.600e-01;9.600e-01
+frozen;INDIA;2020;treatment of EAF slag - landfill;1.000e+00;1.000e+00;1.000e+00
+frozen;INDIA;2050;treatment of EAF slag - landfill;1.000e+00;1.000e+00;1.000e+00
+frozen;EUR;2020;treatment of EAF slag - recovery;4.000e-02;4.000e-02;4.000e-02
+frozen;EUR;2050;treatment of EAF slag - recovery;4.000e-02;4.000e-02;4.000e-02
+frozen;GLO;2020;treatment of EAF slag - recovery;4.000e-02;4.000e-02;4.000e-02
+frozen;GLO;2050;treatment of EAF slag - recovery;4.000e-02;4.000e-02;4.000e-02
+frozen;INDIA;2020;treatment of EAF slag - recovery;0.000e+00;0.000e+00;0.000e+00
+frozen;INDIA;2050;treatment of EAF slag - recovery;0.000e+00;0.000e+00;0.000e+00
+intervention;EUR;2020;treatment of EAF slag - landfill;9.600e-01;9.600e-01;9.600e-01
+intervention;EUR;2020;treatment of EAF slag - recovery;4.000e-02;4.000e-02;4.000e-02
+intervention;EUR;2050;treatment of EAF slag - landfill;2.000e-01;3.500e-01;5.000e-01
+intervention;EUR;2050;treatment of EAF slag - recovery;5.000e-01;6.500e-01;8.000e-01
+intervention;GLO;2020;treatment of EAF slag - landfill;9.600e-01;9.600e-01;9.600e-01
+intervention;GLO;2020;treatment of EAF slag - recovery;4.000e-02;4.000e-02;4.000e-02
+intervention;GLO;2050;treatment of EAF slag - landfill;2.000e-01;4.667e-01;7.000e-01
+intervention;GLO;2050;treatment of EAF slag - recovery;3.000e-01;5.333e-01;8.000e-01
+intervention;INDIA;2020;treatment of EAF slag - landfill;1.000e+00;1.000e+00;1.000e+00
+intervention;INDIA;2020;treatment of EAF slag - recovery;0.000e+00;0.000e+00;0.000e+00
+intervention;INDIA;2050;treatment of EAF slag - landfill;2.000e-01;4.667e-01;7.000e-01
+intervention;INDIA;2050;treatment of EAF slag - recovery;3.000e-01;5.333e-01;8.000e-01

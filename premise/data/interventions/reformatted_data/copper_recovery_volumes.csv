@@ -1,0 +1,9 @@
+scenario;region;year;technology;min;mean;max
+frozen;GLO;2020;bottom ash;8.900e-01;8.900e-01;8.900e-01
+frozen;GLO;2050;bottom ash;8.900e-01;8.900e-01;8.900e-01
+frozen;GLO;2020;scrap copper;3.100e-01;3.100e-01;3.100e-01
+frozen;GLO;2050;scrap copper;3.100e-01;3.100e-01;3.100e-01
+intervention;GLO;2020;bottom ash;8.900e-01;8.900e-01;8.900e-01
+intervention;GLO;2020;scrap copper;3.100e-01;3.100e-01;3.100e-01
+intervention;GLO;2050;bottom ash;6.300e-01;7.050e-01;7.800e-01
+intervention;GLO;2050;scrap copper;4.000e-01;4.500e-01;5.000e-01

@@ -1,0 +1,257 @@
+scenario;region;year;technology;min;mean;max
+frozen;AFR;2020;Arsenic ion;1.964e-04;1.964e-04;1.964e-04
+frozen;AFR;2050;Arsenic ion;1.964e-04;1.964e-04;1.964e-04
+frozen;CAZ;2020;Arsenic ion;5.330e-05;5.330e-05;5.330e-05
+frozen;CAZ;2050;Arsenic ion;5.330e-05;5.330e-05;5.330e-05
+frozen;CHA;2020;Arsenic ion;1.486e-04;1.486e-04;1.486e-04
+frozen;CHA;2050;Arsenic ion;1.486e-04;1.486e-04;1.486e-04
+frozen;EUR;2020;Arsenic ion;4.000e-06;4.000e-06;4.000e-06
+frozen;EUR;2050;Arsenic ion;4.000e-06;4.000e-06;4.000e-06
+frozen;GLO;2020;Arsenic ion;1.964e-04;1.964e-04;1.964e-04
+frozen;GLO;2050;Arsenic ion;1.964e-04;1.964e-04;1.964e-04
+frozen;JAPAN;2020;Arsenic ion;4.000e-06;4.000e-06;4.000e-06
+frozen;JAPAN;2050;Arsenic ion;4.000e-06;4.000e-06;4.000e-06
+frozen;LATAM;2020;Arsenic ion;1.486e-04;1.486e-04;1.486e-04
+frozen;LATAM;2050;Arsenic ion;1.486e-04;1.486e-04;1.486e-04
+frozen;NAM;2020;Arsenic ion;4.000e-06;4.000e-06;4.000e-06
+frozen;NAM;2050;Arsenic ion;4.000e-06;4.000e-06;4.000e-06
+frozen;AFR;2020;Cadmium II;7.651e-05;7.651e-05;7.651e-05
+frozen;AFR;2050;Cadmium II;7.651e-05;7.651e-05;7.651e-05
+frozen;CAZ;2020;Cadmium II;2.777e-05;2.777e-05;2.777e-05
+frozen;CAZ;2050;Cadmium II;2.777e-05;2.777e-05;2.777e-05
+frozen;CHA;2020;Cadmium II;6.002e-05;6.002e-05;6.002e-05
+frozen;CHA;2050;Cadmium II;6.002e-05;6.002e-05;6.002e-05
+frozen;EUR;2020;Cadmium II;7.550e-06;7.550e-06;7.550e-06
+frozen;EUR;2050;Cadmium II;7.550e-06;7.550e-06;7.550e-06
+frozen;GLO;2020;Cadmium II;7.651e-05;7.651e-05;7.651e-05
+frozen;GLO;2050;Cadmium II;7.651e-05;7.651e-05;7.651e-05
+frozen;JAPAN;2020;Cadmium II;7.550e-06;7.550e-06;7.550e-06
+frozen;JAPAN;2050;Cadmium II;7.550e-06;7.550e-06;7.550e-06
+frozen;LATAM;2020;Cadmium II;6.002e-05;6.002e-05;6.002e-05
+frozen;LATAM;2050;Cadmium II;6.002e-05;6.002e-05;6.002e-05
+frozen;NAM;2020;Cadmium II;7.550e-06;7.550e-06;7.550e-06
+frozen;NAM;2050;Cadmium II;7.550e-06;7.550e-06;7.550e-06
+frozen;AFR;2020;Copper ion;8.120e-05;8.120e-05;8.120e-05
+frozen;AFR;2050;Copper ion;8.120e-05;8.120e-05;8.120e-05
+frozen;CAZ;2020;Copper ion;5.535e-05;5.535e-05;5.535e-05
+frozen;CAZ;2050;Copper ion;5.535e-05;5.535e-05;5.535e-05
+frozen;CHA;2020;Copper ion;7.185e-05;7.185e-05;7.185e-05
+frozen;CHA;2050;Copper ion;7.185e-05;7.185e-05;7.185e-05
+frozen;EUR;2020;Copper ion;3.500e-05;3.500e-05;3.500e-05
+frozen;EUR;2050;Copper ion;3.500e-05;3.500e-05;3.500e-05
+frozen;GLO;2020;Copper ion;8.120e-05;8.120e-05;8.120e-05
+frozen;GLO;2050;Copper ion;8.120e-05;8.120e-05;8.120e-05
+frozen;JAPAN;2020;Copper ion;3.500e-05;3.500e-05;3.500e-05
+frozen;JAPAN;2050;Copper ion;3.500e-05;3.500e-05;3.500e-05
+frozen;LATAM;2020;Copper ion;7.185e-05;7.185e-05;7.185e-05
+frozen;LATAM;2050;Copper ion;7.185e-05;7.185e-05;7.185e-05
+frozen;NAM;2020;Copper ion;3.500e-05;3.500e-05;3.500e-05
+frozen;NAM;2050;Copper ion;3.500e-05;3.500e-05;3.500e-05
+frozen;AFR;2020;Lead II;1.225e-05;1.225e-05;1.225e-05
+frozen;AFR;2050;Lead II;1.225e-05;1.225e-05;1.225e-05
+frozen;CAZ;2020;Lead II;1.287e-05;1.287e-05;1.287e-05
+frozen;CAZ;2050;Lead II;1.287e-05;1.287e-05;1.287e-05
+frozen;CHA;2020;Lead II;1.225e-05;1.225e-05;1.225e-05
+frozen;CHA;2050;Lead II;1.225e-05;1.225e-05;1.225e-05
+frozen;EUR;2020;Lead II;9.750e-06;9.750e-06;9.750e-06
+frozen;EUR;2050;Lead II;9.750e-06;9.750e-06;9.750e-06
+frozen;GLO;2020;Lead II;1.225e-05;1.225e-05;1.225e-05
+frozen;GLO;2050;Lead II;1.225e-05;1.225e-05;1.225e-05
+frozen;JAPAN;2020;Lead II;9.750e-06;9.750e-06;9.750e-06
+frozen;JAPAN;2050;Lead II;9.750e-06;9.750e-06;9.750e-06
+frozen;LATAM;2020;Lead II;1.225e-05;1.225e-05;1.225e-05
+frozen;LATAM;2050;Lead II;1.225e-05;1.225e-05;1.225e-05
+frozen;NAM;2020;Lead II;9.750e-06;9.750e-06;9.750e-06
+frozen;NAM;2050;Lead II;9.750e-06;9.750e-06;9.750e-06
+frozen;AFR;2020;Particulate Matter, < 2.5 um;1.920e-04;1.920e-04;1.920e-04
+frozen;AFR;2050;Particulate Matter, < 2.5 um;1.920e-04;1.920e-04;1.920e-04
+frozen;CAZ;2020;Particulate Matter, < 2.5 um;1.718e-04;1.718e-04;1.718e-04
+frozen;CAZ;2050;Particulate Matter, < 2.5 um;1.718e-04;1.718e-04;1.718e-04
+frozen;CHA;2020;Particulate Matter, < 2.5 um;1.827e-04;1.827e-04;1.827e-04
+frozen;CHA;2050;Particulate Matter, < 2.5 um;1.827e-04;1.827e-04;1.827e-04
+frozen;EUR;2020;Particulate Matter, < 2.5 um;1.250e-04;1.250e-04;1.250e-04
+frozen;EUR;2050;Particulate Matter, < 2.5 um;1.250e-04;1.250e-04;1.250e-04
+frozen;GLO;2020;Particulate Matter, < 2.5 um;1.920e-04;1.920e-04;1.920e-04
+frozen;GLO;2050;Particulate Matter, < 2.5 um;1.920e-04;1.920e-04;1.920e-04
+frozen;JAPAN;2020;Particulate Matter, < 2.5 um;1.250e-04;1.250e-04;1.250e-04
+frozen;JAPAN;2050;Particulate Matter, < 2.5 um;1.250e-04;1.250e-04;1.250e-04
+frozen;LATAM;2020;Particulate Matter, < 2.5 um;1.827e-04;1.827e-04;1.827e-04
+frozen;LATAM;2050;Particulate Matter, < 2.5 um;1.827e-04;1.827e-04;1.827e-04
+frozen;NAM;2020;Particulate Matter, < 2.5 um;1.250e-04;1.250e-04;1.250e-04
+frozen;NAM;2050;Particulate Matter, < 2.5 um;1.250e-04;1.250e-04;1.250e-04
+frozen;AFR;2020;Particulate Matter, > 10 um;5.760e-05;5.760e-05;5.760e-05
+frozen;AFR;2050;Particulate Matter, > 10 um;5.760e-05;5.760e-05;5.760e-05
+frozen;CAZ;2020;Particulate Matter, > 10 um;5.152e-05;5.152e-05;5.152e-05
+frozen;CAZ;2050;Particulate Matter, > 10 um;5.152e-05;5.152e-05;5.152e-05
+frozen;CHA;2020;Particulate Matter, > 10 um;5.482e-05;5.482e-05;5.482e-05
+frozen;CHA;2050;Particulate Matter, > 10 um;5.482e-05;5.482e-05;5.482e-05
+frozen;EUR;2020;Particulate Matter, > 10 um;3.750e-05;3.750e-05;3.750e-05
+frozen;EUR;2050;Particulate Matter, > 10 um;3.750e-05;3.750e-05;3.750e-05
+frozen;GLO;2020;Particulate Matter, > 10 um;5.760e-05;5.760e-05;5.760e-05
+frozen;GLO;2050;Particulate Matter, > 10 um;5.760e-05;5.760e-05;5.760e-05
+frozen;JAPAN;2020;Particulate Matter, > 10 um;3.750e-05;3.750e-05;3.750e-05
+frozen;JAPAN;2050;Particulate Matter, > 10 um;3.750e-05;3.750e-05;3.750e-05
+frozen;LATAM;2020;Particulate Matter, > 10 um;5.482e-05;5.482e-05;5.482e-05
+frozen;LATAM;2050;Particulate Matter, > 10 um;5.482e-05;5.482e-05;5.482e-05
+frozen;NAM;2020;Particulate Matter, > 10 um;3.750e-05;3.750e-05;3.750e-05
+frozen;NAM;2050;Particulate Matter, > 10 um;3.750e-05;3.750e-05;3.750e-05
+frozen;AFR;2020;Particulate Matter, > 2.5 um and < 10um;5.760e-05;5.760e-05;5.760e-05
+frozen;AFR;2050;Particulate Matter, > 2.5 um and < 10um;5.760e-05;5.760e-05;5.760e-05
+frozen;CAZ;2020;Particulate Matter, > 2.5 um and < 10um;5.152e-05;5.152e-05;5.152e-05
+frozen;CAZ;2050;Particulate Matter, > 2.5 um and < 10um;5.152e-05;5.152e-05;5.152e-05
+frozen;CHA;2020;Particulate Matter, > 2.5 um and < 10um;5.482e-05;5.482e-05;5.482e-05
+frozen;CHA;2050;Particulate Matter, > 2.5 um and < 10um;5.482e-05;5.482e-05;5.482e-05
+frozen;EUR;2020;Particulate Matter, > 2.5 um and < 10um;3.750e-05;3.750e-05;3.750e-05
+frozen;EUR;2050;Particulate Matter, > 2.5 um and < 10um;3.750e-05;3.750e-05;3.750e-05
+frozen;GLO;2020;Particulate Matter, > 2.5 um and < 10um;5.760e-05;5.760e-05;5.760e-05
+frozen;GLO;2050;Particulate Matter, > 2.5 um and < 10um;5.760e-05;5.760e-05;5.760e-05
+frozen;JAPAN;2020;Particulate Matter, > 2.5 um and < 10um;3.750e-05;3.750e-05;3.750e-05
+frozen;JAPAN;2050;Particulate Matter, > 2.5 um and < 10um;3.750e-05;3.750e-05;3.750e-05
+frozen;LATAM;2020;Particulate Matter, > 2.5 um and < 10um;5.482e-05;5.482e-05;5.482e-05
+frozen;LATAM;2050;Particulate Matter, > 2.5 um and < 10um;5.482e-05;5.482e-05;5.482e-05
+frozen;NAM;2020;Particulate Matter, > 2.5 um and < 10um;3.750e-05;3.750e-05;3.750e-05
+frozen;NAM;2050;Particulate Matter, > 2.5 um and < 10um;3.750e-05;3.750e-05;3.750e-05
+frozen;AFR;2020;Sulfur dioxide;9.630e-02;9.630e-02;9.630e-02
+frozen;AFR;2050;Sulfur dioxide;9.630e-02;9.630e-02;9.630e-02
+frozen;CAZ;2020;Sulfur dioxide;2.770e-02;2.770e-02;2.770e-02
+frozen;CAZ;2050;Sulfur dioxide;2.770e-02;2.770e-02;2.770e-02
+frozen;CHA;2020;Sulfur dioxide;7.335e-02;7.335e-02;7.335e-02
+frozen;CHA;2050;Sulfur dioxide;7.335e-02;7.335e-02;7.335e-02
+frozen;EUR;2020;Sulfur dioxide;3.500e-03;3.500e-03;3.500e-03
+frozen;EUR;2050;Sulfur dioxide;3.500e-03;3.500e-03;3.500e-03
+frozen;GLO;2020;Sulfur dioxide;9.630e-02;9.630e-02;9.630e-02
+frozen;GLO;2050;Sulfur dioxide;9.630e-02;9.630e-02;9.630e-02
+frozen;JAPAN;2020;Sulfur dioxide;3.500e-03;3.500e-03;3.500e-03
+frozen;JAPAN;2050;Sulfur dioxide;3.500e-03;3.500e-03;3.500e-03
+frozen;LATAM;2020;Sulfur dioxide;7.335e-02;7.335e-02;7.335e-02
+frozen;LATAM;2050;Sulfur dioxide;7.335e-02;7.335e-02;7.335e-02
+frozen;NAM;2020;Sulfur dioxide;3.500e-03;3.500e-03;3.500e-03
+frozen;NAM;2050;Sulfur dioxide;3.500e-03;3.500e-03;3.500e-03
+intervention;AFR;2020;Arsenic ion;1.964e-04;1.964e-04;1.964e-04
+intervention;AFR;2020;Cadmium II;7.651e-05;7.651e-05;7.651e-05
+intervention;AFR;2020;Copper ion;8.120e-05;8.120e-05;8.120e-05
+intervention;AFR;2020;Lead II;1.225e-05;1.225e-05;1.225e-05
+intervention;AFR;2020;Particulate Matter, < 2.5 um;1.920e-04;1.920e-04;1.920e-04
+intervention;AFR;2020;Particulate Matter, > 10 um;5.760e-05;5.760e-05;5.760e-05
+intervention;AFR;2020;Particulate Matter, > 2.5 um and < 10um;5.760e-05;5.760e-05;5.760e-05
+intervention;AFR;2020;Sulfur dioxide;9.630e-02;9.630e-02;9.630e-02
+intervention;AFR;2050;Arsenic ion;4.600e-06;3.737e-05;1.014e-04
+intervention;AFR;2050;Cadmium II;9.040e-06;2.227e-05;4.501e-05
+intervention;AFR;2050;Copper ion;3.940e-05;5.223e-05;6.690e-05
+intervention;AFR;2050;Lead II;1.100e-05;1.287e-05;1.412e-05
+intervention;AFR;2050;Particulate Matter, < 2.5 um;1.400e-04;1.687e-04;1.885e-04
+intervention;AFR;2050;Particulate Matter, > 10 um;4.200e-05;5.060e-05;5.655e-05
+intervention;AFR;2050;Particulate Matter, > 2.5 um and < 10um;4.200e-05;5.060e-05;5.655e-05
+intervention;AFR;2050;Sulfur dioxide;4.000e-03;2.005e-02;5.090e-02
+intervention;CAZ;2020;Arsenic ion;5.330e-05;5.330e-05;5.330e-05
+intervention;CAZ;2020;Cadmium II;2.777e-05;2.777e-05;2.777e-05
+intervention;CAZ;2020;Copper ion;5.535e-05;5.535e-05;5.535e-05
+intervention;CAZ;2020;Lead II;1.287e-05;1.287e-05;1.287e-05
+intervention;CAZ;2020;Particulate Matter, < 2.5 um;1.718e-04;1.718e-04;1.718e-04
+intervention;CAZ;2020;Particulate Matter, > 10 um;5.152e-05;5.152e-05;5.152e-05
+intervention;CAZ;2020;Particulate Matter, > 2.5 um and < 10um;5.152e-05;5.152e-05;5.152e-05
+intervention;CAZ;2020;Sulfur dioxide;2.770e-02;2.770e-02;2.770e-02
+intervention;CAZ;2050;Arsenic ion;3.400e-06;4.800e-06;5.800e-06
+intervention;CAZ;2050;Cadmium II;6.060e-06;9.537e-06;1.202e-05
+intervention;CAZ;2050;Copper ion;3.060e-05;4.087e-05;4.820e-05
+intervention;CAZ;2050;Lead II;8.500e-06;1.142e-05;1.350e-05
+intervention;CAZ;2050;Particulate Matter, < 2.5 um;1.100e-04;1.450e-04;1.700e-04
+intervention;CAZ;2050;Particulate Matter, > 10 um;3.300e-05;4.350e-05;5.100e-05
+intervention;CAZ;2050;Particulate Matter, > 2.5 um and < 10um;3.300e-05;4.350e-05;5.100e-05
+intervention;CAZ;2050;Sulfur dioxide;3.000e-03;4.167e-03;5.000e-03
+intervention;CHA;2020;Arsenic ion;1.486e-04;1.486e-04;1.486e-04
+intervention;CHA;2020;Cadmium II;6.002e-05;6.001e-05;6.002e-05
+intervention;CHA;2020;Copper ion;7.185e-05;7.185e-05;7.185e-05
+intervention;CHA;2020;Lead II;1.225e-05;1.225e-05;1.225e-05
+intervention;CHA;2020;Particulate Matter, < 2.5 um;1.827e-04;1.827e-04;1.827e-04
+intervention;CHA;2020;Particulate Matter, > 10 um;5.482e-05;5.482e-05;5.482e-05
+intervention;CHA;2020;Particulate Matter, > 2.5 um and < 10um;5.482e-05;5.482e-05;5.482e-05
+intervention;CHA;2020;Sulfur dioxide;7.335e-02;7.335e-02;7.335e-02
+intervention;CHA;2050;Arsenic ion;3.700e-06;2.093e-05;5.360e-05
+intervention;CHA;2050;Cadmium II;6.805e-06;1.553e-05;2.851e-05
+intervention;CHA;2050;Copper ion;3.280e-05;4.545e-05;5.755e-05
+intervention;CHA;2050;Lead II;9.125e-06;1.183e-05;1.350e-05
+intervention;CHA;2050;Particulate Matter, < 2.5 um;1.175e-04;1.531e-04;1.792e-04
+intervention;CHA;2050;Particulate Matter, > 10 um;3.525e-05;4.592e-05;5.377e-05
+intervention;CHA;2050;Particulate Matter, > 2.5 um and < 10um;3.525e-05;4.592e-05;5.377e-05
+intervention;CHA;2050;Sulfur dioxide;3.250e-03;1.198e-02;2.795e-02
+intervention;EUR;2020;Arsenic ion;4.000e-06;4.000e-06;4.000e-06
+intervention;EUR;2020;Cadmium II;7.550e-06;7.550e-06;7.550e-06
+intervention;EUR;2020;Copper ion;3.500e-05;3.500e-05;3.500e-05
+intervention;EUR;2020;Lead II;9.750e-06;9.750e-06;9.750e-06
+intervention;EUR;2020;Particulate Matter, < 2.5 um;1.250e-04;1.250e-04;1.250e-04
+intervention;EUR;2020;Particulate Matter, > 10 um;3.750e-05;3.750e-05;3.750e-05
+intervention;EUR;2020;Particulate Matter, > 2.5 um and < 10um;3.750e-05;3.750e-05;3.750e-05
+intervention;EUR;2020;Sulfur dioxide;3.500e-03;3.500e-03;3.500e-03
+intervention;EUR;2050;Arsenic ion;1.000e-06;2.400e-06;3.400e-06
+intervention;EUR;2050;Cadmium II;1.000e-07;3.577e-06;6.060e-06
+intervention;EUR;2050;Copper ion;1.300e-05;2.327e-05;3.060e-05
+intervention;EUR;2050;Lead II;3.500e-06;6.417e-06;8.500e-06
+intervention;EUR;2050;Particulate Matter, < 2.5 um;5.000e-05;8.500e-05;1.100e-04
+intervention;EUR;2050;Particulate Matter, > 10 um;1.500e-05;2.550e-05;3.300e-05
+intervention;EUR;2050;Particulate Matter, > 2.5 um and < 10um;1.500e-05;2.550e-05;3.300e-05
+intervention;EUR;2050;Sulfur dioxide;1.000e-03;2.167e-03;3.000e-03
+intervention;GLO;2020;Arsenic ion;1.964e-04;1.964e-04;1.964e-04
+intervention;GLO;2020;Cadmium II;7.651e-05;7.651e-05;7.651e-05
+intervention;GLO;2020;Copper ion;8.120e-05;8.120e-05;8.120e-05
+intervention;GLO;2020;Lead II;1.225e-05;1.225e-05;1.225e-05
+intervention;GLO;2020;Particulate Matter, < 2.5 um;1.920e-04;1.920e-04;1.920e-04
+intervention;GLO;2020;Particulate Matter, > 10 um;5.760e-05;5.760e-05;5.760e-05
+intervention;GLO;2020;Particulate Matter, > 2.5 um and < 10um;5.760e-05;5.760e-05;5.760e-05
+intervention;GLO;2020;Sulfur dioxide;9.630e-02;9.630e-02;9.630e-02
+intervention;GLO;2050;Arsenic ion;4.600e-06;3.737e-05;1.014e-04
+intervention;GLO;2050;Cadmium II;9.040e-06;2.227e-05;4.501e-05
+intervention;GLO;2050;Copper ion;3.940e-05;5.223e-05;6.690e-05
+intervention;GLO;2050;Lead II;1.100e-05;1.287e-05;1.412e-05
+intervention;GLO;2050;Particulate Matter, < 2.5 um;1.400e-04;1.687e-04;1.885e-04
+intervention;GLO;2050;Particulate Matter, > 10 um;4.200e-05;5.060e-05;5.655e-05
+intervention;GLO;2050;Particulate Matter, > 2.5 um and < 10um;4.200e-05;5.060e-05;5.655e-05
+intervention;GLO;2050;Sulfur dioxide;4.000e-03;2.005e-02;5.090e-02
+intervention;JAPAN;2020;Arsenic ion;4.000e-06;4.000e-06;4.000e-06
+intervention;JAPAN;2020;Cadmium II;7.550e-06;7.550e-06;7.550e-06
+intervention;JAPAN;2020;Copper ion;3.500e-05;3.500e-05;3.500e-05
+intervention;JAPAN;2020;Lead II;9.750e-06;9.750e-06;9.750e-06
+intervention;JAPAN;2020;Particulate Matter, < 2.5 um;1.250e-04;1.250e-04;1.250e-04
+intervention;JAPAN;2020;Particulate Matter, > 10 um;3.750e-05;3.750e-05;3.750e-05
+intervention;JAPAN;2020;Particulate Matter, > 2.5 um and < 10um;3.750e-05;3.750e-05;3.750e-05
+intervention;JAPAN;2020;Sulfur dioxide;3.500e-03;3.500e-03;3.500e-03
+intervention;JAPAN;2050;Arsenic ion;1.000e-06;2.400e-06;3.400e-06
+intervention;JAPAN;2050;Cadmium II;1.000e-07;3.577e-06;6.060e-06
+intervention;JAPAN;2050;Copper ion;1.300e-05;2.327e-05;3.060e-05
+intervention;JAPAN;2050;Lead II;3.500e-06;6.417e-06;8.500e-06
+intervention;JAPAN;2050;Particulate Matter, < 2.5 um;5.000e-05;8.500e-05;1.100e-04
+intervention;JAPAN;2050;Particulate Matter, > 10 um;1.500e-05;2.550e-05;3.300e-05
+intervention;JAPAN;2050;Particulate Matter, > 2.5 um and < 10um;1.500e-05;2.550e-05;3.300e-05
+intervention;JAPAN;2050;Sulfur dioxide;1.000e-03;2.167e-03;3.000e-03
+intervention;LATAM;2020;Arsenic ion;1.486e-04;1.486e-04;1.486e-04
+intervention;LATAM;2020;Cadmium II;6.002e-05;6.001e-05;6.002e-05
+intervention;LATAM;2020;Copper ion;7.185e-05;7.185e-05;7.185e-05
+intervention;LATAM;2020;Lead II;1.225e-05;1.225e-05;1.225e-05
+intervention;LATAM;2020;Particulate Matter, < 2.5 um;1.827e-04;1.827e-04;1.827e-04
+intervention;LATAM;2020;Particulate Matter, > 10 um;5.482e-05;5.482e-05;5.482e-05
+intervention;LATAM;2020;Particulate Matter, > 2.5 um and < 10um;5.482e-05;5.482e-05;5.482e-05
+intervention;LATAM;2020;Sulfur dioxide;7.335e-02;7.335e-02;7.335e-02
+intervention;LATAM;2050;Arsenic ion;3.700e-06;2.093e-05;5.360e-05
+intervention;LATAM;2050;Cadmium II;6.805e-06;1.553e-05;2.851e-05
+intervention;LATAM;2050;Copper ion;3.280e-05;4.545e-05;5.755e-05
+intervention;LATAM;2050;Lead II;9.125e-06;1.183e-05;1.350e-05
+intervention;LATAM;2050;Particulate Matter, < 2.5 um;1.175e-04;1.531e-04;1.792e-04
+intervention;LATAM;2050;Particulate Matter, > 10 um;3.525e-05;4.592e-05;5.377e-05
+intervention;LATAM;2050;Particulate Matter, > 2.5 um and < 10um;3.525e-05;4.592e-05;5.377e-05
+intervention;LATAM;2050;Sulfur dioxide;3.250e-03;1.198e-02;2.795e-02
+intervention;NAM;2020;Arsenic ion;4.000e-06;4.000e-06;4.000e-06
+intervention;NAM;2020;Cadmium II;7.550e-06;7.550e-06;7.550e-06
+intervention;NAM;2020;Copper ion;3.500e-05;3.500e-05;3.500e-05
+intervention;NAM;2020;Lead II;9.750e-06;9.750e-06;9.750e-06
+intervention;NAM;2020;Particulate Matter, < 2.5 um;1.250e-04;1.250e-04;1.250e-04
+intervention;NAM;2020;Particulate Matter, > 10 um;3.750e-05;3.750e-05;3.750e-05
+intervention;NAM;2020;Particulate Matter, > 2.5 um and < 10um;3.750e-05;3.750e-05;3.750e-05
+intervention;NAM;2020;Sulfur dioxide;3.500e-03;3.500e-03;3.500e-03
+intervention;NAM;2050;Arsenic ion;1.000e-06;2.400e-06;3.400e-06
+intervention;NAM;2050;Cadmium II;1.000e-07;3.577e-06;6.060e-06
+intervention;NAM;2050;Copper ion;1.300e-05;2.327e-05;3.060e-05
+intervention;NAM;2050;Lead II;3.500e-06;6.417e-06;8.500e-06
+intervention;NAM;2050;Particulate Matter, < 2.5 um;5.000e-05;8.500e-05;1.100e-04
+intervention;NAM;2050;Particulate Matter, > 10 um;1.500e-05;2.550e-05;3.300e-05
+intervention;NAM;2050;Particulate Matter, > 2.5 um and < 10um;1.500e-05;2.550e-05;3.300e-05
+intervention;NAM;2050;Sulfur dioxide;1.000e-03;2.167e-03;3.000e-03

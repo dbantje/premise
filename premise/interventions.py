@@ -30,14 +30,14 @@ EAF_SLAG_CONFIG_FILE = DATA_DIR / "interventions" / "EAF_slag_activities.yaml"
 BOF_SLAG_CONFIG_FILE = DATA_DIR / "interventions" / "BOF_slag_activities.yaml"
 COPPER_CONFIG_FILE = DATA_DIR / "interventions" / "copper_recovery_activities.yaml"
 BRAKE_WEAR_CONFIG_FILE = DATA_DIR / "interventions" / "brake_wear_activities.yaml"
-TAILINGS_DATA_FILE = DATA_DIR / "interventions" / "tailings_shares.csv"
-EAF_SLAG_DATA_FILE = DATA_DIR / "interventions" / "EAF_slag_shares.csv"
-BOF_SLAG_DATA_FILE = DATA_DIR / "interventions" / "BOF_slag_shares.csv"
-COPPER_DATA_FILE = DATA_DIR / "interventions" / "copper_recovery_volumes.csv"
-BRAKE_WEAR_DATA_FILE = DATA_DIR / "interventions" / "brake_wear_efs.csv"
-SMELTING_DATA_FILE = DATA_DIR / "interventions" / "smelting_efs.csv"
-WOODSTOVES_DATA_FILE = DATA_DIR / "interventions" / "woodstoves_efs.csv"
-SHIPPING_DATA_FILE = DATA_DIR / "interventions" / "shipping_efs.csv"
+TAILINGS_DATA_FILE = DATA_DIR / "interventions" / "reformatted_data" / "tailings_shares.csv"
+EAF_SLAG_DATA_FILE = DATA_DIR / "interventions" / "reformatted_data" / "EAF_slag_shares.csv"
+BOF_SLAG_DATA_FILE = DATA_DIR / "interventions" / "reformatted_data" / "BOF_slag_shares.csv"
+COPPER_DATA_FILE = DATA_DIR / "interventions" / "reformatted_data" / "copper_recovery_volumes.csv"
+BRAKE_WEAR_DATA_FILE = DATA_DIR / "interventions" / "reformatted_data" / "brake_wear_efs.csv"
+SMELTING_DATA_FILE = DATA_DIR / "interventions" / "reformatted_data" / "smelting_efs.csv"
+WOODSTOVES_DATA_FILE = DATA_DIR / "interventions" / "reformatted_data" / "woodstoves_efs.csv"
+SHIPPING_DATA_FILE = DATA_DIR / "interventions" / "reformatted_data" / "shipping_efs.csv"
 
 
 def _update_interventions(scenario, version, system_model, intervention_scenarios):
@@ -110,13 +110,7 @@ def load_config(file_path, model: str, intervention_pathway: str):
                 df["region"] = mapped_region
                 dflist.append(df)
 
-        df_xr = pd.concat(dflist).melt(
-            id_vars=["region", "year"], var_name="technology", value_name="mean"
-        )
-
-        # use same values for min and max
-        df_xr["min"] = df_xr["mean"]
-        df_xr["max"] = df_xr["mean"]
+        df_xr = pd.concat(dflist)
 
         return df_xr.set_index(["technology", "year", "region"]).to_xarray()
 
@@ -134,6 +128,51 @@ def group_dicts_by_keys(dicts: list, keys: list):
         group_key = tuple(d.get(k) for k in keys)
         groups[group_key].append(d)
     return list(groups.values())
+
+
+def get_updated_exchange(context, share, supplier=None):
+    mean = share["mean"].item()
+    minimum = share["min"].item()
+    maximum = share["max"].item()
+
+    if minimum > mean or maximum < mean:
+        print(
+            f"[Interventions] Amounts for {context} are inconsistent: "
+            f"mean={mean}, min={minimum}, max={maximum}"
+        )
+        return None
+    
+    exchange_dict = {}
+    if supplier:
+        exchange_dict.update(
+            {
+                "type": "technosphere",
+                "name": supplier["name"],
+                "product": supplier["reference product"],
+                "amount": -1 * mean,
+                "unit": supplier["unit"],
+            }
+        )
+    
+    if minimum == maximum == mean:
+        exchange_dict.update(
+            {
+                "amount": mean,
+                "uncertainty type": 0,
+            }
+        )
+    else:
+        exchange_dict.update(
+            {
+                "amount": mean,
+                "uncertainty type": 5,
+                "loc": mean,
+                "minimum": minimum,
+                "maximum": maximum,
+            }
+        )
+
+    return exchange_dict
 
 
 class Interventions(BaseTransformation):
@@ -311,38 +350,11 @@ class Interventions(BaseTransformation):
                         continue
 
                     supplier = supplier[0]
+                    share = shares.sel(technology=waste_management_type)
 
-                    amount_mean = -1 * shares.sel(technology=waste_management_type)[
-                        "mean"
-                    ].values.item(0)
-                    amount_max = -1 * shares.sel(technology=waste_management_type)[
-                        "min"
-                    ].values.item(0)
-                    amount_min = -1 * shares.sel(technology=waste_management_type)[
-                        "max"
-                    ].values.item(0)
-
-                    if amount_min > amount_mean or amount_max < amount_mean:
-                        print(
-                            f"[Interventions] Amounts for {waste_management_type} in {region} are inconsistent: "
-                            f"mean={amount_mean}, min={amount_min}, max={amount_max}"
-                        )
-                        continue
-
-                    market_dataset["exchanges"].append(
-                        {
-                            "type": "technosphere",
-                            "name": supplier["name"],
-                            "product": supplier["reference product"],
-                            "amount": amount_mean,
-                            "unit": supplier["unit"],
-                            "location": supplier["location"],
-                            "uncertainty type": 5,
-                            "loc": amount_mean,
-                            "minimum": amount_min,
-                            "maximum": amount_max,
-                        }
-                    )
+                    exchange_dict = get_updated_exchange(f"{waste_management_type} in {region}", share, supplier=supplier)
+                    if exchange_dict is not None:
+                        market_dataset["exchanges"].append(exchange_dict)
 
             processed_datasets.extend(regionalized_datasets.values())
 
@@ -485,38 +497,14 @@ class Interventions(BaseTransformation):
                             continue
 
                         supplier = suppliers[0]
+                        share = shares.sel(technology=treatment_type)
 
-                        amount_mean = -1 * shares.sel(technology=treatment_type)[
-                            "mean"
-                        ].values.item(0)
-                        amount_max = -1 * shares.sel(technology=treatment_type)[
-                            "min"
-                        ].values.item(0)
-                        amount_min = -1 * shares.sel(technology=treatment_type)[
-                            "max"
-                        ].values.item(0)
+                        exchange_dict = get_updated_exchange(f"{treatment_type} in {region}", share, supplier=supplier)
 
-                        if amount_min > amount_mean or amount_max < amount_mean:
-                            print(
-                                f"[Interventions] Amounts for {treatment_type} in {region} are inconsistent: "
-                                f"mean={amount_mean}, min={amount_min}, max={amount_max}"
-                            )
-                            continue
+                        if exchange_dict is not None:
+                            market_ds["exchanges"].append(exchange_dict)
 
-                        market_ds["exchanges"].append(
-                            {
-                                "type": "technosphere",
-                                "name": supplier["name"],
-                                "product": supplier["reference product"],
-                                "amount": amount_mean,
-                                "unit": supplier["unit"],
-                                "location": supplier["location"],
-                                "uncertainty type": 5,
-                                "loc": amount_mean,
-                                "minimum": amount_min,
-                                "maximum": amount_max,
-                            }
-                        )
+                        market_ds["exchanges"].append(exchange_dict)
 
                 processed_datasets.extend(regionalized_datasets.values())
 
@@ -563,51 +551,18 @@ class Interventions(BaseTransformation):
                         == "copper scrap, sorted, pressed, Recycled Content cut-off"
                         and exc["product"] == "copper scrap, sorted, pressed"
                     ):
-                        mean = scrap_amounts["mean"].item() * -1
-                        minimum = scrap_amounts["max"].item() * -1
-                        maximum = scrap_amounts["min"].item() * -1
+                        exchange_dict = get_updated_exchange(f"{act['name']} in {act['location']}", scrap_amounts)
 
-                        if minimum > mean or maximum < mean:
-                            print(
-                                f"[Interventions] Amounts for {act['name']} in {act['location']} are inconsistent: "
-                                f"mean={mean}, min={minimum}, max={maximum}"
-                            )
-                            continue
-
-                        exc.update(
-                            {
-                                "amount": scrap_amounts["mean"].item() * -1,
-                                "uncertainty type": 5,
-                                "loc": scrap_amounts["mean"].item() * -1,
-                                "minimum": scrap_amounts["max"].item() * -1,
-                                "maximum": scrap_amounts["min"].item() * -1,
-                            }
-                        )
+                        if exchange_dict is not None:
+                            exc.update(exchange_dict)
 
                     elif exc["name"].startswith("market for bottom ash") and exc[
                         "product"
                     ].startswith("bottom ash"):
+                        exchange_dict = get_updated_exchange(f"{act['name']} in {act['location']}", ash_amounts)
 
-                        mean = ash_amounts["mean"].item() * -1
-                        minimum = ash_amounts["max"].item() * -1
-                        maximum = ash_amounts["min"].item() * -1
-
-                        if minimum > mean or maximum < mean:
-                            print(
-                                f"[Interventions] Amounts for {act['name']} in {act['location']} are inconsistent: "
-                                f"mean={mean}, min={minimum}, max={maximum}"
-                            )
-                            continue
-
-                        exc.update(
-                            {
-                                "amount": ash_amounts["mean"].item() * -1,
-                                "uncertainty type": 5,
-                                "loc": ash_amounts["mean"].item() * -1,
-                                "minimum": ash_amounts["max"].item() * -1,
-                                "maximum": ash_amounts["min"].item() * -1,
-                            }
-                        )
+                        if exchange_dict is not None:
+                            exc.update(exchange_dict)
 
             self.write_log(act, "[Interventions] Updated copper treatment")
 
@@ -660,26 +615,10 @@ class Interventions(BaseTransformation):
                             data = data.dropna("year", how="all")
                             share = data.interp(year=year)
 
-                            mean = share["mean"].item() * -1
-                            minimum = share["max"].item() * -1
-                            maximum = share["min"].item() * -1
+                            exchange_dict = get_updated_exchange(f"{act['name']} in {act['location']}", share)
+                            if exchange_dict is not None:
+                                exc.update(exchange_dict)
 
-                            if minimum > mean or maximum < mean:
-                                print(
-                                    f"[Interventions] Amounts for {act['name']} in {act['location']} are inconsistent: "
-                                    f"mean={mean}, min={minimum}, max={maximum}"
-                                )
-                                continue
-
-                            exc.update(
-                                {
-                                    "amount": share["mean"].item(),
-                                    "uncertainty type": 5,
-                                    "loc": share["mean"].item(),
-                                    "minimum": share["min"].item(),
-                                    "maximum": share["max"].item(),
-                                }
-                            )
                         except KeyError:
                             print(
                                 f"[Interventions] No data for {tech} in {target_region} at year {year}"
@@ -738,26 +677,9 @@ class Interventions(BaseTransformation):
                                 data = data.dropna("year", how="all")
                                 share = data.interp(year=year)
 
-                                mean = share["mean"].item() * -1
-                                minimum = share["max"].item() * -1
-                                maximum = share["min"].item() * -1
-
-                                if minimum > mean or maximum < mean:
-                                    print(
-                                        f"[Interventions] Amounts for {act['name']} in {act['location']} are inconsistent: "
-                                        f"mean={mean}, min={minimum}, max={maximum}"
-                                    )
-                                    continue
-
-                                exc.update(
-                                    {
-                                        "amount": share["mean"].item(),
-                                        "uncertainty type": 5,
-                                        "loc": share["mean"].item(),
-                                        "minimum": share["min"].item(),
-                                        "maximum": share["max"].item(),
-                                    }
-                                )
+                                exchange_dict = get_updated_exchange(f"{act['name']} in {act['location']}", share)
+                                if exchange_dict is not None:
+                                    exc.update(exchange_dict)
                             except KeyError:
                                 print(
                                     f"[Interventions] No data for {tech} in {target_region} at year {year}"
@@ -825,26 +747,9 @@ class Interventions(BaseTransformation):
                                 data = data.dropna("year", how="all")
                                 share = data.interp(year=year)
 
-                                mean = share["mean"].item() * -1
-                                minimum = share["max"].item() * -1
-                                maximum = share["min"].item() * -1
-
-                                if minimum > mean or maximum < mean:
-                                    print(
-                                        f"[Interventions] Amounts for {act['name']} in {act['location']} are inconsistent: "
-                                        f"mean={mean}, min={minimum}, max={maximum}"
-                                    )
-                                    continue
-
-                                exc.update(
-                                    {
-                                        "amount": share["mean"].item(),
-                                        "uncertainty type": 5,
-                                        "loc": share["mean"].item(),
-                                        "minimum": share["min"].item(),
-                                        "maximum": share["max"].item(),
-                                    }
-                                )
+                                exchange_dict = get_updated_exchange(f"{act['name']} in {act['location']}", share)
+                                if exchange_dict is not None:
+                                    exc.update(exchange_dict)
                             except KeyError:
                                 print(
                                     f"[Interventions] No data for {tech} in {target_region} at year {year}"
@@ -903,26 +808,9 @@ class Interventions(BaseTransformation):
                                 data = data.dropna("year", how="all")
                                 share = data.interp(year=year)
 
-                                mean = share["mean"].item() * -1
-                                minimum = share["max"].item() * -1
-                                maximum = share["min"].item() * -1
-
-                                if minimum > mean or maximum < mean:
-                                    print(
-                                        f"[Interventions] Amounts for {act['name']} in {act['location']} are inconsistent: "
-                                        f"mean={mean}, min={minimum}, max={maximum}"
-                                    )
-                                    continue
-
-                                exc.update(
-                                    {
-                                        "amount": share["mean"].item(),
-                                        "uncertainty type": 5,
-                                        "loc": share["mean"].item(),
-                                        "minimum": share["min"].item(),
-                                        "maximum": share["max"].item(),
-                                    }
-                                )
+                                exchange_dict = get_updated_exchange(f"{act['name']} in {act['location']}", share)
+                                if exchange_dict is not None:
+                                    exc.update(exchange_dict)
                             except KeyError:
                                 print(
                                     f"[Interventions] No data for {tech} in {target_region} at year {year}"

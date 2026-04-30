@@ -1,0 +1,17 @@
+scenario;region;year;technology;min;mean;max
+frozen;EUR;2020;brake wear - antimony;1.580e-02;1.580e-02;1.580e-02
+frozen;EUR;2050;brake wear - antimony;1.580e-02;1.580e-02;1.580e-02
+frozen;GLO;2020;brake wear - antimony;1.580e-02;1.580e-02;1.580e-02
+frozen;GLO;2050;brake wear - antimony;1.580e-02;1.580e-02;1.580e-02
+frozen;EUR;2020;brake wear - copper;8.100e-02;8.100e-02;8.100e-02
+frozen;EUR;2050;brake wear - copper;8.100e-02;8.100e-02;8.100e-02
+frozen;GLO;2020;brake wear - copper;8.100e-02;8.100e-02;8.100e-02
+frozen;GLO;2050;brake wear - copper;8.100e-02;8.100e-02;8.100e-02
+intervention;EUR;2020;brake wear - antimony;1.580e-02;1.580e-02;1.580e-02
+intervention;EUR;2020;brake wear - copper;8.100e-02;8.100e-02;8.100e-02
+intervention;EUR;2050;brake wear - antimony;4.000e-04;4.933e-04;6.000e-04
+intervention;EUR;2050;brake wear - copper;2.000e-03;2.533e-03;3.000e-03
+intervention;GLO;2020;brake wear - antimony;1.580e-02;1.580e-02;1.580e-02
+intervention;GLO;2020;brake wear - copper;8.100e-02;8.100e-02;8.100e-02
+intervention;GLO;2050;brake wear - antimony;4.000e-04;4.933e-04;6.000e-04
+intervention;GLO;2050;brake wear - copper;2.000e-03;2.533e-03;3.000e-03

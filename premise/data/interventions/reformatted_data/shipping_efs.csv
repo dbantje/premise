@@ -1,0 +1,9 @@
+scenario;region;year;technology;min;mean;max
+frozen;EUR;2020;Nitrogen oxides;1.913e-03;1.913e-03;1.913e-03
+frozen;EUR;2050;Nitrogen oxides;1.913e-03;1.913e-03;1.913e-03
+frozen;GLO;2020;Nitrogen oxides;1.913e-03;1.913e-03;1.913e-03
+frozen;GLO;2050;Nitrogen oxides;1.913e-03;1.913e-03;1.913e-03
+intervention;EUR;2020;Nitrogen oxides;1.913e-03;1.913e-03;1.913e-03
+intervention;EUR;2050;Nitrogen oxides;6.000e-04;8.000e-04;1.000e-03
+intervention;GLO;2020;Nitrogen oxides;1.913e-03;1.913e-03;1.913e-03
+intervention;GLO;2050;Nitrogen oxides;8.000e-04;1.000e-03;1.200e-03
