@@ -422,6 +422,63 @@ def interpolate_by_year(target_year: int, data: dict) -> float:
             if y0 < target_year < y1:
                 v0, v1 = data[y0], data[y1]
                 return v0 + (v1 - v0) * (target_year - y0) / (y1 - y0)
+            
+
+def normalize_values(args, logger, metal_key):
+    """
+    Normalize shares so that they sum to 1.
+    """
+    if any(arg < 0 for arg in args):    
+        raise ValueError("Shares cannot be negative.")
+    total = sum(args)
+    if total == 0:
+        return [0 for _ in args]
+    elif total > 1:
+        logger.warning(
+            f"[Metals] WARNING: Total shares for {metal_key} exceed 1: {total}. Normalizing."
+        )
+        return [arg / total for arg in args]
+    else:
+        return args
+    
+
+def normalize_shares(args, logger, metal_key):
+    """
+    Normalize shares so that they sum to 1.
+    """
+    if all(isinstance(arg, float) for arg in args):
+        return normalize_values(args, logger, metal_key)
+    elif all(isinstance(arg, dict) for arg in args):
+        shares = args.copy()
+        for k in ["mean", "min", "max"]:
+            values = [arg[k] for arg in args]
+            normalized_values = normalize_values(values, logger, metal_key)
+            for i, v in enumerate(normalized_values):
+                shares[i][k] = v
+        return shares
+    else:
+        raise ValueError("Invalid argument types for normalize_shares.")
+
+
+def scale_exchange_with_share(exchange, share, base_amount):
+    """
+    Scale the amount of an exchange by a given share.
+    """
+    if isinstance(share, dict):
+        exchange.update(
+            {
+                "uncertainty type": 5,
+                "loc": base_amount * share["mean"],
+                "minimum": base_amount * share["min"],
+                "maximum": base_amount * share["max"],
+                "amount": base_amount * share["mean"]
+            }
+        )
+    elif isinstance(share, (int, float)):
+        exchange["amount"] = base_amount * share
+        exchange["uncertainty type"] = 0  # no uncertainty
+    else:
+        raise ValueError("Share must be either a float or a dict with 'mean', 'min', and 'max'.")
 
 
 class Metals(BaseTransformation):
@@ -1010,7 +1067,7 @@ class Metals(BaseTransformation):
         # add mining exchanges
         # dataset["exchanges"].extend(self.create_region_specific_markets(df))
         for exc in primary_exchanges:
-            exc["amount"] *= p_share
+            scale_exchange_with_share(exc, p_share, exc["amount"])
         dataset["exchanges"].extend(primary_exchanges)
 
         # Add burden-free secondary market exchange
@@ -1023,7 +1080,7 @@ class Metals(BaseTransformation):
         # add transport exchanges
         trspt_exc = self.add_transport_to_market(dataset, metal)
         for exc in trspt_exc:
-            exc["amount"] *= p_share
+            scale_exchange_with_share(exc, p_share, exc["amount"])
         if len(trspt_exc) > 0:
             dataset["exchanges"].extend(trspt_exc)
 
@@ -1315,18 +1372,13 @@ class Metals(BaseTransformation):
 
         p = interpolate_by_year(self.year, entry["shares"]["primary"])
         s = interpolate_by_year(self.year, entry["shares"]["secondary"])
-        total = p + s
-
-        if total > 1:
-            logger.warning(
-                f"[Metals] WARNING: Total shares for {metal_key} exceed 1: {total}. Normalizing."
-            )
+        p, s = normalize_shares([p, s], logger, metal_key)
 
         return (
             name,
             reference_product,
-            p / total if total > 0 else 0,  # Avoid division by zero
-            s / total if total > 0 else 0,  # Avoid division by zero
+            p,
+            s,
         )
 
     def build_secondary_market_exchanges(self, metal: str, s_share: float) -> list:
@@ -1341,6 +1393,8 @@ class Metals(BaseTransformation):
             if entry:
                 try:
                     s = interpolate_by_year(self.year, entry["shares"]["secondary"])
+                    if isinstance(s, dict):
+                        s = s.get("mean", 0)
                     if s > 0:
                         logger.warning(
                             f"[Metals] Missing secondary supply activities for '{metal}' "
@@ -1399,19 +1453,15 @@ class Metals(BaseTransformation):
 
             ds = candidates[0]
 
-            exchanges.append(
-                {
-                    "name": ds["name"],
-                    "product": ds["reference product"],
-                    "location": ds["location"],
-                    "amount": s_share
-                    * (
-                        share / total_relative_share
-                    ),  # Normalize by total relative share
-                    "type": "technosphere",
-                    "unit": ds["unit"],
-                }
-            )
+            exchange_dict = {
+                "name": ds["name"],
+                "product": ds["reference product"],
+                "location": ds["location"],
+                "type": "technosphere",
+                "unit": ds["unit"],
+            }
+            scale_exchange_with_share(exchange_dict, s_share, share / total_relative_share)
+            exchanges.append(exchange_dict)
 
         return exchanges
 
