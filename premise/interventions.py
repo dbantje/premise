@@ -165,7 +165,7 @@ def get_updated_exchange(context, share, supplier=None):
                 "type": "technosphere",
                 "name": supplier["name"],
                 "product": supplier["reference product"],
-                "amount": -1 * mean,
+                "location": supplier["location"],
                 "unit": supplier["unit"],
             }
         )
@@ -173,18 +173,18 @@ def get_updated_exchange(context, share, supplier=None):
     if minimum == maximum == mean:
         exchange_dict.update(
             {
-                "amount": mean,
+                "amount": mean * -1,
                 "uncertainty type": 0,
             }
         )
     else:
         exchange_dict.update(
             {
-                "amount": mean,
+                "amount": mean * -1,
                 "uncertainty type": 5,
-                "loc": mean,
-                "minimum": minimum,
-                "maximum": maximum,
+                "loc": mean * -1,
+                "minimum": minimum * -1,
+                "maximum": maximum * -1,
             }
         )
 
