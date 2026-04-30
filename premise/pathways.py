@@ -41,6 +41,7 @@ class PathwaysDataPackage:
         shares_adjustments: dict = {},
         intervention_scenarios: dict = {},
         use_absolute_efficiency=False,
+        keep_source_db_uncertainty=False,
         biosphere_name="biosphere3",
         generate_reports: bool = True,
     ):
@@ -82,6 +83,7 @@ class PathwaysDataPackage:
             use_absolute_efficiency=use_absolute_efficiency,
             biosphere_name=biosphere_name,
             generate_reports=generate_reports,
+            keep_source_db_uncertainty=keep_source_db_uncertainty,
         )
 
         self.scenario_names = []
