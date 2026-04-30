@@ -2758,18 +2758,33 @@ class MetalsValidation(BaseDatasetValidator):
             for year in data["shares"]["primary"]:
                 primary = data["shares"]["primary"].get(year, 0)
                 secondary = data["shares"]["secondary"].get(year, 0)
-                total = primary + secondary
-                if not np.isclose(total, 1.0, rtol=1e-3):
-                    message = (
-                        f"Metal {metal} shares for year {year} do not sum to 1: "
-                        f"primary={primary}, secondary={secondary}, total={total}."
-                    )
-                    self.log_issue(
-                        {"name": metal, "year": year},
-                        "metal shares do not sum to 1",
-                        message,
-                        issue_type="major",
-                    )
+                if isinstance(primary, dict) and isinstance(secondary, dict):
+                    for k in ["mean", "min", "max"]:
+                        total = primary[k] + secondary[k]
+                        if not np.isclose(total, 1.0, rtol=1e-3):
+                            message = (
+                                f"Metal {metal} shares for year {year} do not sum to 1: "
+                                f"primary={primary}, secondary={secondary}, total={total}."
+                            )
+                            self.log_issue(
+                                {"name": metal, "year": year},
+                                "metal shares do not sum to 1",
+                                message,
+                                issue_type="major",
+                            )
+                else:
+                    total = primary + secondary
+                    if not np.isclose(total, 1.0, rtol=1e-3):
+                        message = (
+                            f"Metal {metal} shares for year {year} do not sum to 1: "
+                            f"primary={primary}, secondary={secondary}, total={total}."
+                        )
+                        self.log_issue(
+                            {"name": metal, "year": year},
+                            "metal shares do not sum to 1",
+                            message,
+                            issue_type="major",
+                        )
 
     def check_interpolation(self):
         """
