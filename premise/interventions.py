@@ -30,14 +30,30 @@ EAF_SLAG_CONFIG_FILE = DATA_DIR / "interventions" / "EAF_slag_activities.yaml"
 BOF_SLAG_CONFIG_FILE = DATA_DIR / "interventions" / "BOF_slag_activities.yaml"
 COPPER_CONFIG_FILE = DATA_DIR / "interventions" / "copper_recovery_activities.yaml"
 BRAKE_WEAR_CONFIG_FILE = DATA_DIR / "interventions" / "brake_wear_activities.yaml"
-TAILINGS_DATA_FILE = DATA_DIR / "interventions" / "reformatted_data" / "tailings_shares.csv"
-EAF_SLAG_DATA_FILE = DATA_DIR / "interventions" / "reformatted_data" / "EAF_slag_shares.csv"
-BOF_SLAG_DATA_FILE = DATA_DIR / "interventions" / "reformatted_data" / "BOF_slag_shares.csv"
-COPPER_DATA_FILE = DATA_DIR / "interventions" / "reformatted_data" / "copper_recovery_volumes.csv"
-BRAKE_WEAR_DATA_FILE = DATA_DIR / "interventions" / "reformatted_data" / "brake_wear_efs.csv"
-SMELTING_DATA_FILE = DATA_DIR / "interventions" / "reformatted_data" / "smelting_efs.csv"
-WOODSTOVES_DATA_FILE = DATA_DIR / "interventions" / "reformatted_data" / "woodstoves_efs.csv"
-SHIPPING_DATA_FILE = DATA_DIR / "interventions" / "reformatted_data" / "shipping_efs.csv"
+TAILINGS_DATA_FILE = (
+    DATA_DIR / "interventions" / "reformatted_data" / "tailings_shares.csv"
+)
+EAF_SLAG_DATA_FILE = (
+    DATA_DIR / "interventions" / "reformatted_data" / "EAF_slag_shares.csv"
+)
+BOF_SLAG_DATA_FILE = (
+    DATA_DIR / "interventions" / "reformatted_data" / "BOF_slag_shares.csv"
+)
+COPPER_DATA_FILE = (
+    DATA_DIR / "interventions" / "reformatted_data" / "copper_recovery_volumes.csv"
+)
+BRAKE_WEAR_DATA_FILE = (
+    DATA_DIR / "interventions" / "reformatted_data" / "brake_wear_efs.csv"
+)
+SMELTING_DATA_FILE = (
+    DATA_DIR / "interventions" / "reformatted_data" / "smelting_efs.csv"
+)
+WOODSTOVES_DATA_FILE = (
+    DATA_DIR / "interventions" / "reformatted_data" / "woodstoves_efs.csv"
+)
+SHIPPING_DATA_FILE = (
+    DATA_DIR / "interventions" / "reformatted_data" / "shipping_efs.csv"
+)
 
 
 def _update_interventions(scenario, version, system_model, intervention_scenarios):
@@ -141,7 +157,7 @@ def get_updated_exchange(context, share, supplier=None):
             f"mean={mean}, min={minimum}, max={maximum}"
         )
         return None
-    
+
     exchange_dict = {}
     if supplier:
         exchange_dict.update(
@@ -153,7 +169,7 @@ def get_updated_exchange(context, share, supplier=None):
                 "unit": supplier["unit"],
             }
         )
-    
+
     if minimum == maximum == mean:
         exchange_dict.update(
             {
@@ -352,7 +368,9 @@ class Interventions(BaseTransformation):
                     supplier = supplier[0]
                     share = shares.sel(technology=waste_management_type)
 
-                    exchange_dict = get_updated_exchange(f"{waste_management_type} in {region}", share, supplier=supplier)
+                    exchange_dict = get_updated_exchange(
+                        f"{waste_management_type} in {region}", share, supplier=supplier
+                    )
                     if exchange_dict is not None:
                         market_dataset["exchanges"].append(exchange_dict)
 
@@ -499,7 +517,9 @@ class Interventions(BaseTransformation):
                         supplier = suppliers[0]
                         share = shares.sel(technology=treatment_type)
 
-                        exchange_dict = get_updated_exchange(f"{treatment_type} in {region}", share, supplier=supplier)
+                        exchange_dict = get_updated_exchange(
+                            f"{treatment_type} in {region}", share, supplier=supplier
+                        )
 
                         if exchange_dict is not None:
                             market_ds["exchanges"].append(exchange_dict)
@@ -551,7 +571,9 @@ class Interventions(BaseTransformation):
                         == "copper scrap, sorted, pressed, Recycled Content cut-off"
                         and exc["product"] == "copper scrap, sorted, pressed"
                     ):
-                        exchange_dict = get_updated_exchange(f"{act['name']} in {act['location']}", scrap_amounts)
+                        exchange_dict = get_updated_exchange(
+                            f"{act['name']} in {act['location']}", scrap_amounts
+                        )
 
                         if exchange_dict is not None:
                             exc.update(exchange_dict)
@@ -559,7 +581,9 @@ class Interventions(BaseTransformation):
                     elif exc["name"].startswith("market for bottom ash") and exc[
                         "product"
                     ].startswith("bottom ash"):
-                        exchange_dict = get_updated_exchange(f"{act['name']} in {act['location']}", ash_amounts)
+                        exchange_dict = get_updated_exchange(
+                            f"{act['name']} in {act['location']}", ash_amounts
+                        )
 
                         if exchange_dict is not None:
                             exc.update(exchange_dict)
@@ -615,7 +639,9 @@ class Interventions(BaseTransformation):
                             data = data.dropna("year", how="all")
                             share = data.interp(year=year)
 
-                            exchange_dict = get_updated_exchange(f"{act['name']} in {act['location']}", share)
+                            exchange_dict = get_updated_exchange(
+                                f"{act['name']} in {act['location']}", share
+                            )
                             if exchange_dict is not None:
                                 exc.update(exchange_dict)
 
@@ -677,7 +703,9 @@ class Interventions(BaseTransformation):
                                 data = data.dropna("year", how="all")
                                 share = data.interp(year=year)
 
-                                exchange_dict = get_updated_exchange(f"{act['name']} in {act['location']}", share)
+                                exchange_dict = get_updated_exchange(
+                                    f"{act['name']} in {act['location']}", share
+                                )
                                 if exchange_dict is not None:
                                     exc.update(exchange_dict)
                             except KeyError:
@@ -747,7 +775,9 @@ class Interventions(BaseTransformation):
                                 data = data.dropna("year", how="all")
                                 share = data.interp(year=year)
 
-                                exchange_dict = get_updated_exchange(f"{act['name']} in {act['location']}", share)
+                                exchange_dict = get_updated_exchange(
+                                    f"{act['name']} in {act['location']}", share
+                                )
                                 if exchange_dict is not None:
                                     exc.update(exchange_dict)
                             except KeyError:
@@ -808,7 +838,9 @@ class Interventions(BaseTransformation):
                                 data = data.dropna("year", how="all")
                                 share = data.interp(year=year)
 
-                                exchange_dict = get_updated_exchange(f"{act['name']} in {act['location']}", share)
+                                exchange_dict = get_updated_exchange(
+                                    f"{act['name']} in {act['location']}", share
+                                )
                                 if exchange_dict is not None:
                                     exc.update(exchange_dict)
                             except KeyError:
