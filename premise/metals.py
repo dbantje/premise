@@ -422,13 +422,13 @@ def interpolate_by_year(target_year: int, data: dict) -> float:
             if y0 < target_year < y1:
                 v0, v1 = data[y0], data[y1]
                 return v0 + (v1 - v0) * (target_year - y0) / (y1 - y0)
-            
+
 
 def normalize_values(args, logger, metal_key):
     """
     Normalize shares so that they sum to 1.
     """
-    if any(arg < 0 for arg in args):    
+    if any(arg < 0 for arg in args):
         raise ValueError("Shares cannot be negative.")
     total = sum(args)
     if total == 0:
@@ -440,7 +440,7 @@ def normalize_values(args, logger, metal_key):
         return [arg / total for arg in args]
     else:
         return args
-    
+
 
 def normalize_shares(args, logger, metal_key):
     """
@@ -471,14 +471,16 @@ def scale_exchange_with_share(exchange, share, base_amount):
                 "loc": base_amount * share["mean"],
                 "minimum": base_amount * share["min"],
                 "maximum": base_amount * share["max"],
-                "amount": base_amount * share["mean"]
+                "amount": base_amount * share["mean"],
             }
         )
     elif isinstance(share, (int, float)):
         exchange["amount"] = base_amount * share
         exchange["uncertainty type"] = 0  # no uncertainty
     else:
-        raise ValueError("Share must be either a float or a dict with 'mean', 'min', and 'max'.")
+        raise ValueError(
+            "Share must be either a float or a dict with 'mean', 'min', and 'max'."
+        )
 
 
 class Metals(BaseTransformation):
@@ -1460,7 +1462,9 @@ class Metals(BaseTransformation):
                 "type": "technosphere",
                 "unit": ds["unit"],
             }
-            scale_exchange_with_share(exchange_dict, s_share, share / total_relative_share)
+            scale_exchange_with_share(
+                exchange_dict, s_share, share / total_relative_share
+            )
             exchanges.append(exchange_dict)
 
         return exchanges
