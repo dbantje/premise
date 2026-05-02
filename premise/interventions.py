@@ -21,6 +21,7 @@ from .utils import DATA_DIR
 from .logger import create_logger
 from .geomap import Geomap
 from .activity_maps import InventorySet
+from prettytable import PrettyTable
 
 logger = create_logger("interventions")
 
@@ -55,6 +56,14 @@ SHIPPING_DATA_FILE = (
     DATA_DIR / "interventions" / "reformatted_data" / "shipping_efs.csv"
 )
 
+def print_exchange_table_comparison(old, new):
+    all_keys = list(set(old.keys()).union(set(new.keys())))
+    t = PrettyTable([""] + all_keys)
+    row1 = [old.get(k, "") for k in all_keys]
+    row2 = [new.get(k, "") for k in all_keys]
+    t.add_row(["old"] + row1)
+    t.add_row(["updated"] + row2)
+    print(t)
 
 def _update_interventions(scenario, version, system_model, intervention_scenarios):
     """
@@ -76,7 +85,7 @@ def _update_interventions(scenario, version, system_model, intervention_scenario
     interventions.update_tailings_treatment()
     interventions.update_slag_treatment()
     interventions.update_copper_treatment()
-    interventions.update_brake_wear()
+    # interventions.update_brake_wear()
     interventions.update_smelting()
     interventions.update_woodstoves()
     interventions.update_shipping()
@@ -146,18 +155,7 @@ def group_dicts_by_keys(dicts: list, keys: list):
     return list(groups.values())
 
 
-def get_updated_exchange(context, share, supplier=None):
-    mean = share["mean"].item()
-    minimum = share["min"].item()
-    maximum = share["max"].item()
-
-    if minimum > mean or maximum < mean:
-        print(
-            f"[Interventions] Amounts for {context} are inconsistent: "
-            f"mean={mean}, min={minimum}, max={maximum}"
-        )
-        return None
-
+def get_updated_exchange(share, context, uncertainty_type=0, negative=False, supplier=None):
     exchange_dict = {}
     if supplier:
         exchange_dict.update(
@@ -170,23 +168,41 @@ def get_updated_exchange(context, share, supplier=None):
             }
         )
 
-    if minimum == maximum == mean:
+    mean = share["mean"].item()
+    factor = -1 if negative else 1
+
+    if uncertainty_type == 5:
+        minimum = share["min"].item() 
+        maximum = share["max"].item()
+        if minimum > mean or maximum < mean:
+            print(
+                f"[Interventions] Amounts for {context} are inconsistent: "
+                f"mean={mean}, min={minimum}, max={maximum}"
+            )
+            return None
+        else:
+            if negative:
+                minimum, maximum = -maximum, -minimum
+            exchange_dict.update(
+                {
+                    "amount": mean * factor,
+                    "uncertainty type": 5,
+                    "loc": mean * factor,
+                    "minimum": minimum * factor,
+                    "maximum": maximum * factor,
+                }
+            )
+    elif uncertainty_type == 0:
         exchange_dict.update(
             {
-                "amount": mean * -1,
+                "amount": mean * factor,
+                "loc": mean * factor,
                 "uncertainty type": 0,
             }
         )
     else:
-        exchange_dict.update(
-            {
-                "amount": mean * -1,
-                "uncertainty type": 5,
-                "loc": mean * -1,
-                "minimum": minimum * -1,
-                "maximum": maximum * -1,
-            }
-        )
+        print(f"[Interventions] Unsupported uncertainty type {uncertainty_type} for {context}")
+        return None
 
     return exchange_dict
 
@@ -204,6 +220,7 @@ class Interventions(BaseTransformation):
         cache: dict = None,
         index: dict = None,
         intervention_scenarios: dict = {},
+        print_changes: bool = False,
     ):
         super().__init__(
             database,
@@ -266,6 +283,13 @@ class Interventions(BaseTransformation):
         self.copper_map = inv.generate_copper_waste_map()
         self.brake_wear_map = inv.generate_brake_wear_map()
 
+    def get_uncertainty_type(self, intervention):
+        if (self.intervention_scenarios.get(intervention, "frozen") == "frozen" or 
+            self.year == 2020):
+            return 0
+        else:
+            return 5
+        
     def update_tailings_treatment(self):
 
         self.process_and_add_activities(
@@ -369,9 +393,12 @@ class Interventions(BaseTransformation):
                     share = shares.sel(technology=waste_management_type)
 
                     exchange_dict = get_updated_exchange(
-                        f"{waste_management_type} in {region}", share, supplier=supplier
+                        share, f"{waste_management_type} in {region}", supplier=supplier,
+                        uncertainty_type=self.get_uncertainty_type("tailings"), negative=True
                     )
                     if exchange_dict is not None:
+                        if self.print_changes:
+                            self.print_exchange_table_comparison({}, exchange_dict)
                         market_dataset["exchanges"].append(exchange_dict)
 
             processed_datasets.extend(regionalized_datasets.values())
@@ -518,13 +545,14 @@ class Interventions(BaseTransformation):
                         share = shares.sel(technology=treatment_type)
 
                         exchange_dict = get_updated_exchange(
-                            f"{treatment_type} in {region}", share, supplier=supplier
+                            share, f"{treatment_type} in {region}", supplier=supplier,
+                            uncertainty_type=self.get_uncertainty_type("slags"), negative=True
                         )
 
                         if exchange_dict is not None:
                             market_ds["exchanges"].append(exchange_dict)
-
-                        market_ds["exchanges"].append(exchange_dict)
+                            if self.print_changes:
+                                self.print_exchange_table_comparison({}, exchange_dict)
 
                 processed_datasets.extend(regionalized_datasets.values())
 
@@ -572,21 +600,27 @@ class Interventions(BaseTransformation):
                         and exc["product"] == "copper scrap, sorted, pressed"
                     ):
                         exchange_dict = get_updated_exchange(
-                            f"{act['name']} in {act['location']}", scrap_amounts
+                             scrap_amounts, f"{act['name']} in {act['location']}",
+                             uncertainty_type=self.get_uncertainty_type("copper"), negative=True
                         )
 
                         if exchange_dict is not None:
                             exc.update(exchange_dict)
+                            if self.print_changes:
+                                self.print_exchange_table_comparison(exc, exchange_dict)
 
                     elif exc["name"].startswith("market for bottom ash") and exc[
                         "product"
                     ].startswith("bottom ash"):
                         exchange_dict = get_updated_exchange(
-                            f"{act['name']} in {act['location']}", ash_amounts
+                            ash_amounts, f"{act['name']} in {act['location']}",
+                            uncertainty_type=self.get_uncertainty_type("copper"), negative=True
                         )
 
                         if exchange_dict is not None:
                             exc.update(exchange_dict)
+                            if self.print_changes:
+                                self.print_exchange_table_comparison(exc, exchange_dict)
 
             self.write_log(act, "[Interventions] Updated copper treatment")
 
@@ -640,10 +674,13 @@ class Interventions(BaseTransformation):
                             share = data.interp(year=year)
 
                             exchange_dict = get_updated_exchange(
-                                f"{act['name']} in {act['location']}", share
+                                share, f"{act['name']} in {act['location']}",
+                                uncertainty_type=self.get_uncertainty_type("copper"), negative=True
                             )
                             if exchange_dict is not None:
                                 exc.update(exchange_dict)
+                                if self.print_changes:
+                                    self.print_exchange_table_comparison(exc, exchange_dict)
 
                         except KeyError:
                             print(
@@ -704,10 +741,13 @@ class Interventions(BaseTransformation):
                                 share = data.interp(year=year)
 
                                 exchange_dict = get_updated_exchange(
-                                    f"{act['name']} in {act['location']}", share
+                                    share, f"{act['name']} in {act['location']}",
+                                    uncertainty_type=self.get_uncertainty_type("smelting"),
                                 )
                                 if exchange_dict is not None:
                                     exc.update(exchange_dict)
+                                    if self.print_changes:
+                                        self.print_exchange_table_comparison(exc, exchange_dict)
                             except KeyError:
                                 print(
                                     f"[Interventions] No data for {tech} in {target_region} at year {year}"
@@ -776,10 +816,13 @@ class Interventions(BaseTransformation):
                                 share = data.interp(year=year)
 
                                 exchange_dict = get_updated_exchange(
-                                    f"{act['name']} in {act['location']}", share
+                                    share, f"{act['name']} in {act['location']}",
+                                    uncertainty_type=self.get_uncertainty_type("woodstoves")
                                 )
                                 if exchange_dict is not None:
                                     exc.update(exchange_dict)
+                                    if self.print_changes:
+                                        self.print_exchange_table_comparison(exc, exchange_dict)
                             except KeyError:
                                 print(
                                     f"[Interventions] No data for {tech} in {target_region} at year {year}"
@@ -839,10 +882,13 @@ class Interventions(BaseTransformation):
                                 share = data.interp(year=year)
 
                                 exchange_dict = get_updated_exchange(
-                                    f"{act['name']} in {act['location']}", share
+                                    share, f"{act['name']} in {act['location']}",
+                                    uncertainty_type=self.get_uncertainty_type("shipping")
                                 )
                                 if exchange_dict is not None:
                                     exc.update(exchange_dict)
+                                    if self.print_changes:
+                                        self.print_exchange_table_comparison(exc, exchange_dict)
                             except KeyError:
                                 print(
                                     f"[Interventions] No data for {tech} in {target_region} at year {year}"

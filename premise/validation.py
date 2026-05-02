@@ -345,6 +345,10 @@ class BaseDatasetValidator:
                                 )
                                 exc["loc"] = float(exc["amount"])
                             if exc["minimum"] > exc["loc"]:
+                                if "location" not in exc:
+                                    print(
+                                        f"'location' not found in exchange {exc['name']} in dataset {ds['name']}{ds['location']}"
+                                    )
                                 message = (
                                     f"Exchange {exc['name']} - {exc['location']} has a minimum value greater than the loc value."
                                     f"Min: {exc['minimum']}, Max: {exc['maximum']}, Loc: {exc['loc']}"
@@ -2881,6 +2885,8 @@ class MetalsValidation(BaseDatasetValidator):
 
             # Get primary share for this metal
             primary_share = self.get_primary_share_for_metal(metal)
+            if isinstance(primary_share, dict):
+                primary_share = primary_share.get("mean")
 
             # Compare for significant producers
             for country_long in country_totals_excel.index:
