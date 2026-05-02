@@ -472,6 +472,7 @@ def scale_exchange_with_share(exchange, share, base_amount):
             }
         )
     elif isinstance(share, (int, float)):
+        exchange["loc"] = base_amount * share
         exchange["amount"] = base_amount * share
         exchange["uncertainty type"] = 0  # no uncertainty
     else:
