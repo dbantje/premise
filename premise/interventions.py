@@ -242,6 +242,7 @@ class Interventions(BaseTransformation):
         self.year = int(year)
         self.geomap = Geomap(model)
         self.intervention_scenarios = intervention_scenarios
+        self.print_changes = print_changes
         self.tailings_shares = load_config(
             TAILINGS_DATA_FILE,
             model,
