@@ -399,13 +399,17 @@ def build_ws_filter(field: str, query: dict):
     return filters
 
 
+def year_interpolation(target_year: int, y0, y1, v0, v1) -> float:
+    return v0 + (v1 - v0) * (target_year - y0) / (y1 - y0)
+
+
 def interpolate_by_year(target_year: int, data: dict) -> float:
     """
     Interpolate (or extrapolate) a value for the given `target_year`
     from a dictionary like {2020: 0.1, 2030: 0.5, ...}.
     """
     data = {int(k): v for k, v in data.items()}
-    years = sorted(data)
+    years = sorted(data.keys())
 
     if target_year in years:
         return data[target_year]
@@ -418,8 +422,16 @@ def interpolate_by_year(target_year: int, data: dict) -> float:
             y0, y1 = years[i], years[i + 1]
             if y0 < target_year < y1:
                 v0, v1 = data[y0], data[y1]
-                return v0 + (v1 - v0) * (target_year - y0) / (y1 - y0)
-
+                if isinstance(v0, dict) and isinstance(v1, dict):
+                    interpolated = {}
+                    for k in v0.keys():
+                        interpolated[k] = year_interpolation(target_year, y0, y1, v0[k], v1[k])
+                    return interpolated
+                elif isinstance(v0, (int, float)) and isinstance(v1, (int, float)):
+                     return year_interpolation(target_year, y0, y1, v0, v1) 
+                else:
+                    raise ValueError(f"Inconsistent value types for years {y0} and {y1}: {v0} and {v1}")
+                
 
 def normalize_values(args, logger, metal_key):
     """
@@ -611,6 +623,7 @@ class Metals(BaseTransformation):
             for _, row in self.metals_transport.iterrows()
         }
 
+        self.adjusted_shares = shares_adjustments
         self.prim_sec_split = load_primary_secondary_split(shares_adjustments)
         self.secondary_activity_routes = load_secondary_activity_routes()
 
@@ -1063,6 +1076,7 @@ class Metals(BaseTransformation):
         }
 
         _, _, p_share, s_share = self.get_market_split_shares(metal)
+        print(f"Obtained market split shares for {metal} in year {self.year}:", p_share, s_share)
 
         # add mining exchanges
         # dataset["exchanges"].extend(self.create_region_specific_markets(df))
@@ -1343,9 +1357,9 @@ class Metals(BaseTransformation):
                 self.write_log(dataset, "created")
                 self.substitute_old_markets(new_dataset=dataset, df_metal=df_metal)
 
-    def get_market_split_shares(self, metal_key: str) -> tuple[str, str, float, float]:
+    def get_market_split_shares(self, metal_key: str) -> tuple[str, str, float | dict, float | dict]:
         """
-        For a given metal_key (e.g., 'copper, cathod'), return:
+        For a given metal_key (e.g., 'copper, cathode'), return:
         - market name
         - reference product
         - primary share (interpolated)
@@ -1372,6 +1386,11 @@ class Metals(BaseTransformation):
 
         p = interpolate_by_year(self.year, entry["shares"]["primary"])
         s = interpolate_by_year(self.year, entry["shares"]["secondary"])
+        if self.year == 2020 or (metal_key not in self.adjusted_shares):
+            if isinstance(p, dict) and isinstance(s, dict):
+                print(f"[Metals] Shares for {metal_key} have uncertainty but should not. Using mean.")
+                p = p.get("mean", 1.0)
+                s = s.get("mean", 0.0)
         p, s = normalize_shares([p, s], logger, metal_key)
 
         return (

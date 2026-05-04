@@ -2763,8 +2763,10 @@ class MetalsValidation(BaseDatasetValidator):
                 primary = data["shares"]["primary"].get(year, 0)
                 secondary = data["shares"]["secondary"].get(year, 0)
                 if isinstance(primary, dict) and isinstance(secondary, dict):
-                    for k in ["mean", "min", "max"]:
-                        total = primary[k] + secondary[k]
+                    totalA = primary["mean"] + secondary["mean"]
+                    totalB = primary["min"] + secondary["max"]
+                    totalC = primary["max"] + secondary["min"]
+                    for total in [totalA, totalB, totalC]:
                         if not np.isclose(total, 1.0, rtol=1e-3):
                             message = (
                                 f"Metal {metal} shares for year {year} do not sum to 1: "
