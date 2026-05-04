@@ -200,7 +200,12 @@ FILEPATH_BATTERY_CAPACITY = INVENTORY_DIR / "lci-battery-capacity.xlsx"
 FILEPATH_BIOCHAR = INVENTORY_DIR / "lci-biochar-spruce.xlsx"
 FILEPATH_ENHANCED_WEATHERING = INVENTORY_DIR / "lci-coastal-enhanced-weathering.xlsx"
 FILEPATH_OCEAN_LIMING = INVENTORY_DIR / "lci-ocean-liming.xlsx"
-FILEPATH_FINAL_ENERGY = INVENTORY_DIR / "lci-final-energy-fleets-global.xlsx"
+REGIONALIZED_FILEPATHS_FINAL_ENERGY = {
+    "default": INVENTORY_DIR / "lci-final-energy.xlsx",
+    "EU": INVENTORY_DIR / "lci-final-energy-fleets-EU.xlsx",
+    "DEU": INVENTORY_DIR / "lci-final-energy-fleets-DEU.xlsx",
+    "global": INVENTORY_DIR / "lci-final-energy-fleets-global.xlsx",
+}
 FILEPATH_SULFIDIC_TAILINGS = INVENTORY_DIR / "lci-sulfidic-tailings.xlsx"
 FILEPATH_SHIPS = INVENTORY_DIR / "lci-ships.xlsx"
 FILEPATH_STEEL = INVENTORY_DIR / "lci-steel.xlsx"
@@ -549,6 +554,7 @@ class NewDatabase:
         gains_baseyear: int = 2020,
         gains_masks: list = [],
         metals_scenario="default",
+        fleet_regionalization: str = "default",
         shares_adjustments: dict = {},
         intervention_scenarios: dict = {},
         use_absolute_efficiency=False,
@@ -617,13 +623,20 @@ class NewDatabase:
         self.gains_baseyear = gains_baseyear
         self.gains_masks = gains_masks
 
-        metals_scenario_options = ["default", "low", "central", "high"]
+        metals_scenario_options = ["default", "low", "central", "high", "intervention"]
         if metals_scenario not in metals_scenario_options:
             raise ValueError(f"metals_scenario must be in {metals_scenario_options}")
         self.metals_scenario = metals_scenario
 
         self.shares_adjustments = shares_adjustments
         self.intervention_scenarios = intervention_scenarios
+
+        fleet_regionalization_options = ["default", "EU", "global", "DEU"]
+        if fleet_regionalization not in fleet_regionalization_options:
+            raise ValueError(
+                f"fleet_regionalization must be in {fleet_regionalization_options}"
+            )
+        self.fleet_regionalization = fleet_regionalization
 
         if self.source_type == "ecospold":
             self.source_file_path = check_ei_filepath(source_file_path)
@@ -900,7 +913,11 @@ class NewDatabase:
             (FILEPATH_BIOCHAR, "3.10"),
             (FILEPATH_OCEAN_LIMING, "3.10"),
             (FILEPATH_ENHANCED_WEATHERING, "3.10"),
-            (FILEPATH_FINAL_ENERGY, "3.10"),
+            (
+                REGIONALIZED_FILEPATHS_FINAL_ENERGY.get(
+                    self.fleet_regionalization, REGIONALIZED_FILEPATHS_FINAL_ENERGY["default"]
+                    ),
+                "3.10"),
             (FILEPATH_SULFIDIC_TAILINGS, "3.8"),
             (FILEPATH_SHIPS, "3.10"),
             (FILEPATH_STEEL, "3.9"),
