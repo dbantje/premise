@@ -915,9 +915,11 @@ class NewDatabase:
             (FILEPATH_ENHANCED_WEATHERING, "3.10"),
             (
                 REGIONALIZED_FILEPATHS_FINAL_ENERGY.get(
-                    self.fleet_regionalization, REGIONALIZED_FILEPATHS_FINAL_ENERGY["default"]
-                    ),
-                "3.10"),
+                    self.fleet_regionalization,
+                    REGIONALIZED_FILEPATHS_FINAL_ENERGY["default"],
+                ),
+                "3.10",
+            ),
             (FILEPATH_SULFIDIC_TAILINGS, "3.8"),
             (FILEPATH_SHIPS, "3.10"),
             (FILEPATH_STEEL, "3.9"),
