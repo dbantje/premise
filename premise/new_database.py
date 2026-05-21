@@ -207,7 +207,7 @@ FILEPATH_OCEAN_LIMING = INVENTORY_DIR / "lci-ocean-liming.xlsx"
 REGIONALIZED_FILEPATHS_FINAL_ENERGY = {
     "default": INVENTORY_DIR / "lci-final-energy.xlsx",
     "EU": INVENTORY_DIR / "lci-final-energy-fleets-EU.xlsx",
-    "DEU": INVENTORY_DIR / "lci-final-energy-fleets-DEU.xlsx",
+    "DEU": INVENTORY_DIR / "lci-final-energy-fleets-DEU-h2marketfix.xlsx",
     "global": INVENTORY_DIR / "lci-final-energy-fleets-global.xlsx",
 }
 FILEPATH_SULFIDIC_TAILINGS = INVENTORY_DIR / "lci-sulfidic-tailings.xlsx"
