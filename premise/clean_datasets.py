@@ -533,7 +533,10 @@ class DatabaseCleaner:
         self.correct_biogas_activities()
 
         # Remove uncertainty data
-        if "biosphere" not in keep_uncertainty_data or "technosphere" not in keep_uncertainty_data:
+        if (
+            "biosphere" not in keep_uncertainty_data
+            or "technosphere" not in keep_uncertainty_data
+        ):
             print("Remove uncertainty data.")
             self.database = remove_uncertainty(self.database, keep_uncertainty_data)
 

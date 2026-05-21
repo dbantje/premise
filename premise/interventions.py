@@ -700,11 +700,8 @@ class Interventions(BaseTransformation):
                             )
                             if exchange_dict is not None:
                                 if self.print_changes:
-                                    print_exchange_table_comparison(
-                                        exc, exchange_dict
-                                    )
+                                    print_exchange_table_comparison(exc, exchange_dict)
                                 exc.update(exchange_dict)
-                                
 
                         except KeyError:
                             print(
@@ -777,7 +774,7 @@ class Interventions(BaseTransformation):
                                             exc, exchange_dict
                                         )
                                     exc.update(exchange_dict)
-                                    
+
                             except KeyError:
                                 print(
                                     f"[Interventions] No data for {tech} in {target_region} at year {year}"
@@ -858,7 +855,7 @@ class Interventions(BaseTransformation):
                                             exc, exchange_dict
                                         )
                                     exc.update(exchange_dict)
-                                    
+
                             except KeyError:
                                 print(
                                     f"[Interventions] No data for {tech} in {target_region} at year {year}"
@@ -930,7 +927,7 @@ class Interventions(BaseTransformation):
                                             exc, exchange_dict
                                         )
                                     exc.update(exchange_dict)
-                                    
+
                             except KeyError:
                                 print(
                                     f"[Interventions] No data for {tech} in {target_region} at year {year}"

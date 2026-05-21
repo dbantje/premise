@@ -741,9 +741,12 @@ class NewDatabase:
         if len(self.keep_source_db_uncertainty) == 0:
             uncertainty_data = "wo_uncertainty"
         else:
-            s = "".join(sorted(
-                matrixnameshort.get(db, "") for db in self.keep_source_db_uncertainty
-                ))
+            s = "".join(
+                sorted(
+                    matrixnameshort.get(db, "")
+                    for db in self.keep_source_db_uncertainty
+                )
+            )
             uncertainty_data = f"w_{s}_uncertainty"
 
         file_name = (
