@@ -42,7 +42,7 @@ class PathwaysDataPackage:
         shares_adjustments: dict = {},
         intervention_scenarios: dict = {},
         use_absolute_efficiency=False,
-        keep_source_db_uncertainty=False,
+        keep_source_db_uncertainty=[],
         biosphere_name="biosphere3",
         generate_reports: bool = True,
     ):

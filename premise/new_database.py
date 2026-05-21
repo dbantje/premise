@@ -549,7 +549,7 @@ class NewDatabase:
         external_scenarios: list = None,
         quiet=False,
         keep_imports_uncertainty=True,
-        keep_source_db_uncertainty=False,
+        keep_source_db_uncertainty: list = [],
         gains_scenario="CLE",
         gains_baseyear: int = 2020,
         gains_masks: list = [],
@@ -733,11 +733,18 @@ class NewDatabase:
         if db_name is None and self.source_type == "ecospold":
             db_name = f"ecospold_{self.system_model}_{self.version}"
 
-        uncertainty_data = (
-            "w_uncertainty"
-            if self.keep_source_db_uncertainty is True
-            else "wo_uncertainty"
-        )
+        matrixnameshort = {
+            "biosphere": "B",
+            "technosphere": "A",
+        }
+
+        if len(self.keep_source_db_uncertainty) == 0:
+            uncertainty_data = "wo_uncertainty"
+        else:
+            s = "".join(sorted(
+                matrixnameshort.get(db, "") for db in self.keep_source_db_uncertainty
+                ))
+            uncertainty_data = f"w_{s}_uncertainty"
 
         file_name = (
             DIR_CACHED_DB

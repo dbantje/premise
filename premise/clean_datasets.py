@@ -35,11 +35,13 @@ def load_methane_correction_list() -> List[str]:
     return methane_correction_list
 
 
-def remove_uncertainty(database: List[dict]) -> List[dict]:
+def remove_uncertainty(database: List[dict], keep_uncertainty_data: list) -> List[dict]:
     """Remove uncertainty information from database exchanges.
 
     :param database: Inventory database to clean.
     :type database: List[dict]
+    :param keep_uncertainty_data: List of matrices for which to preserve uncertainty data.
+    :type keep_uncertainty_data: list
     :return: The same database with uncertainty metadata reset.
     :rtype: List[dict]
     """
@@ -49,10 +51,11 @@ def remove_uncertainty(database: List[dict]) -> List[dict]:
 
     for dataset in database:
         for exchange in dataset["exchanges"]:
-            exchange["uncertainty type"] = 0
-            exchange["loc"] = float(exchange["amount"])
-            for key in uncertainty_keys:
-                exchange[key] = nan_value
+            if exchange["type"] not in keep_uncertainty_data:
+                exchange["uncertainty type"] = 0
+                exchange["loc"] = float(exchange["amount"])
+                for key in uncertainty_keys:
+                    exchange[key] = nan_value
 
     return database
 
@@ -500,11 +503,11 @@ class DatabaseCleaner:
                     }
                 )
 
-    def prepare_datasets(self, keep_uncertainty_data: bool) -> List[dict]:
+    def prepare_datasets(self, keep_uncertainty_data: list) -> List[dict]:
         """Run the standard cleaning pipeline on the loaded database.
 
-        :param keep_uncertainty_data: Flag indicating whether to preserve uncertainty data.
-        :type keep_uncertainty_data: bool
+        :param keep_uncertainty_data: List of matrices for which to preserve uncertainty data.
+        :type keep_uncertainty_data: list
         :return: Cleaned database ready for further processing.
         :rtype: List[dict]
         """
@@ -530,8 +533,8 @@ class DatabaseCleaner:
         self.correct_biogas_activities()
 
         # Remove uncertainty data
-        if not keep_uncertainty_data:
+        if "biosphere" not in keep_uncertainty_data or "technosphere" not in keep_uncertainty_data:
             print("Remove uncertainty data.")
-            self.database = remove_uncertainty(self.database)
+            self.database = remove_uncertainty(self.database, keep_uncertainty_data)
 
         return self.database
