@@ -871,20 +871,9 @@ class BaseTransformation:
 
             for technology, activities in mapping.items():
                 if (technology, region) in technology_shares_dict:
-                    suppliers = [ds for ds in activities if ds["location"] == region]
-                    if len(suppliers) == 0:
-                        suppliers = [
-                            ds
-                            for ds in activities
-                            if ds["location"] in self.iam_to_ecoinvent_loc[region]
-                        ]
-                    if len(suppliers) == 0:
-                        suppliers = [ds for ds in activities if ds["location"] == "RoW"]
-                    if len(suppliers) == 0:
-                        raise ValueError(
-                            f"No activity found for technology {technology} in region {region}. "
-                            f"Available activities: {[(a['name'], a['location']) for a in activities]}."
-                        )
+                    suppliers = self.select_market_suppliers(
+                        technology, activities, region
+                    )
 
                     if len(suppliers) > 1:
                         suppliers = get_shares_from_production_volume(suppliers)
@@ -1046,6 +1035,49 @@ class BaseTransformation:
             production_shares=regional_shares_dict,
             regions=regions,
         )
+
+    def select_market_suppliers(self, technology: str, activities: list, region: str):
+        """
+        Select market suppliers for a technology and IAM region.
+
+        Imported fuel technologies link to a World supplier, because their IAM
+        variable represents imports into the regional market.
+        """
+
+        if str(technology).endswith(", imported"):
+            suppliers = [ds for ds in activities if ds["location"] == "World"]
+            if suppliers:
+                return suppliers
+            if activities:
+                return [{**ds, "location": "World"} for ds in activities]
+            raise ValueError(
+                f"No activity found for imported technology {technology}. "
+                f"Available activities: "
+                f"{[(a['name'], a['location']) for a in activities]}."
+            )
+
+        suppliers = [ds for ds in activities if ds["location"] == region]
+        if len(suppliers) == 0:
+            suppliers = [
+                ds
+                for ds in activities
+                if ds["location"] in self.iam_to_ecoinvent_loc[region]
+            ]
+        if len(suppliers) == 0:
+            suppliers = [ds for ds in activities if ds["location"] == "RoW"]
+        if len(suppliers) == 0:
+            suppliers = [ds for ds in activities if ds["location"] == "GLO"]
+        if len(suppliers) == 0:
+            suppliers = [ds for ds in activities if ds["location"] == "RER"]
+        if len(suppliers) == 0 and activities:
+            suppliers = [activities[0]]
+        if len(suppliers) == 0:
+            raise ValueError(
+                f"No activity found for technology {technology} in region {region}. "
+                f"Available activities: "
+                f"{[(a['name'], a['location']) for a in activities]}."
+            )
+        return suppliers
 
     def extract_market_logistics(
         self,

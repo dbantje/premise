@@ -19,7 +19,9 @@ class HydrogenMixin:
     def _regionalize_hydrogen_activities(self):
 
         hydrogen_map = {
-            k: v for k, v in self.fuel_map.items() if k.startswith("hydrogen")
+            k: v
+            for k, v in self.fuel_map.items()
+            if k.startswith("hydrogen") and not k.endswith(", imported")
         }
 
         self.process_and_add_activities(

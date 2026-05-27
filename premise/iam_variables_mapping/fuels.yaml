@@ -414,6 +414,26 @@ petrol, synthetic, from electrolysis:
     fltr:
     - gasoline production, from methanol, hydrogen from electrolysis, CO2 from DAC,
       energy allocation
+petrol, synthetic, imported:
+  lhv:
+    unit: megajoule
+    value: 42.6
+  co2: 0.0737
+  biogenic_share: 1
+  iam_aliases:
+    remind: Trade|Imports|SE|Liquids|Hydrogen
+    remind-eu: Trade|Imports|SE|Liquids|Hydrogen
+  ecoinvent_aliases:
+    fltr:
+      name:
+      - market for petrol, synthetic
+      - market for gasoline, synthetic
+      - gasoline production, from methanol, hydrogen from electrolysis, CO2 from DAC,
+        energy allocation
+      reference product:
+      - petrol, synthetic
+      - gasoline, synthetic
+      location: RER
 petrol, synthetic, from coal:
   lhv:
     unit: megajoule
@@ -467,6 +487,22 @@ diesel, synthetic, from electrolysis:
       energy allocation
     - diesel production, from methanol, hydrogen from electrolysis, CO2 from DAC,
       energy allocation
+diesel, synthetic, imported:
+  lhv:
+    unit: megajoule
+    value: 43
+  co2: 0.0732
+  biogenic_share: 1
+  iam_aliases:
+    remind: Trade|Imports|SE|Liquids|Hydrogen
+    remind-eu: Trade|Imports|SE|Liquids|Hydrogen
+  ecoinvent_aliases:
+    fltr:
+      name:
+      - diesel production, synthetic, Fischer Tropsch process, hydrogen from electrolysis,
+        energy allocation
+      reference product: diesel, synthetic
+      location: RER
 diesel, synthetic, from coal:
   lhv:
     unit: megajoule
@@ -643,6 +679,22 @@ hydrogen, from petroleum:
     fltr:
     - hydrogen production, gaseous, petroleum refinery operation
     mask: CCS
+hydrogen, imported:
+  lhv:
+    unit: megajoule
+    value: 120
+  co2: 0
+  biogenic_share: 0
+  iam_aliases:
+    remind: Trade|Imports|SE|Hydrogen
+    remind-eu: Trade|Imports|SE|Hydrogen
+  ecoinvent_aliases:
+    fltr:
+      name:
+      - market for hydrogen, gaseous
+      - market for hydrogen, gaseous, low pressure
+      reference product: hydrogen, gaseous, low pressure
+      location: RoW
 hydrogen, from electrolysis, PEM:
   lhv:
     unit: megajoule

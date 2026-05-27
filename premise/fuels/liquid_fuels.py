@@ -11,6 +11,15 @@ from .utils import fetch_mapping, get_crops_properties
 
 
 class SyntheticFuelsMixin:
+    def _has_positive_production_volume(self, variable):
+        production_volumes = getattr(self.iam_data, "production_volumes", None)
+        return (
+            production_volumes is not None
+            and "variables" in production_volumes.coords
+            and variable in production_volumes.coords["variables"].values
+            and float(production_volumes.sel(variables=variable).sum().values) > 0
+        )
+
     def _filter_biodiesel_feedstocks(self) -> None:
         if "biodiesel, from oil crops" not in self.fuel_map:
             return
@@ -188,11 +197,28 @@ class SyntheticFuelsMixin:
         """
         Generate region-specific synthetic fuel datasets.
         """
-        synfuel_map = {k: v for k, v in self.fuel_map.items() if "synthetic" in k}
+        synfuel_map = {
+            k: v
+            for k, v in self.fuel_map.items()
+            if "synthetic" in k and not k.endswith(", imported")
+        }
 
         if synfuel_map:
             self.process_and_add_activities(
                 mapping=synfuel_map, production_volumes=self.iam_data.production_volumes
+            )
+
+        imported_synfuel_map = {
+            k: v
+            for k, v in self.fuel_map.items()
+            if "synthetic" in k and k.endswith(", imported")
+            and self._has_positive_production_volume(k)
+        }
+
+        if imported_synfuel_map:
+            self.process_and_add_activities(
+                mapping=imported_synfuel_map,
+                regions=["World"],
             )
 
         methanol_map = {
@@ -213,6 +239,13 @@ class SyntheticFuelsMixin:
         self._filter_biodiesel_feedstocks()
         self._filter_bioethanol_feedstocks()
 
+        def has_positive_blend(blend, variable):
+            return (
+                blend is not None
+                and variable in blend.coords["variables"].values
+                and float(blend.sel(variables=variable).sum().values) > 0
+            )
+
         # gasoline
         # check that IAM data has "petrol_blend" attribute
         if hasattr(self.iam_data, "petrol_blend"):
@@ -223,7 +256,7 @@ class SyntheticFuelsMixin:
                     k.startswith(x)
                     for x in ("gasoline", "bioethanol", "ethanol", "petrol", "methanol")
                 )
-                and self.iam_data.petrol_blend.sel(variables=k).sum() > 0
+                and has_positive_blend(self.iam_data.petrol_blend, k)
             }
             if mapping:
                 for market_name in [
@@ -274,7 +307,7 @@ class SyntheticFuelsMixin:
                 k: v
                 for k, v in self.fuel_map.items()
                 if any(k.startswith(x) for x in ("diesel", "biodiesel"))
-                and self.iam_data.diesel_blend.sel(variables=k).sum() > 0
+                and has_positive_blend(self.iam_data.diesel_blend, k)
             }
             if mapping:
                 for market_name in [
@@ -323,7 +356,7 @@ class SyntheticFuelsMixin:
                 k: v
                 for k, v in self.fuel_map.items()
                 if k.startswith("kerosene")
-                and self.iam_data.kerosene_blend.sel(variables=k).sum() > 0
+                and has_positive_blend(self.iam_data.kerosene_blend, k)
             }
             if mapping:
                 self.process_and_add_markets(
@@ -360,7 +393,7 @@ class SyntheticFuelsMixin:
                 k: v
                 for k, v in self.fuel_map.items()
                 if k.startswith("liquefied petroleum gas")
-                and self.iam_data.lpg_blend.sel(variables=k).sum() > 0
+                and has_positive_blend(self.iam_data.lpg_blend, k)
             }
             if mapping:
                 self.process_and_add_markets(
