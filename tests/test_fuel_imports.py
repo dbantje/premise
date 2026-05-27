@@ -7,7 +7,6 @@ import xarray as xr
 from premise.fuels.liquid_fuels import SyntheticFuelsMixin
 from premise.transformation import BaseTransformation
 
-
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -109,8 +108,12 @@ def test_imported_synfuel_proxy_requires_positive_production_volume():
 
 
 def test_imported_fuel_yaml_entries_are_mapped_to_remind_import_variables():
-    fuels = yaml.safe_load((ROOT / "premise/iam_variables_mapping/fuels.yaml").read_text())
-    fuel_groups = yaml.safe_load((ROOT / "premise/data/fuels/fuel_groups.yaml").read_text())
+    fuels = yaml.safe_load(
+        (ROOT / "premise/iam_variables_mapping/fuels.yaml").read_text()
+    )
+    fuel_groups = yaml.safe_load(
+        (ROOT / "premise/data/fuels/fuel_groups.yaml").read_text()
+    )
 
     assert fuel_groups["hydrogen"][-1] == "hydrogen, imported"
     assert fuel_groups["diesel"][2] == "diesel, synthetic, imported"
@@ -129,10 +132,7 @@ def test_imported_fuel_yaml_entries_are_mapped_to_remind_import_variables():
         "remind-eu": "Trade|Imports|SE|Liquids|Hydrogen",
     }
 
-    assert (
-        fuels["hydrogen, imported"]["ecoinvent_aliases"]["fltr"]["location"]
-        == "RoW"
-    )
+    assert fuels["hydrogen, imported"]["ecoinvent_aliases"]["fltr"]["location"] == "RoW"
     assert (
         fuels["diesel, synthetic, imported"]["ecoinvent_aliases"]["fltr"]["location"]
         == "RER"

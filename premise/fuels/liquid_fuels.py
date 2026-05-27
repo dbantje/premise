@@ -211,7 +211,8 @@ class SyntheticFuelsMixin:
         imported_synfuel_map = {
             k: v
             for k, v in self.fuel_map.items()
-            if "synthetic" in k and k.endswith(", imported")
+            if "synthetic" in k
+            and k.endswith(", imported")
             and self._has_positive_production_volume(k)
         }
 
