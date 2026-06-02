@@ -76,8 +76,8 @@ Buildings - Heating - Biofuel - Cellulosic - Energy crops:
       name: light fuel oil, from non-residual cellulosic biomass, burned in residential boiler
       reference product: heat
   iam_aliases:
-    remind: FE|Buildings|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Buildings|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|Buildings|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+    remind-eu: FE|Buildings|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
 
 Buildings - Heating - Biofuel - Cellulosic - Residues:
   ecoinvent_aliases:
@@ -85,8 +85,8 @@ Buildings - Heating - Biofuel - Cellulosic - Residues:
       name: light fuel oil, from residual cellulosic biomass, burned in residential boiler
       reference product: heat
   iam_aliases:
-    remind: FE|Buildings|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Buildings|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Buildings|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|Buildings|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
 
 Buildings - Heating - Biofuel - Non-cellulosic - Oil crops:
   ecoinvent_aliases:
@@ -94,8 +94,8 @@ Buildings - Heating - Biofuel - Non-cellulosic - Oil crops:
       name: light fuel oil, from oily biomass, burned in residential boiler
       reference product: heat
   iam_aliases:
-    remind: FE|Buildings|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
-    remind-eu: FE|Buildings|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind: FE|Buildings|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Buildings|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 Buildings - Heating - Liquid coal:
   ecoinvent_aliases:
@@ -543,8 +543,8 @@ Industry - Cement - Biofuel - Cellulosic - Energy crops:
       name: light fuel oil, from non-residual cellulosic biomass, burned in residential boiler
       reference product: heat
   iam_aliases:
-    remind: FE|Industry|Cement|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Industry|Cement|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|Industry|Cement|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+    remind-eu: FE|Industry|Cement|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
 
 Industry - Cement - Biofuel - Cellulosic - Residues:
   ecoinvent_aliases:
@@ -552,8 +552,8 @@ Industry - Cement - Biofuel - Cellulosic - Residues:
       name: light fuel oil, from residual cellulosic biomass, burned in residential boiler
       reference product: heat
   iam_aliases:
-    remind: FE|Industry|Cement|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Industry|Cement|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Industry|Cement|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|Industry|Cement|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
 
 Industry - Cement - Biofuel - Non-cellulosic - Oil crops:
   ecoinvent_aliases:
@@ -561,8 +561,8 @@ Industry - Cement - Biofuel - Non-cellulosic - Oil crops:
       name: light fuel oil, from oily biomass, burned in residential boiler
       reference product: heat
   iam_aliases:
-    remind: FE|Industry|Cement|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
-    remind-eu: FE|Industry|Cement|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind: FE|Industry|Cement|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Industry|Cement|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 Industry - Cement - Oil:
   ecoinvent_aliases:
@@ -711,8 +711,8 @@ Industry - Chemicals - Chemicals - Biofuel - Cellulosic - Energy crops:
       name: light fuel oil, from non-residual cellulosic biomass, burned in residential boiler
       reference product: heat
   iam_aliases:
-    remind: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+    remind-eu: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
 
 Industry - Chemicals - Chemicals - Biofuel - Cellulosic - Residues:
   ecoinvent_aliases:
@@ -720,8 +720,8 @@ Industry - Chemicals - Chemicals - Biofuel - Cellulosic - Residues:
       name: light fuel oil, from residual cellulosic biomass, burned in residential boiler
       reference product: heat
   iam_aliases:
-    remind: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
 
 Industry - Chemicals - Chemicals - Biofuel - Non-cellulosic - Oil crops:
   ecoinvent_aliases:
@@ -729,8 +729,8 @@ Industry - Chemicals - Chemicals - Biofuel - Non-cellulosic - Oil crops:
       name: light fuel oil, from oily biomass, burned in residential boiler
       reference product: heat
   iam_aliases:
-    remind: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
-    remind-eu: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|w/o Non-energy Use|Industry|Chemicals|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 Industry - Chemicals - Chemicals - Liquid fossil:
   ecoinvent_aliases:
@@ -1356,8 +1356,8 @@ Industry - Other - Biofuel - Cellulosic - Energy crops:
       name: light fuel oil, from non-residual cellulosic biomass, burned in residential boiler
       reference product: heat
   iam_aliases:
-    remind: FE|Industry|Other Industry|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Industry|Other Industry|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|Industry|Other Industry|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+    remind-eu: FE|Industry|Other Industry|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
 
 Industry - Other - Biofuel - Cellulosic - Residues:
   ecoinvent_aliases:
@@ -1365,8 +1365,8 @@ Industry - Other - Biofuel - Cellulosic - Residues:
       name: light fuel oil, from residual cellulosic biomass, burned in residential boiler
       reference product: heat
   iam_aliases:
-    remind: FE|Industry|Other Industry|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Industry|Other Industry|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Industry|Other Industry|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|Industry|Other Industry|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
 
 Industry - Other - Biofuel - Non-cellulosic - Oil crops:
   ecoinvent_aliases:
@@ -1374,8 +1374,8 @@ Industry - Other - Biofuel - Non-cellulosic - Oil crops:
       name: light fuel oil, from oily biomass, burned in residential boiler
       reference product: heat
   iam_aliases:
-    remind: FE|Industry|Other Industry|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
-    remind-eu: FE|Industry|Other Industry|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind: FE|Industry|Other Industry|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Industry|Other Industry|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 Industry - Other - Liquid fossil:
   ecoinvent_aliases:
@@ -2208,8 +2208,8 @@ Industry - Steel - All steel - Biofuel - Energy crops:
       name: light fuel oil, from non-residual cellulosic biomass, burned in residential boiler
       reference product: heat
   iam_aliases:
-    remind: FE|Industry|Steel|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Industry|Steel|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|Industry|Steel|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+    remind-eu: FE|Industry|Steel|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
 
 Industry - Steel - All steel - Biofuel - Residues:
   ecoinvent_aliases:
@@ -2217,8 +2217,8 @@ Industry - Steel - All steel - Biofuel - Residues:
       name: light fuel oil, from residual cellulosic biomass, burned in residential boiler
       reference product: heat
   iam_aliases:
-    remind: FE|Industry|Steel|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Industry|Steel|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Industry|Steel|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|Industry|Steel|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
 
 Industry - Steel - All steel - Biofuel - Oil crops:
   ecoinvent_aliases:
@@ -2226,8 +2226,8 @@ Industry - Steel - All steel - Biofuel - Oil crops:
       name: light fuel oil, from oily biomass, burned in residential boiler
       reference product: heat
   iam_aliases:
-    remind: FE|Industry|Steel|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
-    remind-eu: FE|Industry|Steel|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind: FE|Industry|Steel|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Industry|Steel|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 Industry - Steel - All steel - Liquid fossil:
   ecoinvent_aliases:
@@ -2360,8 +2360,8 @@ Industry - Non-energy use - Biofuel - Energy crops:
       reference product: heat
     mask: factory
   iam_aliases:
-    remind: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+    remind-eu: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
   lhv:
     value: 19.9
     unit: megajoule
@@ -2373,8 +2373,8 @@ Industry - Non-energy use - Biofuel - Residues:
       reference product: heat
     mask: factory
   iam_aliases:
-    remind: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
   lhv:
     value: 19.9
     unit: megajoule
@@ -2386,8 +2386,8 @@ Industry - Non-energy use - Biofuel - Oil crops:
       reference product: heat
     mask: factory
   iam_aliases:
-    remind: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
-    remind-eu: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
   lhv:
     value: 19.9
     unit: megajoule
@@ -2450,8 +2450,8 @@ Transport - Freight - Domestic Shipping - Biofuel - Energy crops:
       name: biodiesel, from non-residual cellulosic biomass, burned in container ship
       reference product: heat
   iam_aliases:
-    remind: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+    remind-eu: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
     image: Final Energy|Transportation|Freight|National Shipping|Liquids|Biomass|Allocated Biomass|Modern|Energy Crops
 
 Transport - Freight - Domestic Shipping - Biofuel - Residues:
@@ -2460,8 +2460,8 @@ Transport - Freight - Domestic Shipping - Biofuel - Residues:
       name: biodiesel, from residual cellulosic biomass, burned in container ship
       reference product: heat
   iam_aliases:
-    remind: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
     image:
       - Final Energy|Transportation|Freight|National Shipping|Liquids|Biomass|Allocated Biomass|Traditional|Residues
       - Final Energy|Transportation|Freight|National Shipping|Liquids|Biomass|Allocated Biomass|Modern|Residues
@@ -2472,8 +2472,8 @@ Transport - Freight - Domestic Shipping - Biofuel - Oil crops:
       name: biodiesel, from non-residual oily biomass, burned in container ship
       reference product: heat
   iam_aliases:
-    remind: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
-    remind-eu: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Non-energy Use|Industry|Liquids|+|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 Transport - Freight - Domestic Shipping - Liquid fossil:
   ecoinvent_aliases:
@@ -2548,8 +2548,8 @@ Transport - Freight - Int. Shipping - Biofuel - Energy crops:
       name: biodiesel, from non-residual cellulosic biomass, burned in container ship
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Bunkers|Freight|International Shipping|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Transport|Bunkers|Freight|International Shipping|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|Transport|Bunkers|Freight|International Shipping|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+    remind-eu: FE|Transport|Bunkers|Freight|International Shipping|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
 
 Transport - Freight - Int. Shipping - Biofuel - Residues:
   ecoinvent_aliases:
@@ -2557,8 +2557,8 @@ Transport - Freight - Int. Shipping - Biofuel - Residues:
       name: biodiesel, from non-residual cellulosic biomass, burned in container ship
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Bunkers|Freight|International Shipping|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Transport|Bunkers|Freight|International Shipping|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Transport|Bunkers|Freight|International Shipping|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|Transport|Bunkers|Freight|International Shipping|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
 
 Transport - Freight - Int. Shipping - Biofuel - Oil crops:
   ecoinvent_aliases:
@@ -2566,8 +2566,8 @@ Transport - Freight - Int. Shipping - Biofuel - Oil crops:
       name: biodiesel, from non-residual oily biomass, burned in container ship
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Bunkers|Freight|International Shipping|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
-    remind-eu: FE|Transport|Bunkers|Freight|International Shipping|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind: FE|Transport|Bunkers|Freight|International Shipping|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Transport|Bunkers|Freight|International Shipping|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 Transport - Freight - Int. Shipping - Liquid fossil:
   ecoinvent_aliases:
@@ -2645,8 +2645,8 @@ Transport - Freight - Rail - Biofuel - Energy crops:
       name: biodiesel, from non-residual cellulosic biomass, burned in passenger train
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Freight|Rail|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Transport|Freight|Rail|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|Transport|Freight|Rail|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+    remind-eu: FE|Transport|Freight|Rail|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
     image: Final Energy|Transportation|Freight|Train|Liquids|Biomass|Allocated Biomass|Modern|Energy Crops
 
 Transport - Freight - Rail - Biofuel - Residues:
@@ -2655,8 +2655,8 @@ Transport - Freight - Rail - Biofuel - Residues:
       name: biodiesel, from residual cellulosic biomass, burned in passenger train
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Freight|Rail|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Transport|Freight|Rail|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Transport|Freight|Rail|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|Transport|Freight|Rail|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
     image:
       - Final Energy|Transportation|Freight|Train|Liquids|Biomass|Allocated Biomass|Traditional|Residues
       - Final Energy|Transportation|Freight|Train|Liquids|Biomass|Allocated Biomass|Modern|Residues
@@ -2668,8 +2668,8 @@ Transport - Freight - Rail - Biofuel - Oil crops:
       name: biodiesel, from non-residual oily biomass, burned in passenger train
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Freight|Rail|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
-    remind-eu: FE|Transport|Freight|Rail|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind: FE|Transport|Freight|Rail|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Transport|Freight|Rail|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 Transport - Freight - Rail - Liquid fossil:
   ecoinvent_aliases:
@@ -2753,8 +2753,8 @@ Transport - Freight - Truck(18t) - Biofuel - Energy crops:
       name: biodiesel, from non-residual cellulosic biomass, burned in heavy-duty vehicle
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Freight|Road|Heavy|Truck(18t)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Transport|Freight|Road|Heavy|Truck(18t)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|Transport|Freight|Road|Heavy|Truck(18t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+    remind-eu: FE|Transport|Freight|Road|Heavy|Truck(18t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
     image: Final Energy|Transportation|Freight|Medium Truck|Liquids|Biomass|Allocated Biomass|Modern|Energy Crops
 
 Transport - Freight - Truck(18t) - Biofuel - Residues:
@@ -2763,8 +2763,8 @@ Transport - Freight - Truck(18t) - Biofuel - Residues:
       name: biodiesel, from residual cellulosic biomass, burned in heavy-duty vehicle
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Freight|Road|Heavy|Truck(18t)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Transport|Freight|Road|Heavy|Truck(18t)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Transport|Freight|Road|Heavy|Truck(18t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|Transport|Freight|Road|Heavy|Truck(18t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
     image:
       - Final Energy|Transportation|Freight|Medium Truck|Liquids|Biomass|Allocated Biomass|Traditional|Residues
       - Final Energy|Transportation|Freight|Medium Truck|Liquids|Biomass|Allocated Biomass|Modern|Residues
@@ -2775,8 +2775,8 @@ Transport - Freight - Truck(18t) - Biofuel - Oil crops:
       name: biodiesel, from non-residual oily biomass, burned in heavy-duty vehicle
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Freight|Road|Heavy|Truck(18t)|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
-    remind-eu: FE|Transport|Freight|Road|Heavy|Truck(18t)|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind: FE|Transport|Freight|Road|Heavy|Truck(18t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Transport|Freight|Road|Heavy|Truck(18t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 Transport - Freight - Truck(18t) - Liquid fossil:
   ecoinvent_aliases:
@@ -2847,8 +2847,8 @@ Transport - Freight - Truck(26t) - Biofuel - Energy crops:
       name: biodiesel, from non-residual cellulosic biomass, burned in heavy-duty vehicle
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Freight|Road|Heavy|Truck(26t)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Transport|Freight|Road|Heavy|Truck(26t)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|Transport|Freight|Road|Heavy|Truck(26t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+    remind-eu: FE|Transport|Freight|Road|Heavy|Truck(26t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
 
 Transport - Freight - Truck(26t) - Biofuel - Residues:
   ecoinvent_aliases:
@@ -2856,8 +2856,8 @@ Transport - Freight - Truck(26t) - Biofuel - Residues:
       name: biodiesel, from residual cellulosic biomass, burned in heavy-duty vehicle
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Freight|Road|Heavy|Truck(26t)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Transport|Freight|Road|Heavy|Truck(26t)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Transport|Freight|Road|Heavy|Truck(26t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|Transport|Freight|Road|Heavy|Truck(26t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
 
 Transport - Freight - Truck(26t) - Biofuel - Oil crops:
   ecoinvent_aliases:
@@ -2865,8 +2865,8 @@ Transport - Freight - Truck(26t) - Biofuel - Oil crops:
       name: biodiesel, from non-residual oily biomass, burned in heavy-duty vehicle
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Freight|Road|Heavy|Truck(26t)|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
-    remind-eu: FE|Transport|Freight|Road|Heavy|Truck(26t)|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind: FE|Transport|Freight|Road|Heavy|Truck(26t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Transport|Freight|Road|Heavy|Truck(26t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 Transport - Freight - Truck(26t) - Liquid fossil:
   ecoinvent_aliases:
@@ -2975,8 +2975,8 @@ Transport - Freight - Truck(40t) - Biofuel - Energy crops:
       name: biodiesel, from non-residual cellulosic biomass, burned in heavy-duty vehicle
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Freight|Road|Heavy|Truck(40t)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Transport|Freight|Road|Heavy|Truck(40t)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|Transport|Freight|Road|Heavy|Truck(40t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+    remind-eu: FE|Transport|Freight|Road|Heavy|Truck(40t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
 
 
 Transport - Freight - Truck(40t) - Biofuel - Residues:
@@ -2985,8 +2985,8 @@ Transport - Freight - Truck(40t) - Biofuel - Residues:
       name: biodiesel, from residual cellulosic biomass, burned in heavy-duty vehicle
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Freight|Road|Heavy|Truck(40t)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Transport|Freight|Road|Heavy|Truck(40t)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Transport|Freight|Road|Heavy|Truck(40t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|Transport|Freight|Road|Heavy|Truck(40t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
 
 
 Transport - Freight - Truck(40t) - Biofuel - Oil crops:
@@ -2995,8 +2995,8 @@ Transport - Freight - Truck(40t) - Biofuel - Oil crops:
       name: biodiesel, from non-residual oily biomass, burned in heavy-duty vehicle
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Freight|Road|Heavy|Truck(40t)|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
-    remind-eu: FE|Transport|Freight|Road|Heavy|Truck(40t)|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind: FE|Transport|Freight|Road|Heavy|Truck(40t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Transport|Freight|Road|Heavy|Truck(40t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 Transport - Freight - Truck(40t) - Liquid fossil:
   ecoinvent_aliases:
@@ -3075,8 +3075,8 @@ Transport - Freight - Truck(0-3_5t) - Biofuel - Energy crops:
       name: biodiesel, from non-residual cellulosic biomass, burned in heavy-duty vehicle
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Freight|Road|Light|Truck(0-3_5t)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Transport|Freight|Road|Light|Truck(0-3_5t)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|Transport|Freight|Road|Light|Truck(0-3_5t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+    remind-eu: FE|Transport|Freight|Road|Light|Truck(0-3_5t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
 
 Transport - Freight - Truck(0-3_5t) - Biofuel - Residues:
   ecoinvent_aliases:
@@ -3084,8 +3084,8 @@ Transport - Freight - Truck(0-3_5t) - Biofuel - Residues:
       name: biodiesel, from residual cellulosic biomass, burned in heavy-duty vehicle
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Freight|Road|Light|Truck(0-3_5t)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Transport|Freight|Road|Light|Truck(0-3_5t)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Transport|Freight|Road|Light|Truck(0-3_5t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|Transport|Freight|Road|Light|Truck(0-3_5t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
 
 Transport - Freight - Truck(0-3_5t) - Biofuel - Oil crops:
   ecoinvent_aliases:
@@ -3093,8 +3093,8 @@ Transport - Freight - Truck(0-3_5t) - Biofuel - Oil crops:
       name: biodiesel, from non-residual oily biomass, burned in heavy-duty vehicle
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Freight|Road|Light|Truck(0-3_5t)|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
-    remind-eu: FE|Transport|Freight|Road|Light|Truck(0-3_5t)|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind: FE|Transport|Freight|Road|Light|Truck(0-3_5t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Transport|Freight|Road|Light|Truck(0-3_5t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 Transport - Freight - Truck(0-3_5t) - Liquid fossil:
   ecoinvent_aliases:
@@ -3181,8 +3181,8 @@ Transport - Freight - Truck(7_5t) - Biofuel - Energy crops:
       name: biodiesel, from non-residual cellulosic biomass, burned in heavy-duty vehicle
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Freight|Road|Light|Truck(7_5t)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Transport|Freight|Road|Light|Truck(7_5t)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|Transport|Freight|Road|Light|Truck(7_5t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+    remind-eu: FE|Transport|Freight|Road|Light|Truck(7_5t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
 
 Transport - Freight - Truck(7_5t) - Biofuel - Residues:
   ecoinvent_aliases:
@@ -3190,8 +3190,8 @@ Transport - Freight - Truck(7_5t) - Biofuel - Residues:
       name: biodiesel, from residual oily biomass, burned in heavy-duty vehicle
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Freight|Road|Light|Truck(7_5t)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Transport|Freight|Road|Light|Truck(7_5t)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Transport|Freight|Road|Light|Truck(7_5t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|Transport|Freight|Road|Light|Truck(7_5t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
 
 Transport - Freight - Truck(7_5t) - Biofuel - Oil crops:
   ecoinvent_aliases:
@@ -3199,8 +3199,8 @@ Transport - Freight - Truck(7_5t) - Biofuel - Oil crops:
       name: biodiesel, from non-residual oily biomass, burned in heavy-duty vehicle
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Freight|Road|Light|Truck(7_5t)|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
-    remind-eu: FE|Transport|Freight|Road|Light|Truck(7_5t)|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind: FE|Transport|Freight|Road|Light|Truck(7_5t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Transport|Freight|Road|Light|Truck(7_5t)|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 Transport - Freight - Truck(7_5t) - Liquid fossil:
   ecoinvent_aliases:
@@ -3306,8 +3306,8 @@ Transport - Pass - Int Aviation - Biofuel - Energy crops:
       name: kerosene, from cellulosic non-residual biomass, burned in aircraft
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Bunkers|Pass|International Aviation|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Transport|Bunkers|Pass|International Aviation|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|Transport|Bunkers|Pass|International Aviation|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+    remind-eu: FE|Transport|Bunkers|Pass|International Aviation|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
     image: Final Energy|Transportation|Passenger|International Aviation|Liquids|Biomass|Allocated Biomass|Modern|Energy Crops
 
 Transport - Pass - Int Aviation - Biofuel - Residues:
@@ -3316,8 +3316,8 @@ Transport - Pass - Int Aviation - Biofuel - Residues:
       name: kerosene, from cellulosic residual biomass, burned in aircraft
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Bunkers|Pass|International Aviation|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Transport|Bunkers|Pass|International Aviation|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Transport|Bunkers|Pass|International Aviation|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|Transport|Bunkers|Pass|International Aviation|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
     image:
       - Final Energy|Transportation|Passenger|International Aviation|Liquids|Biomass|Allocated Biomass|Traditional|Residues
       - Final Energy|Transportation|Passenger|International Aviation|Liquids|Biomass|Allocated Biomass|Modern|Residues
@@ -3328,8 +3328,8 @@ Transport - Pass - Int Aviation - Biofuel - Oil crops:
       name: kerosene, from non-residual oily biomass, burned in aircraft
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Bunkers|Pass|International Aviation|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
-    remind-eu: FE|Transport|Bunkers|Pass|International Aviation|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind: FE|Transport|Bunkers|Pass|International Aviation|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Transport|Bunkers|Pass|International Aviation|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 Transport - Pass - Int Aviation - Liquid fossil:
   ecoinvent_aliases:
@@ -3390,8 +3390,8 @@ Transport - Pass - Domestic Aviation - Biofuel - Energy crops:
       name: kerosene, from cellulosic non-residual biomass, burned in aircraft
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Pass|Domestic Aviation|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Transport|Pass|Domestic Aviation|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|Transport|Pass|Domestic Aviation|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+    remind-eu: FE|Transport|Pass|Domestic Aviation|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
     image: Final Energy|Transportation|Passenger|Domestic Aviation|Liquids|Biomass|Allocated Biomass|Modern|Energy Crops
 
 Transport - Pass - Domestic Aviation - Biofuel - Residues:
@@ -3400,8 +3400,8 @@ Transport - Pass - Domestic Aviation - Biofuel - Residues:
       name: kerosene, from cellulosic residual biomass, burned in aircraft
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Pass|Domestic Aviation|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Transport|Pass|Domestic Aviation|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Transport|Pass|Domestic Aviation|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|Transport|Pass|Domestic Aviation|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
     image:
       - Final Energy|Transportation|Passenger|Domestic Aviation|Liquids|Biomass|Allocated Biomass|Traditional|Residues
       - Final Energy|Transportation|Passenger|Domestic Aviation|Liquids|Biomass|Allocated Biomass|Modern|Residues
@@ -3412,8 +3412,8 @@ Transport - Pass - Domestic Aviation - Biofuel - Oil crops:
       name: kerosene, from non-residual oily biomass, burned in aircraft
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Pass|Domestic Aviation|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
-    remind-eu: FE|Transport|Pass|Domestic Aviation|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind: FE|Transport|Pass|Domestic Aviation|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Transport|Pass|Domestic Aviation|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 Transport - Pass - Domestic Aviation - Liquid fossil:
   ecoinvent_aliases:
@@ -3469,8 +3469,8 @@ Transport - Pass - Rail - Biofuel - Energy crops:
       name: biodiesel, from non-residual cellulosic biomass, burned in passenger train
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Pass|Rail|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Transport|Pass|Rail|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|Transport|Pass|Rail|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+    remind-eu: FE|Transport|Pass|Rail|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
     image:
       - Final Energy|Transportation|Passenger|Rail (high speed)|Liquids|Biomass|Allocated Biomass|Modern|Energy Crops
       - Final Energy|Transportation|Passenger|Rail (low speed)|Liquids|Biomass|Allocated Biomass|Modern|Energy Crops
@@ -3481,8 +3481,8 @@ Transport - Pass - Rail - Biofuel - Residues:
       name: biodiesel, from residual oily biomass, burned in passenger train
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Pass|Rail|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Transport|Pass|Rail|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Transport|Pass|Rail|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|Transport|Pass|Rail|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
     image:
       - Final Energy|Transportation|Passenger|Rail (high speed)|Liquids|Biomass|Allocated Biomass|Traditional|Residues
       - Final Energy|Transportation|Passenger|Rail (high speed)|Liquids|Biomass|Allocated Biomass|Modern|Residues
@@ -3495,8 +3495,8 @@ Transport - Pass - Rail - Biofuel - Oil crops:
       name: biodiesel, from non-residual oily biomass, burned in passenger train
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Pass|Rail|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
-    remind-eu: FE|Transport|Pass|Rail|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind: FE|Transport|Pass|Rail|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Transport|Pass|Rail|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 Transport - Pass - Rail - Liquid fossil:
   ecoinvent_aliases:
@@ -3590,8 +3590,8 @@ Transport - Pass - Bus - Biofuel - Energy crops:
       name: biodiesel, from non-residual cellulosic biomass, burned in single deck coach or urban bus
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Pass|Road|Bus|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Transport|Pass|Road|Bus|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|Transport|Pass|Road|Bus|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+    remind-eu: FE|Transport|Pass|Road|Bus|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
     image: Final Energy|Transportation|Passenger|Bus|Liquids|Biomass|Allocated Biomass|Modern|Energy Crops
 
 Transport - Pass - Bus - Biofuel - Residues:
@@ -3600,8 +3600,8 @@ Transport - Pass - Bus - Biofuel - Residues:
       name: biodiesel, from residual oily biomass, burned in single deck coach or urban bus
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Pass|Road|Bus|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Transport|Pass|Road|Bus|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Transport|Pass|Road|Bus|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|Transport|Pass|Road|Bus|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
     image:
       - Final Energy|Transportation|Passenger|Bus|Liquids|Biomass|Allocated Biomass|Traditional|Residues
       - Final Energy|Transportation|Passenger|Bus|Liquids|Biomass|Allocated Biomass|Modern|Residues
@@ -3612,8 +3612,8 @@ Transport - Pass - Bus - Biofuel - Oil crops:
       name: biodiesel, from non-residual oily biomass, burned in single deck coach or urban bus
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Pass|Road|Bus|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
-    remind-eu: FE|Transport|Pass|Road|Bus|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Oil-based
+    remind: FE|Transport|Pass|Road|Bus|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Transport|Pass|Road|Bus|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 Transport - Pass - Bus - Liquid fossil:
   ecoinvent_aliases:
@@ -3684,8 +3684,8 @@ Transport - Pass - Large Car and SUV - Biofuel - Energy crops:
       name: bioethanol, from non-residual cellulosic biomass, burned in passenger car
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car and SUV|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car and SUV|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car and SUV|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+    remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car and SUV|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
 
 Transport - Pass - Large Car and SUV - Biofuel - Residues:
   ecoinvent_aliases:
@@ -3693,8 +3693,8 @@ Transport - Pass - Large Car and SUV - Biofuel - Residues:
       name: bioethanol, from forest residues, burned in passenger car
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car and SUV|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car and SUV|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car and SUV|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car and SUV|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
 
 Transport - Pass - Large Car and SUV - Biofuel - Sugar crops:
   ecoinvent_aliases:
@@ -3702,8 +3702,17 @@ Transport - Pass - Large Car and SUV - Biofuel - Sugar crops:
       name: bioethanol, from sugar crops, burned in passenger car
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car and SUV|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Sugar and Starch
-    remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car and SUV|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Sugar and Starch
+    remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car and SUV|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Sugar and Starch
+    remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car and SUV|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Sugar and Starch
+
+Transport - Pass - Large Car and SUV - Biofuel - Oil crops:
+  ecoinvent_aliases:
+    fltr:
+      name: biodiesel, from residual oily biomass, burned in passenger car
+      reference product: heat
+  iam_aliases:
+    remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car and SUV|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car and SUV|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 
 Transport - Pass - Large Car and SUV - Liquid fossil:
@@ -3769,8 +3778,8 @@ Transport - Pass - Large Car - Biofuel - Energy crops:
           name: bioethanol, from non-residual cellulosic biomass, burned in passenger car
           reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
 
 Transport - Pass - Large Car - Biofuel - Residues:
   ecoinvent_aliases:
@@ -3778,8 +3787,8 @@ Transport - Pass - Large Car - Biofuel - Residues:
       name: bioethanol, from forest residues, burned in passenger car
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
 
 Transport - Pass - Large Car - Biofuel - Sugar crops:
   ecoinvent_aliases:
@@ -3787,8 +3796,17 @@ Transport - Pass - Large Car - Biofuel - Sugar crops:
       name: bioethanol, from sugar crops, burned in passenger car
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Sugar and Starch
-    remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Sugar and Starch
+    remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Sugar and Starch
+    remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Sugar and Starch
+
+Transport - Pass - Large Car - Biofuel - Oil crops:
+  ecoinvent_aliases:
+    fltr:
+      name: biodiesel, from residual oily biomass, burned in passenger car
+      reference product: heat
+  iam_aliases:
+    remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Large Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 Transport - Pass - Large Car - Liquid fossil:
   ecoinvent_aliases:
@@ -3861,8 +3879,8 @@ Transport - Pass - Van - Biofuel - Energy crops:
       name: bioethanol, from non-residual cellulosic biomass, burned in passenger car
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Van|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-    remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Van|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+    remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Van|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+    remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Van|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
 
 Transport - Pass - Van - Biofuel - Residues:
   ecoinvent_aliases:
@@ -3870,8 +3888,8 @@ Transport - Pass - Van - Biofuel - Residues:
       name: bioethanol, from forest residues, burned in passenger car
       reference product: heat
   iam_aliases:
-    remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Van|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-    remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Van|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+    remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Van|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+    remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Van|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
 
 Transport - Pass - Van - Biofuel - Sugar crops:
     ecoinvent_aliases:
@@ -3879,9 +3897,17 @@ Transport - Pass - Van - Biofuel - Sugar crops:
             name: bioethanol, from sugar crops, burned in passenger car
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Van|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Sugar and Starch
-        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Van|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Sugar and Starch
+        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Van|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Sugar and Starch
+        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Van|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Sugar and Starch
 
+Transport - Pass - Van - Biofuel - Oil crops:
+  ecoinvent_aliases:
+    fltr:
+      name: biodiesel, from residual oily biomass, burned in passenger car
+      reference product: heat
+  iam_aliases:
+    remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Van|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Large|Van|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 Transport - Pass - Van - Liquid fossil:
   ecoinvent_aliases:
@@ -3951,8 +3977,8 @@ Transport - Pass - Compact Car - Biofuel - Energy crops:
             name: bioethanol, from non-residual cellulosic biomass, burned in passenger car
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Compact Car|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Compact Car|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Compact Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Compact Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
 
 Transport - Pass - Compact Car - Biofuel - Residues:
     ecoinvent_aliases:
@@ -3960,8 +3986,8 @@ Transport - Pass - Compact Car - Biofuel - Residues:
             name: bioethanol, from forest residues, burned in passenger car
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Compact Car|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Compact Car|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Compact Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Compact Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
 
 Transport - Pass - Compact Car - Biofuel - Sugar crops:
     ecoinvent_aliases:
@@ -3969,8 +3995,17 @@ Transport - Pass - Compact Car - Biofuel - Sugar crops:
             name: bioethanol, from sugar crops, burned in passenger car
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Compact Car|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Sugar and Starch
-        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Compact Car|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Sugar and Starch
+        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Compact Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Sugar and Starch
+        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Compact Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Sugar and Starch
+
+Transport - Pass - Compact Car - Biofuel - Oil crops:
+  ecoinvent_aliases:
+    fltr:
+      name: biodiesel, from residual oily biomass, burned in passenger car
+      reference product: heat
+  iam_aliases:
+    remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Compact Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Compact Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 
 Transport - Pass - Compact Car - Liquid fossil:
@@ -4055,8 +4090,8 @@ Transport - Pass - Midsize Car - Biofuel - Energy crops:
             name: bioethanol, from non-residual cellulosic biomass, burned in passenger car
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Midsize Car|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Midsize Car|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Midsize Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Midsize Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
         image: Final Energy|Transportation|Passenger|Light Duty Vehicle|Liquids|Biomass|Allocated Biomass|Modern|Energy Crops
 
 Transport - Pass - Midsize Car - Biofuel - Residues:
@@ -4065,8 +4100,8 @@ Transport - Pass - Midsize Car - Biofuel - Residues:
             name: bioethanol, from forest residues, burned in passenger car
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Midsize Car|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Midsize Car|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Midsize Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Midsize Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
         image:
           - Final Energy|Transportation|Passenger|Light Duty Vehicle|Liquids|Biomass|Allocated Biomass|Traditional|Residues
           - Final Energy|Transportation|Passenger|Light Duty Vehicle|Liquids|Biomass|Allocated Biomass|Modern|Residues
@@ -4077,8 +4112,17 @@ Transport - Pass - Midsize Car - Biofuel - Sugar crops:
             name: bioethanol, from sugar crops, burned in passenger car
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Midsize Car|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Sugar and Starch
-        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Midsize Car|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Sugar and Starch
+        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Midsize Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Sugar and Starch
+        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Midsize Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Sugar and Starch
+
+Transport - Pass - Midsize Car - Biofuel - Oil crops:
+  ecoinvent_aliases:
+    fltr:
+      name: biodiesel, from residual oily biomass, burned in passenger car
+      reference product: heat
+  iam_aliases:
+    remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Midsize Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
+    remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Medium|Midsize Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Oil-based
 
 
 Transport - Pass - Midsize Car - Liquid fossil:
@@ -4153,8 +4197,8 @@ Transport - Pass - Mini Car - Biofuel - Energy crops:
             name: bioethanol, from non-residual cellulosic biomass, burned in passenger car
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Mini Car|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Mini Car|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Mini Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Mini Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
 
 Transport - Pass - Mini Car - Biofuel - Residues:
     ecoinvent_aliases:
@@ -4162,8 +4206,8 @@ Transport - Pass - Mini Car - Biofuel - Residues:
             name: bioethanol, from forest residues, burned in passenger car
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Mini Car|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Mini Car|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Mini Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Mini Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
 
 Transport - Pass - Mini Car - Biofuel - Sugar crops:
     ecoinvent_aliases:
@@ -4171,8 +4215,8 @@ Transport - Pass - Mini Car - Biofuel - Sugar crops:
             name: bioethanol, from sugar crops, burned in passenger car
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Mini Car|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Sugar and Starch
-        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Mini Car|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Sugar and Starch
+        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Mini Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Sugar and Starch
+        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Mini Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Sugar and Starch
 
 
 Transport - Pass - Mini Car - Liquid fossil:
@@ -4247,8 +4291,8 @@ Transport - Pass - Subcompact Car - Biofuel - Energy crops:
             name: bioethanol, from non-residual cellulosic biomass, burned in passenger car
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Subcompact Car|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Subcompact Car|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Subcompact Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Subcompact Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
 
 Transport - Pass - Subcompact Car - Biofuel - Residues:
     ecoinvent_aliases:
@@ -4256,8 +4300,8 @@ Transport - Pass - Subcompact Car - Biofuel - Residues:
             name: bioethanol, from forest residues, burned in passenger car
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Subcompact Car|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Subcompact Car|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Subcompact Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Subcompact Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
 
 Transport - Pass - Subcompact Car - Biofuel - Sugar crops:
     ecoinvent_aliases:
@@ -4265,8 +4309,8 @@ Transport - Pass - Subcompact Car - Biofuel - Sugar crops:
             name: bioethanol, from sugar crops, burned in passenger car
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Subcompact Car|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Sugar and Starch
-        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Subcompact Car|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Sugar and Starch
+        remind: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Subcompact Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Sugar and Starch
+        remind-eu: FE|Transport|Pass|Road|LDV|Four Wheelers|Small|Subcompact Car|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Sugar and Starch
 
 Transport - Pass - Subcompact Car - Liquid fossil:
   ecoinvent_aliases:
@@ -4299,24 +4343,24 @@ Transport - Pass - Moped - Biofuel - Energy crops:
             name: bioethanol, from eucalyptus, burned in motorcycle
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Two Wheelers|Moped|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-        remind-eu: FE|Transport|Pass|Road|LDV|Two Wheelers|Moped|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+        remind: FE|Transport|Pass|Road|LDV|Two Wheelers|Moped|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+        remind-eu: FE|Transport|Pass|Road|LDV|Two Wheelers|Moped|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
 Transport - Pass - Moped - Biofuel - Residues:
     ecoinvent_aliases:
         fltr:
             name: bioethanol, from residues, burned in motorcycle
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Two Wheelers|Moped|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-        remind-eu: FE|Transport|Pass|Road|LDV|Two Wheelers|Moped|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+        remind: FE|Transport|Pass|Road|LDV|Two Wheelers|Moped|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+        remind-eu: FE|Transport|Pass|Road|LDV|Two Wheelers|Moped|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
 Transport - Pass - Moped - Biofuel - Sugar crops:
     ecoinvent_aliases:
         fltr:
             name: bioethanol, from sugar crops, burned in motorcycle
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Two Wheelers|Moped|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Sugar and Starch
-        remind-eu: FE|Transport|Pass|Road|LDV|Two Wheelers|Moped|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Sugar and Starch
+        remind: FE|Transport|Pass|Road|LDV|Two Wheelers|Moped|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Sugar and Starch
+        remind-eu: FE|Transport|Pass|Road|LDV|Two Wheelers|Moped|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Sugar and Starch
 
 Transport - Pass - Moped - Liquid fossil:
   ecoinvent_aliases:
@@ -4357,8 +4401,8 @@ Transport - Pass - Motorcycle(50-250cc) - Biofuel - Energy crops:
             name: bioethanol, from eucalyptus, burned in motorcycle
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(50-250cc)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-        remind-eu: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(50-250cc)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+        remind: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(50-250cc)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+        remind-eu: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(50-250cc)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
 
 Transport - Pass - Motorcycle(50-250cc) - Biofuel - Residues:
     ecoinvent_aliases:
@@ -4366,16 +4410,16 @@ Transport - Pass - Motorcycle(50-250cc) - Biofuel - Residues:
             name: bioethanol, from residues, burned in motorcycle
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(50-250cc)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-        remind-eu: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(50-250cc)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+        remind: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(50-250cc)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+        remind-eu: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(50-250cc)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
 Transport - Pass - Motorcycle(50-250cc) - Biofuel - Sugar crops:
     ecoinvent_aliases:
         fltr:
             name: bioethanol, from sugar crops, burned in motorcycle
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(50-250cc)|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Sugar and Starch
-        remind-eu: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(50-250cc)|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Sugar and Starch
+        remind: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(50-250cc)|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Sugar and Starch
+        remind-eu: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(50-250cc)|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Sugar and Starch
 
 Transport - Pass - Motorcycle(50-250cc) - Liquid fossil:
   ecoinvent_aliases:
@@ -4411,24 +4455,24 @@ Transport - Pass - Motorcycle(>250cc) - Biofuel - Energy crops:
             name: bioethanol, from eucalyptus, burned in motorcycle
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(>250cc)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
-        remind-eu: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(>250cc)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Energy Crops
+        remind: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(>250cc)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
+        remind-eu: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(>250cc)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Energy Crops
 Transport - Pass - Motorcycle(>250cc) - Biofuel - Residues:
     ecoinvent_aliases:
         fltr:
             name: bioethanol, from residues, burned in motorcycle
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(>250cc)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
-        remind-eu: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(>250cc)|Liquids|Biomass|Allocated Feedstock|Cellulosic|Residues
+        remind: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(>250cc)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
+        remind-eu: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(>250cc)|Liquids|Biomass|Allocated Feedstock (redistributed)|Cellulosic|Residues
 Transport - Pass - Motorcycle(>250cc) - Biofuel - Sugar crops:
     ecoinvent_aliases:
         fltr:
             name: bioethanol, from sugar crops, burned in motorcycle
             reference product: heat
     iam_aliases:
-        remind: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(>250cc)|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Sugar and Starch
-        remind-eu: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(>250cc)|Liquids|Biomass|Allocated Feedstock|Non-Cellulosic|Sugar and Starch
+        remind: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(>250cc)|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Sugar and Starch
+        remind-eu: FE|Transport|Pass|Road|LDV|Two Wheelers|Motorcycle(>250cc)|Liquids|Biomass|Allocated Feedstock (redistributed)|Non-Cellulosic|Sugar and Starch
 
 Transport - Pass - Motorcycle(>250cc) - Liquid fossil:
   ecoinvent_aliases:
