@@ -127,15 +127,35 @@ class HydrogenMixin:
         )
 
     def _add_transport_to_hydrogen_datasets(self, dataset):
+        imported_share = sum(
+            exc["amount"]
+            for exc in ws.technosphere(
+                dataset,
+                ws.equals("name", "market for hydrogen, gaseous, low pressure"),
+                ws.equals("product", "hydrogen, gaseous, low pressure"),
+                ws.equals("location", "World"),
+            )
+        )
+        imported_share = min(max(imported_share, 0), 1)
+        domestic_share = 1 - imported_share
 
-        dataset["exchanges"].append(
-            {
+        def build_pipeline_exchange(amount, location):
+            return {
                 "name": "hydrogen supply, distributed by pipeline",
                 "product": "hydrogen, gaseous, from pipeline",
-                "location": dataset["location"],
+                "location": location,
                 "unit": "kilogram",
                 "type": "technosphere",
                 "uncertainty type": 0,
-                "amount": 1,
+                "amount": amount,
             }
-        )
+
+        if domestic_share:
+            dataset["exchanges"].append(
+                build_pipeline_exchange(domestic_share, dataset["location"])
+            )
+
+        if imported_share:
+            dataset["exchanges"].append(
+                build_pipeline_exchange(imported_share * (2000 / 250), "World")
+            )

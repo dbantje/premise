@@ -10,6 +10,9 @@ from .config import (
 from .utils import fetch_mapping, get_crops_properties
 
 
+IMPORTED_SYNTHETIC_LIQUID_FUEL_TRANSPORT_DISTANCE_KM = 5000
+
+
 class SyntheticFuelsMixin:
     def _has_positive_production_volume(self, variable):
         production_volumes = getattr(self.iam_data, "production_volumes", None)
@@ -193,6 +196,54 @@ class SyntheticFuelsMixin:
 
             self.fuel_map[variable] = filtered
 
+    def _get_imported_liquid_fuel_transport_provider(self):
+        search_terms = ("oil", "petroleum")
+        for term in search_terms:
+            providers = list(
+                ws.get_many(
+                    self.database,
+                    ws.contains("name", "market for transport"),
+                    ws.contains("name", "freight"),
+                    ws.contains("name", "sea"),
+                    ws.contains("name", "tanker"),
+                    ws.contains("name", term),
+                    ws.equals("unit", "ton kilometer"),
+                )
+            )
+            if providers:
+                return providers[0]
+
+        return None
+
+    def _add_import_transport_to_liquid_fuel_market(self, dataset):
+        imported_share = sum(
+            exc["amount"]
+            for exc in ws.technosphere(dataset, ws.equals("location", "World"))
+            if exc.get("product")
+            in {"diesel, synthetic", "petrol, synthetic", "gasoline, synthetic"}
+        )
+
+        if imported_share <= 0:
+            return
+
+        transport_provider = self._get_imported_liquid_fuel_transport_provider()
+        if transport_provider is None:
+            return
+
+        dataset["exchanges"].append(
+            {
+                "name": transport_provider["name"],
+                "product": transport_provider["reference product"],
+                "location": transport_provider["location"],
+                "unit": transport_provider["unit"],
+                "type": "technosphere",
+                "uncertainty type": 0,
+                "amount": imported_share
+                * IMPORTED_SYNTHETIC_LIQUID_FUEL_TRANSPORT_DISTANCE_KM
+                / 1000,
+            }
+        )
+
     def generate_synthetic_fuel_activities(self):
         """
         Generate region-specific synthetic fuel datasets.
@@ -271,6 +322,9 @@ class SyntheticFuelsMixin:
                         mapping=mapping,
                         system_model=self.system_model,
                         production_volumes=self.iam_data.production_volumes,
+                        additional_exchanges_fn=(
+                            self._add_import_transport_to_liquid_fuel_market
+                        ),
                     )
 
                     self.update_fuel_carbon_dioxide_emissions(
@@ -326,6 +380,9 @@ class SyntheticFuelsMixin:
                         mapping=mapping,
                         system_model=self.system_model,
                         production_volumes=self.iam_data.production_volumes,
+                        additional_exchanges_fn=(
+                            self._add_import_transport_to_liquid_fuel_market
+                        ),
                     )
 
                 self.update_fuel_carbon_dioxide_emissions(
