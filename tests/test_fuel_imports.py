@@ -166,16 +166,22 @@ def test_shared_imported_synfuel_iam_variable_is_split_between_liquid_markets():
         },
     )
 
-    assert float(
-        production_volumes.sel(
-            region="EUR", variables="petrol, synthetic, imported", year=2050
+    assert (
+        float(
+            production_volumes.sel(
+                region="EUR", variables="petrol, synthetic, imported", year=2050
+            )
         )
-    ) == 5
-    assert float(
-        production_volumes.sel(
-            region="EUR", variables="diesel, synthetic, imported", year=2050
+        == 5
+    )
+    assert (
+        float(
+            production_volumes.sel(
+                region="EUR", variables="diesel, synthetic, imported", year=2050
+            )
         )
-    ) == 5
+        == 5
+    )
 
 
 def test_imported_hydrogen_pipeline_transport_uses_longer_distance():
