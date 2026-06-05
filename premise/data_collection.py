@@ -43,6 +43,11 @@ IAM_TRANS_PASS_CARS_VARS = VARIABLES_DIR / "transport_passenger_cars.yaml"
 IAM_TRANS_BUS_VARS = VARIABLES_DIR / "transport_bus.yaml"
 IAM_TRANS_TWO_WHEELERS_VARS = VARIABLES_DIR / "transport_two_wheelers.yaml"
 
+IMPORTED_SYNTHETIC_LIQUID_FUEL_LABELS = (
+    "diesel, synthetic, imported",
+    "petrol, synthetic, imported",
+)
+
 VEHICLES_MAP = DATA_DIR / "transport" / "vehicles_map.yaml"
 CROPS_PROPERTIES = VARIABLES_DIR / "crops.yaml"
 GAINS_GEO_MAP = VARIABLES_DIR / "gains_regions.yaml"
@@ -63,6 +68,25 @@ def print_missing_variables(missing_vars, file_name: str = None):
     for v in missing_vars:
         table.add_row([v])
     print(table)
+
+
+def split_imported_synthetic_liquid_fuels(data: xr.DataArray) -> xr.DataArray:
+    """
+    Split the shared synthetic liquid fuel import variable equally between
+    diesel and petrol labels.
+    """
+    if "variables" not in data.coords:
+        return data
+
+    labels = [
+        label
+        for label in IMPORTED_SYNTHETIC_LIQUID_FUEL_LABELS
+        if label in data.coords["variables"].values
+    ]
+    if labels:
+        data.loc[dict(variables=labels)] *= 0.5
+
+    return data
 
 
 def get_delimiter(data=None, filepath=None) -> str:
@@ -1457,6 +1481,7 @@ class IAMDataCollection:
         market_data.coords["variables"] = [
             rev_input_vars[v] for v in market_data.variables.values
         ]
+        market_data = split_imported_synthetic_liquid_fuels(market_data)
 
         # add units by transferring those from `data`
         unit_by_k = {}
@@ -1717,6 +1742,7 @@ class IAMDataCollection:
             return None
 
         data_to_return = xr.concat(pieces, dim="variables")
+        data_to_return = split_imported_synthetic_liquid_fuels(data_to_return)
         data_to_return.attrs["unit"] = units
 
         # If duplicate *labels* exist (rare), aggregate them

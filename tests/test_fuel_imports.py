@@ -2,8 +2,10 @@ from pathlib import Path
 from types import SimpleNamespace
 
 import yaml
+import pytest
 import xarray as xr
 
+from premise.data_collection import IAMDataCollection
 from premise.fuels.hydrogen import HydrogenMixin
 from premise.fuels.liquid_fuels import (
     IMPORTED_SYNTHETIC_LIQUID_FUEL_TRANSPORT_DISTANCE_KM,
@@ -109,6 +111,71 @@ def test_imported_synfuel_proxy_requires_positive_production_volume():
     assert not obj._has_positive_production_volume("diesel, synthetic, imported")
     assert obj._has_positive_production_volume("petrol, synthetic, imported")
     assert not obj._has_positive_production_volume("hydrogen, imported")
+
+
+def test_shared_imported_synfuel_iam_variable_is_split_between_liquid_markets():
+    obj = IAMDataCollection.__new__(IAMDataCollection)
+    obj.year = 2050
+    obj.filepath_iam_files = "test.csv"
+
+    data = xr.DataArray(
+        [[[10.0], [90.0], [90.0]]],
+        coords={
+            "region": ["EUR"],
+            "variables": [
+                "Trade|Imports|SE|Liquids|Hydrogen",
+                "SE|Liquids|Petrol",
+                "SE|Liquids|Diesel",
+            ],
+            "year": [2050],
+        },
+        dims=("region", "variables", "year"),
+    )
+
+    petrol_blend = obj._IAMDataCollection__fetch_market_data(
+        data=data,
+        input_vars={
+            "petrol, synthetic, imported": "Trade|Imports|SE|Liquids|Hydrogen",
+            "gasoline": "SE|Liquids|Petrol",
+        },
+    )
+    diesel_blend = obj._IAMDataCollection__fetch_market_data(
+        data=data,
+        input_vars={
+            "diesel, synthetic, imported": "Trade|Imports|SE|Liquids|Hydrogen",
+            "diesel": "SE|Liquids|Diesel",
+        },
+    )
+
+    assert float(
+        petrol_blend.sel(
+            region="EUR", variables="petrol, synthetic, imported", year=2050
+        )
+    ) == pytest.approx(5 / 95)
+    assert float(
+        diesel_blend.sel(
+            region="EUR", variables="diesel, synthetic, imported", year=2050
+        )
+    ) == pytest.approx(5 / 95)
+
+    production_volumes = obj._IAMDataCollection__get_iam_production_volumes(
+        data=data,
+        input_vars={
+            "petrol, synthetic, imported": "Trade|Imports|SE|Liquids|Hydrogen",
+            "diesel, synthetic, imported": "Trade|Imports|SE|Liquids|Hydrogen",
+        },
+    )
+
+    assert float(
+        production_volumes.sel(
+            region="EUR", variables="petrol, synthetic, imported", year=2050
+        )
+    ) == 5
+    assert float(
+        production_volumes.sel(
+            region="EUR", variables="diesel, synthetic, imported", year=2050
+        )
+    ) == 5
 
 
 def test_imported_hydrogen_pipeline_transport_uses_longer_distance():
