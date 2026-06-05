@@ -226,7 +226,7 @@ class Interventions(BaseTransformation):
         cache: dict = None,
         index: dict = None,
         intervention_scenarios: dict = {},
-        print_changes: bool = True,
+        print_changes: bool = False,
     ):
         super().__init__(
             database,
