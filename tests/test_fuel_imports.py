@@ -221,7 +221,9 @@ def test_imported_synfuel_transport_provider_prefers_petroleum_tanker_market():
 
     provider = obj._get_imported_liquid_fuel_transport_provider()
 
-    assert provider["name"] == "market for transport, freight, sea, tanker for petroleum"
+    assert (
+        provider["name"] == "market for transport, freight, sea, tanker for petroleum"
+    )
 
 
 def test_imported_synfuel_transport_is_scaled_by_imported_share():

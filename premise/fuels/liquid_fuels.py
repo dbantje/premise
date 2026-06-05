@@ -9,7 +9,6 @@ from .config import (
 )
 from .utils import fetch_mapping, get_crops_properties
 
-
 IMPORTED_SYNTHETIC_LIQUID_FUEL_TRANSPORT_DISTANCE_KM = 5000
 
 
