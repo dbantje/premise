@@ -252,8 +252,8 @@ heat, industrial, from biomass CHP:
         - renewable
         - state
     iam_aliases:
-      remind: SE|Heat|Biomass|Combined Heat and Power
-      remind-eu: SE|Heat|Biomass|Combined Heat and Power
+      remind: SE|Heat|Biomass|+|Combined Heat and Power
+      remind-eu: SE|Heat|Biomass|+|Combined Heat and Power
       image: Final Energy|Industry|Other Sector|Solids|Biomass
 
 heat, industrial, from light fuel oil boiler:
