@@ -664,7 +664,7 @@ class NewDatabase:
             self.additional_inventories = None
 
         # unlink all files in the cache directory
-        delete_all_pickles()
+        # delete_all_pickles()
 
         if external_scenarios:
             print(
@@ -1249,7 +1249,7 @@ class NewDatabase:
         for scenario in self.scenarios:
             end_of_process(scenario)
 
-        delete_all_pickles()
+        # delete_all_pickles()
 
     def write_db_to_brightway(self, name: [str, List[str]] = None):
         """
@@ -1314,7 +1314,7 @@ class NewDatabase:
 
             end_of_process(scenario)
 
-        delete_all_pickles()
+        # delete_all_pickles()
         if self.generate_reports:
             # generate scenario report
             self.generate_scenario_report()
@@ -1446,7 +1446,7 @@ class NewDatabase:
 
             end_of_process(scenario)
 
-        delete_all_pickles()
+        # delete_all_pickles()
         if self.generate_reports:
             # generate scenario report
             self.generate_scenario_report()
@@ -1497,7 +1497,7 @@ class NewDatabase:
 
             end_of_process(scenario)
 
-        delete_all_pickles()
+        # delete_all_pickles()
         if self.generate_reports:
             # generate scenario report
             self.generate_scenario_report()
