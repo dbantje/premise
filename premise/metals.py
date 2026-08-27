@@ -536,9 +536,22 @@ class Metals(BaseTransformation):
         if self.year in self.metals.coords["year"].values:
             self.precomputed_medians = self.metals.sel(year=self.year)
         else:
-            self.precomputed_medians = self.metals.interp(
-                year=self.year, method="linear", kwargs={"fill_value": "extrapolate"}
-            )
+            max_year = self.metals.year.max().item()
+            min_year = self.metals.year.min().item()
+            if self.year > max_year:
+                logger.warning(
+                    f"[Metals] WARNING: Year {self.year} exceeds the maximum year {max_year} in metals data. Use last year in data."
+                )
+                self.precomputed_medians = self.metals.sel(year=max_year)
+            elif self.year < min_year:
+                logger.warning(
+                    f"[Metals] WARNING: Year {self.year} is below the minimum year {min_year} in metals data. Use first year in data."
+                )
+                self.precomputed_medians = self.metals.sel(year=min_year)
+            else:
+                self.precomputed_medians = self.metals.interp(
+                    year=self.year, method="linear", kwargs={"fill_value": "extrapolate"}
+                )
 
         self.activities_mapping = load_activities_mapping()  # 4
 
