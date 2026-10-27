@@ -5,6 +5,81 @@ These optional tests implement five literature-grounded changes to **prepared
 cut-off inventories**. They are conditional technology cases, not forecasts of
 global adoption in 2050. Ordinary ``NewDatabase.update()`` behavior is unchanged.
 
+Quick start: calculate LCIA scores
+----------------------------------
+
+From the repository root, with the premise environment active, run::
+
+    python dev/run_mining_sensitivities.py --lcia
+
+This selects the local ``ecoinvent-3.10.1-cutoff`` project/database, **1 kg of
+copper sulfide concentrate from the Chilean mining/beneficiation activity**, and
+all installed ``ReCiPe 2016 v1.03, midpoint (H)`` methods (18 categories).
+It creates a new timestamped directory under ``results/`` containing:
+
+* ``summary.html``: a browser-readable baseline/variant comparison;
+* ``scores.csv``: all scores, functional units, method tuples and units;
+* ``changes.csv``: baseline scores, variant scores, absolute and percentage changes;
+* ``case-status.csv``: calculated cases and cases needing additional input;
+* ``run.json`` and case JSON reports: full configurations, sources, limitations,
+  solver residuals and baseline metadata;
+* ``inventory-audit.json`` and ``literature-sources.json``.
+
+Percentage changes use ``100 * (variant - baseline) / abs(baseline)``. A zero
+baseline produces a blank percentage, with the absolute difference retained.
+Scores are midpoint indicators and are not summed across different units.
+
+Without a calibrated configuration, this is an explicit **full-coverage
+technical-potential screening**. The published 15% and 62% energy changes are
+applied to all positive electricity inputs of the selected mine, all supported
+building-machine diesel service is treated as haulage, and all modeled short-term
+Cu/Zn/Cd releases are assumed collected and treated. These coverage endpoints
+are bounding assumptions, not literature estimates of process shares or adoption.
+They can overstate the applicable share of each technology. Results are labeled
+``BOUND-*`` throughout. Drainage treatment burdens are omitted, long-term releases
+are unchanged, and existing haulage equipment remains a proxy.
+The haulage result bounds only the identifiable supported MJ combustion-service
+exchanges: raw fuel inputs and separately recorded mine emissions remain unchanged.
+It must not be interpreted as the total technical potential of mine electrification.
+
+The default calculates five variants (grinding, HPGR, haulage, and two drainage
+performance states) plus baseline. **Copper recovery is explicitly marked as
+needing input**, rather than using invented mine recovery values. To include its
+low/high cases, add the three arguments together::
+
+    python dev/run_mining_sensitivities.py --lcia \
+      --baseline-recovery BASELINE_FRACTION \
+      --downstream-recovery FINISHING_FRACTION \
+      --recovery-basis "Source and applicability of the two recovery values"
+
+Replace the placeholders with sourced fractions. Recovery then remains a
+conditional Dexing-equivalent size/loss-distribution **yield-potential bound**;
+it does not include additional recovery/finishing burdens. Use a calibrated
+configuration with the relevant extra inventory for a process-level LCA.
+
+To use calibrated cases, the same command accepts the existing JSON format::
+
+    python dev/run_mining_sensitivities.py --lcia --config calibrated_mining_cases.json
+
+Useful overrides are ``--project``, ``--database``, ``--output``,
+``--mine-location``, ``--fu-name``, ``--fu-product``, ``--fu-location``,
+``--amount`` and ``--method-family``. The automatic bound profile targets the
+named copper dataset; use an explicit configuration for different mining routes
+or premise-regionalized activities. Changing the scored functional unit does
+not automatically broaden the targeted mining processes.
+
+LCIA uses Brightway's baseline matrices, replaces only changed columns and adds
+mine-specific suppliers in memory. Baseline-column reconstruction and numerical
+residuals are checked. No scenario database is registered or overwritten, and no
+full inventory pickle is saved, unless ``--write-brightway`` or
+``--save-inventories`` is explicitly provided. Coefficient serialization can
+cause differences at float32 precision compared with registered-database LCIA;
+the adapter is checked against that route using independent synthetic fixtures.
+
+The local raw ecoinvent example describes the source inventory, **not a 2050 IAM
+scenario**. To assess a prepared 2050 database, point ``--project``/``--database``
+to that baseline and provide target selectors appropriate to its regionalization.
+
 The numerical performance assumptions are versioned in
 ``premise/data/mining/sensitivity_sources.json``. Each result records that source,
 the complete target configuration, before/after amounts, derived parameters,
