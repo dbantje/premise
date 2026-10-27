@@ -5,6 +5,7 @@ as well as export it back.
 """
 
 import logging
+import copy
 import os
 import pickle
 from datetime import datetime
@@ -1017,6 +1018,10 @@ class NewDatabase:
         """
         Update a specific sector by name.
         """
+        if any(s.get("mining sensitivity") for s in self.scenarios):
+            raise ValueError(
+                "Run sector updates before creating mining sensitivity variants."
+            )
         self.sector_update_methods = {
             "biomass": {
                 "func": _update_biomass,
@@ -1161,6 +1166,52 @@ class NewDatabase:
                 # Manually update the outer progress bar after each sector is completed
                 pbar_outer.update()
         print("Done!\n")
+
+    def with_mining_sensitivity(self, case, targets, label=None):
+        """Fork updated scenarios with an optional mining sensitivity.
+
+        ``targets`` is an explicit list of inventory allocations, or a callable
+        accepting scenario metadata and returning that list. The baseline is
+        retained in memory so exports' cache cleanup cannot invalidate it.
+        No database is written. See ``docs/mining-sensitivities.rst``.
+        """
+        from .mining_sensitivity import apply_mining_sensitivity
+
+        if any(s.get("mining sensitivity") for s in self.scenarios):
+            raise ValueError(
+                "Create independent sensitivity variants from the baseline."
+            )
+        if not all(s.get("applied functions") for s in self.scenarios):
+            raise ValueError(
+                "Run update() before creating mining sensitivity variants."
+            )
+        variant = copy.copy(self)
+        variant.scenarios = []
+        variant.mining_sensitivity_reports = []
+        for scenario in self.scenarios:
+            # Materialize the baseline without deleting its cache; in-memory
+            # inventory values remain unchanged by the copy-on-write engine.
+            load_database(scenario, self.database, delete=False, load_metadata=True)
+            selected = targets(scenario) if callable(targets) else targets
+            result = apply_mining_sensitivity(
+                scenario["database"],
+                case,
+                selected,
+                label=label,
+                system_model=self.system_model,
+            )
+            result.report["baseline"] = {
+                key: scenario[key] for key in ("model", "pathway", "year")
+            }
+            fork = dict(scenario)
+            fork.pop("database filepath", None)
+            fork["database"] = result.database
+            fork["cache"], fork["index"] = {}, {}
+            fork["applied functions"] = list(scenario["applied functions"])
+            fork["mining sensitivity"] = {"case": case, "label": result.report["label"]}
+            variant.scenarios.append(fork)
+            variant.mining_sensitivity_reports.append(result.report)
+        return variant
 
     def write_superstructure_db_to_brightway(
         self,
@@ -1337,6 +1388,8 @@ class NewDatabase:
             if "external scenarios" in scenario:
                 for external in scenario["external scenarios"]:
                     name += f"-{external['scenario']}"
+            if scenario.get("mining sensitivity"):
+                name += f"-mining-{scenario['mining sensitivity']['label']}"
             return name
 
         if filepath is not None:

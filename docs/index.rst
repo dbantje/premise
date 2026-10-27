@@ -20,4 +20,5 @@ This user guide will help you navigate the inner workings of *premise*.
    mapping
    user_scenarios
    consequential
+   mining-sensitivities
    faq

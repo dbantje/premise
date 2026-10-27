@@ -1,0 +1,246 @@
+{
+  "cases": [
+    {
+      "case": "grinding_best_practice",
+      "label": "S1-grinding",
+      "targets": [
+        {
+          "activity": {
+            "name": "copper mine operation and beneficiation, sulfide ore",
+            "reference product": "copper concentrate, sulfide ore",
+            "location": "CL"
+          },
+          "electricity": [
+            {
+              "exchange": {
+                "name": "market for electricity, high voltage",
+                "product": "electricity, high voltage",
+                "location": "CL",
+                "unit": "kilowatt hour"
+              },
+              "stage_share": null,
+              "basis": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "hpgr",
+      "label": "S2-hpgr",
+      "targets": [
+        {
+          "activity": {
+            "name": "copper mine operation and beneficiation, sulfide ore",
+            "reference product": "copper concentrate, sulfide ore",
+            "location": "CL"
+          },
+          "electricity": [
+            {
+              "exchange": {
+                "name": "market for electricity, high voltage",
+                "product": "electricity, high voltage",
+                "location": "CL",
+                "unit": "kilowatt hour"
+              },
+              "stage_share": null,
+              "basis": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "haulage_electrification",
+      "label": "S3-haulage",
+      "targets": [
+        {
+          "activity": {
+            "name": "copper mine operation and beneficiation, sulfide ore",
+            "reference product": "copper concentrate, sulfide ore",
+            "location": "CL"
+          },
+          "electricity_supplier": {
+            "name": "market for electricity, medium voltage",
+            "reference product": "electricity, medium voltage",
+            "location": "CL"
+          },
+          "combustion_service_air_emissions": true,
+          "combustion_service_basis": null,
+          "diesel_services": [
+            {
+              "exchange": {
+                "name": "market for diesel, burned in building machine",
+                "product": "diesel, burned in building machine",
+                "location": "GLO",
+                "unit": "megajoule"
+              },
+              "haulage_share": null,
+              "basis": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "drainage_treatment",
+      "label": "S4-drainage-second",
+      "targets": [
+        {
+          "activity": {
+            "name": "treatment of sulfidic tailings, from copper mine operation, tailings impoundment",
+            "reference product": "sulfidic tailings, from copper mine operation",
+            "location": "CL"
+          },
+          "performance": "second",
+          "scope": "emission_potential",
+          "emissions": [
+            {
+              "exchange": {
+                "name": "Copper ion",
+                "categories": [
+                  "water",
+                  "ground-"
+                ],
+                "unit": "kilogram"
+              },
+              "collected_fraction": null,
+              "basis": null
+            },
+            {
+              "exchange": {
+                "name": "Zinc II",
+                "categories": [
+                  "water",
+                  "ground-"
+                ],
+                "unit": "kilogram"
+              },
+              "collected_fraction": null,
+              "basis": null
+            },
+            {
+              "exchange": {
+                "name": "Cadmium II",
+                "categories": [
+                  "water",
+                  "ground-"
+                ],
+                "unit": "kilogram"
+              },
+              "collected_fraction": null,
+              "basis": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "drainage_treatment",
+      "label": "S4-drainage-third",
+      "targets": [
+        {
+          "activity": {
+            "name": "treatment of sulfidic tailings, from copper mine operation, tailings impoundment",
+            "reference product": "sulfidic tailings, from copper mine operation",
+            "location": "CL"
+          },
+          "performance": "third",
+          "scope": "emission_potential",
+          "emissions": [
+            {
+              "exchange": {
+                "name": "Copper ion",
+                "categories": [
+                  "water",
+                  "ground-"
+                ],
+                "unit": "kilogram"
+              },
+              "collected_fraction": null,
+              "basis": null
+            },
+            {
+              "exchange": {
+                "name": "Zinc II",
+                "categories": [
+                  "water",
+                  "ground-"
+                ],
+                "unit": "kilogram"
+              },
+              "collected_fraction": null,
+              "basis": null
+            },
+            {
+              "exchange": {
+                "name": "Cadmium II",
+                "categories": [
+                  "water",
+                  "ground-"
+                ],
+                "unit": "kilogram"
+              },
+              "collected_fraction": null,
+              "basis": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "copper_recovery",
+      "label": "S5-recovery-low",
+      "targets": [
+        {
+          "activity": {
+            "name": "copper mine operation and beneficiation, sulfide ore",
+            "reference product": "copper concentrate, sulfide ore",
+            "location": "CL"
+          },
+          "performance": "low",
+          "baseline_recovery": null,
+          "baseline_recovery_basis": null,
+          "downstream_recovery": null,
+          "downstream_recovery_basis": null,
+          "transfer_basis": null,
+          "tailings_model": "constant_leachable_fraction",
+          "scope": "yield_potential",
+          "tailings": {
+            "name": "market for sulfidic tailings, from copper mine operation",
+            "product": "sulfidic tailings, from copper mine operation",
+            "location": "CL",
+            "unit": "kilogram"
+          }
+        }
+      ]
+    },
+    {
+      "case": "copper_recovery",
+      "label": "S5-recovery-high",
+      "targets": [
+        {
+          "activity": {
+            "name": "copper mine operation and beneficiation, sulfide ore",
+            "reference product": "copper concentrate, sulfide ore",
+            "location": "CL"
+          },
+          "performance": "high",
+          "baseline_recovery": null,
+          "baseline_recovery_basis": null,
+          "downstream_recovery": null,
+          "downstream_recovery_basis": null,
+          "transfer_basis": null,
+          "tailings_model": "constant_leachable_fraction",
+          "scope": "yield_potential",
+          "tailings": {
+            "name": "market for sulfidic tailings, from copper mine operation",
+            "product": "sulfidic tailings, from copper mine operation",
+            "location": "CL",
+            "unit": "kilogram"
+          }
+        }
+      ]
+    }
+  ]
+}

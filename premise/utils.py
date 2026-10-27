@@ -153,6 +153,8 @@ def eidb_label(
             name += f"_{ext_scenario['scenario']}"
 
     # add date and time
+    if scenario.get("mining sensitivity"):
+        name += f"_mining-{scenario['mining sensitivity']['label']}"
     name += f" {datetime.now().strftime('%Y-%m-%d')}"
 
     return name
@@ -426,6 +428,9 @@ def create_scenario_list(scenarios: List[Dict[str, Any]]) -> List[str]:
         if "external scenarios" in scenario:
             for ext_scenario in scenario["external scenarios"]:
                 name += f" - {ext_scenario['scenario']}"
+
+        if scenario.get("mining sensitivity"):
+            name += f" - mining {scenario['mining sensitivity']['label']}"
 
         list_scenarios.append(name)
 

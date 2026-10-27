@@ -1,0 +1,52 @@
+{
+  "doe_2007": {
+    "title": "U.S. Mining Industry Energy Bandwidth Study",
+    "url": "https://www.energy.gov/sites/default/files/2013/11/f4/mining_bandwidth.pdf",
+    "locator": "Appendix B, Exhibit 24; Appendix D",
+    "evidence": "Engineering benchmark, not a global adoption forecast",
+    "parameters": {"grinding_energy_reduction": 0.15},
+    "boundary": "Grinding energy only; metal-mining current/best-practice requirements are 57900/49200 Btu per ton, rounded here to a 15% reduction."
+  },
+  "mcivor_2023": {
+    "title": "Development of Fine High-Pressure Grinding for Mineral Processing Plants",
+    "authors": "McIvor, Gagnon, Klein and Kumar",
+    "url": "https://www.ceecthefuture.org/resources?file=publication_file&id=4114&task=download",
+    "locator": "SAG Conference 2023, Table 8",
+    "evidence": "Plant audits and comparative pilot testing, with circuit-design estimates",
+    "parameters": {"grinding_machine_energy_reduction": 0.62},
+    "boundary": "Machine energy only. Wider reported savings (54% secondary circuit, 30% plant comminution at Copper Mountain) include auxiliaries and grinding-media embodied energy and must not be applied uniformly to electricity."
+  },
+  "aydogdu_2024": {
+    "title": "A Systems Engineering Approach to Decarbonizing Mining: Analyzing Electrification and CO2 Emission Reduction Scenarios for Copper Mining Haulage Systems",
+    "url": "https://doi.org/10.3390/su16146232",
+    "locator": "Section 2, haulage electrification assumptions",
+    "evidence": "Modeled open-pit conveyor alternative; published efficiency assumptions",
+    "parameters": {"diesel_efficiency": 0.35, "electric_efficiency": 0.90},
+    "boundary": "Useful-work equivalence for selected haulage fuel energy. Not an empirical conversion for every diesel machine; original machinery is retained as a proxy unless additional inventory changes are supplied."
+  },
+  "hustwit_sykes_1994": {
+    "title": "Pipeline Treatment of a Metal Mine Drainage Containing Copper and Zinc",
+    "url": "https://stacks.cdc.gov/view/cdc/227561/cdc_227561_DS1.pdf",
+    "locator": "Table 2, mean dissolved-metal removal in second/third full-scale operational periods",
+    "evidence": "Full-scale Penn Mine observations; different operational states, not statistical confidence bounds",
+    "parameters": {
+      "second": {"copper": 0.981, "zinc": 0.958, "cadmium": 0.913},
+      "third": {"copper": 0.995, "zinc": 0.991, "cadmium": 0.981}
+    },
+    "boundary": "Collected drainage while treatment operates. Does not establish capture coverage, lime/electricity/sludge burdens, or effectiveness over ecoinvent's long-term emission horizon."
+  },
+  "sun_2025": {
+    "title": "Development and industrial validation of a novel fluidized flotation column for coarse copper tailings recovery",
+    "url": "https://doi.org/10.1016/j.mineng.2025.109695",
+    "locator": "Abstract and introduction; Dexing 6000 t/day coarse-tailings circuit",
+    "evidence": "Industrial trials; ore-specific recovery range",
+    "parameters": {
+      "coarse_tailings_mass_fraction": 0.37,
+      "coarse_fraction_share_of_copper_loss": 0.68,
+      "low_recovery": 0.55,
+      "high_recovery": 0.65,
+      "recovered_stream_copper_grade_range": [0.0025, 0.004]
+    },
+    "boundary": "Recovery from coarse tailings into low-grade material, not finished copper. Further beneficiation, its recovery and its inventory are required. Fractions are Dexing-specific proxies when transferred elsewhere."
+  }
+}
