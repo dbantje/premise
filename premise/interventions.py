@@ -31,30 +31,14 @@ EAF_SLAG_CONFIG_FILE = DATA_DIR / "interventions" / "EAF_slag_activities.yaml"
 BOF_SLAG_CONFIG_FILE = DATA_DIR / "interventions" / "BOF_slag_activities.yaml"
 COPPER_CONFIG_FILE = DATA_DIR / "interventions" / "copper_recovery_activities.yaml"
 BRAKE_WEAR_CONFIG_FILE = DATA_DIR / "interventions" / "brake_wear_activities.yaml"
-TAILINGS_DATA_FILE = (
-    DATA_DIR / "interventions" / "reformatted_data" / "tailings_shares.csv"
-)
-EAF_SLAG_DATA_FILE = (
-    DATA_DIR / "interventions" / "reformatted_data" / "EAF_slag_shares.csv"
-)
-BOF_SLAG_DATA_FILE = (
-    DATA_DIR / "interventions" / "reformatted_data" / "BOF_slag_shares.csv"
-)
-COPPER_DATA_FILE = (
-    DATA_DIR / "interventions" / "reformatted_data" / "copper_recovery_volumes.csv"
-)
-BRAKE_WEAR_DATA_FILE = (
-    DATA_DIR / "interventions" / "reformatted_data" / "brake_wear_efs.csv"
-)
-SMELTING_DATA_FILE = (
-    DATA_DIR / "interventions" / "reformatted_data" / "smelting_efs.csv"
-)
-WOODSTOVES_DATA_FILE = (
-    DATA_DIR / "interventions" / "reformatted_data" / "woodstoves_efs.csv"
-)
-SHIPPING_DATA_FILE = (
-    DATA_DIR / "interventions" / "reformatted_data" / "shipping_efs.csv"
-)
+TAILINGS_DATA_FILE = DATA_DIR / "interventions" / "tailings_shares.csv"
+EAF_SLAG_DATA_FILE = DATA_DIR / "interventions" / "EAF_slag_shares.csv"
+BOF_SLAG_DATA_FILE = DATA_DIR / "interventions" / "BOF_slag_shares.csv"
+COPPER_DATA_FILE = DATA_DIR / "interventions" / "copper_recovery_volumes.csv"
+BRAKE_WEAR_DATA_FILE = DATA_DIR / "interventions" / "brake_wear_efs.csv"
+SMELTING_DATA_FILE = DATA_DIR / "interventions" / "smelting_efs.csv"
+WOODSTOVES_DATA_FILE = DATA_DIR / "interventions" / "woodstoves_efs.csv"
+SHIPPING_DATA_FILE = DATA_DIR / "interventions" / "shipping_efs.csv"
 
 
 def print_exchange_table_comparison(old, new):
@@ -101,10 +85,32 @@ def _update_interventions(scenario, version, system_model, intervention_scenario
 
 def load_config(file_path, model: str, intervention_pathway: str):
     """
-    Load and parse a YAML configuration file for interventions.
+    Load intervention data from a semicolon-separated CSV file.
+
+    The file is in wide format: one row per scenario/region/year, with one
+    column per technology. The selected scenario is melted into long format,
+    with the values stored as a single ``mean`` variable.
     """
 
     tech_data = pd.read_csv(file_path, sep=";")
+
+    if intervention_pathway not in tech_data["scenario"].values:
+        raise ValueError(
+            f"Intervention scenario '{intervention_pathway}' not found in "
+            f"{file_path}. Available scenarios: "
+            f"{sorted(tech_data['scenario'].unique())}"
+        )
+
+    technology_cols = [
+        col for col in tech_data.columns if col not in ("scenario", "region", "year")
+    ]
+
+    tech_data = tech_data.melt(
+        id_vars=["scenario", "region", "year"],
+        value_vars=technology_cols,
+        var_name="technology",
+        value_name="mean",
+    )
 
     with open(TAILINGS_REGIONS_FILE) as f:
         region_map_raw = yaml.safe_load(f)
